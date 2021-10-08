@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from '@utils/classnames';
+import inputStyles from './Input.module.css';
 
 const InputSelect = ({
   name,
@@ -22,7 +23,7 @@ const InputSelect = ({
       value={value}
       id={name}
       name={name}
-      className={cn(className)}
+      className={cn(className, inputStyles.input)}
       {...props}
     >
       {emptyOption && <option value="" {...optionProps('', '')} />}
