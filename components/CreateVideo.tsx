@@ -183,7 +183,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
           />
           <FormElement
             name="sponsor"
-            label="Sponsors"
+            label="Sponsor"
             Input={InputSelect}
             form={form}
             options={filteredSponsors.reduce(
