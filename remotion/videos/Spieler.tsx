@@ -10,15 +10,9 @@ import {
   useVideoConfig,
 } from 'remotion';
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
+import { isClientSide } from '@utils/helpers';
 import { SlidingText } from './SlidingText';
 import fassnacht from './fassnacht-removebg.png';
-
-const font = new FontFace(
-  'Antique Olive Std',
-  `url(https://jonnyburger.s3.eu-central-1.amazonaws.com/big_noodle_titling.ttf)`
-).load();
-
-font.then(async () => document.fonts.add(await font));
 
 const player: React.CSSProperties = {
   position: 'absolute',
@@ -32,6 +26,12 @@ export const Spieler: React.FC = () => {
   const [waitForFont] = useState(() => delayRender());
 
   useEffect(() => {
+    const font = new FontFace(
+      'YB',
+      `url(https://jonnyburger.s3.eu-central-1.amazonaws.com/big_noodle_titling.ttf)`
+    ).load();
+    font.then(async () => document.fonts.add(await font));
+
     continueRender(waitForFont);
   }, [waitForFont]);
 

@@ -33,7 +33,7 @@ export const SlidingText: React.FC<{
         style={{
           color,
           fontSize: fontSize,
-          fontFamily: 'Antique Olive Std',
+          fontFamily: 'YB',
           lineHeight: 1,
           marginTop: 0,
           transform: `translateY(${interpolate(trans, [0, 1], [200, 0])}px)`,
