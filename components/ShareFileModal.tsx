@@ -8,18 +8,17 @@ const ShareFileModal = ({
   videoFile,
   onClose,
   tweetMessage,
-  fileName,
 }: {
   videoFile: string;
   onClose: () => void;
   tweetMessage: string;
-  fileName?: string;
 }) => {
   const [tweetMessageInput, setTweetMessageInput] =
     React.useState<boolean>(false);
   const [tweetMessageEdited, setTweetMessageEdited] =
     React.useState<string>(tweetMessage);
   const [tweetLoading, setTweetLoading] = React.useState<boolean>(false);
+  const [tweetUrl, setTweetUrl] = React.useState<string>('');
 
   const tweetVideo = async () => {
     setTweetLoading(true);
@@ -32,22 +31,18 @@ const ShareFileModal = ({
       body: JSON.stringify(body),
       method: 'POST',
     });
-    const tweetUrl = await resp.json();
+    const { url: tweetUrl } = await resp.json();
 
     setTweetLoading(false);
     console.log({ tweetUrl });
+    setTweetUrl(tweetUrl);
   };
 
   return (
     <PortalBox title="Success!" close={onClose} size="small">
       <p>Dein Video wurde erfolgreich erstellt.</p>
       <ButtonGroup className={styles.buttons}>
-        <Button
-          icon="trayArrowDown"
-          useAnchor
-          href={videoFile}
-          download={fileName === '' ? 'output' : fileName}
-        >
+        <Button icon="trayArrowDown" useAnchor href={videoFile} download>
           Download
         </Button>
         <Button
@@ -89,8 +84,17 @@ const ShareFileModal = ({
           >
             {tweetMessageEdited}
           </textarea>
-          <ButtonGroup align="right">
-            <Button loading={tweetLoading} onClick={tweetVideo}>
+          <ButtonGroup className={styles.tweetControls} align="right">
+            {Boolean(tweetUrl) && (
+              <a href={tweetUrl} target="_blank" className={styles.tweetLink}>
+                Tweet ansehen
+              </a>
+            )}
+            <Button
+              className={styles.tweetSend}
+              loading={tweetLoading}
+              onClick={tweetVideo}
+            >
               Senden
             </Button>
           </ButtonGroup>
