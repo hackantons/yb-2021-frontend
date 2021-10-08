@@ -14,6 +14,7 @@
   transition: all 200ms ease-in-out;
   border: 1px solid var(--c-button-background);
   font-weight: bold;
+  text-decoration: none;
   //font-size: var(--fs);
   //box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
@@ -74,7 +75,7 @@
 }
 
 .hasContent .icon {
-  margin-right: 0.4em;
+  margin-right: 0.8em;
 }
 
 .iconRight {
@@ -82,7 +83,7 @@
 
   &.hasContent .icon {
     margin-right: 0;
-    margin-left: 0.4em;
+    margin-left: 0.8em;
   }
 }
 

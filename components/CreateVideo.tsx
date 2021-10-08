@@ -121,9 +121,12 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
               });
               const progressJson = (await progress.json()) as ProgressResponse;
               setVideoProgress(Math.ceil(progressJson.overallProgress * 100));
+              console.log(progressJson);
               if (progressJson.overallProgress === 1) {
                 window.clearInterval(intervalId);
-                window.location.assign(progressJson.outputFile);
+                setVideoFile(progressJson.outputFile);
+                setVideoInProgress(false);
+                setVideoProgress(0);
               }
             }, 1000);
           })}
