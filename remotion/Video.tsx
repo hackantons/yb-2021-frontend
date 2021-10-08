@@ -33,6 +33,7 @@ export const Video = () => {
           awayScore: 0,
           awayTeam: Teams.ZURICH,
           sponsor: Sponsors.SWISSCOM,
+          playerNumber: 99,
         }}
       ></Composition>
       <Composition
@@ -46,6 +47,7 @@ export const Video = () => {
           firstName: 'Christian',
           lastName: 'Fassnacht',
           seasonGoal: 10,
+          playerNumber: 99,
         }}
       ></Composition>
       <Composition

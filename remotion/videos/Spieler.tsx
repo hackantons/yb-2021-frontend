@@ -11,68 +11,23 @@ import {
 } from 'remotion';
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { isClientSide } from '@utils/helpers';
+import { DefaultSpieler } from './DefaultSpieler';
+import { Jana } from './Jana';
 import { SlidingText } from './SlidingText';
 import { YELLOW } from './colors';
 import { useFont } from './use-font';
-
-const player: React.CSSProperties = {
-  position: 'absolute',
-  bottom: 0,
-  right: '-5%',
-};
 
 export const Spieler: React.FC<{
   firstName: string;
   lastName: string;
   seasonGoal: number;
-}> = ({ firstName, lastName, seasonGoal }) => {
-  const { fps, durationInFrames } = useVideoConfig();
-  const frame = useCurrentFrame();
+  playerNumber: number;
+}> = ({ firstName, lastName, playerNumber, seasonGoal }) => {
   useFont();
-
-  const spr = spring({
-    fps,
-    frame,
-    config: {
-      damping: 200,
-    },
-  });
-
-  const playerScale =
-    interpolate(frame, [0, 50], [1.1, 1.15]) *
-    interpolate(spr, [0, 1], [0.9, 1.05]);
-
-  const opacity = interpolate(
-    frame,
-    [0, 10, durationInFrames - 10, durationInFrames - 1],
-    [0, 1, 1, 0],
-    {
-      extrapolateRight: 'clamp',
-    }
-  );
 
   return (
     <AbsoluteFill>
-      <Img
-        style={{
-          ...player,
-          mixBlendMode: 'color-dodge',
-          transform: `scale(${playerScale})`,
-          transformOrigin: '75% 75%',
-          filter: `drop-shadow(0 0 20px black)`,
-          opacity,
-        }}
-        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
-      ></Img>
-      <Img
-        style={{
-          ...player,
-          transform: `scale(${playerScale})`,
-          transformOrigin: '75% 75%',
-          opacity: opacity * 0.4,
-        }}
-        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
-      ></Img>
+      {playerNumber === 99 ? <Jana></Jana> : <DefaultSpieler />}
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
       </SlidingText>

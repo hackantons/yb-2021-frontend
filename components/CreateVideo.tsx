@@ -82,6 +82,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
           loop
+          spaceKeyToPlayOrPause
           autoPlay
           inputProps={{
             firstName: selectedPlayer.firstName,
@@ -92,6 +93,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             awayScore: formValues.awayScore,
             awayTeam: formValues.awayTeam,
             sponsor: formValues.sponsor,
+            playerNumber: selectedPlayer.number,
           }}
         />
       </div>

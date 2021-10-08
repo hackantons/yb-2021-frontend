@@ -20,20 +20,6 @@ export interface PlayerI {
 
 export const TEAM_API: Array<PlayerI> = [
   {
-    firstName: 'David',
-    lastName: 'von Ballmoos',
-    position: POSITIONEN.TOR,
-    number: 26,
-    stat: {
-      games: 6,
-      goals: 10,
-    },
-    assets: {
-      portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
-    },
-  },
-  {
     firstName: 'Sandro',
     lastName: 'Lauper',
     number: 30,
@@ -87,6 +73,34 @@ export const TEAM_API: Array<PlayerI> = [
     assets: {
       portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+    },
+  },
+  {
+    firstName: 'David',
+    lastName: 'von Ballmoos',
+    position: POSITIONEN.TOR,
+    number: 26,
+    stat: {
+      games: 6,
+      goals: 10,
+    },
+    assets: {
+      portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
+      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+    },
+  },
+  {
+    firstName: 'Jana',
+    lastName: 'Neuhaus',
+    position: POSITIONEN.TOR,
+    number: 99,
+    stat: {
+      games: 6,
+      goals: 4,
+    },
+    assets: {
+      portrait: 'https://www.bscyb.ch/kader-frauen?s=264',
+      action: 'https://www.bscyb.ch/kader-frauen?s=264',
     },
   },
 ];
