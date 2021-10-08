@@ -10,7 +10,7 @@ const container: React.CSSProperties = {
 
 const background: React.CSSProperties = {
   backgroundImage: `url(${texture})`,
-  opacity: 0.2,
+  opacity: 0.12,
 };
 
 export const Background: React.FC<{}> = ({ children }) => {

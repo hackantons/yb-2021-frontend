@@ -1,8 +1,10 @@
 import { Composition } from 'remotion';
+import { Teams } from '../utils/infos';
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
 import { Minute } from './videos/Minute';
+import { NewScore } from './videos/NewScore';
 import { Score } from './videos/Score';
 
 export const Video = () => {
@@ -20,6 +22,9 @@ export const Video = () => {
           lastName: 'Fassnacht',
           seasonGoal: 10,
           minute: 10,
+          homeScore: 1,
+          awayScore: 0,
+          awayTeam: Teams.ZURICH,
         }}
       ></Composition>
       <Composition
@@ -60,6 +65,19 @@ export const Video = () => {
         fps={30}
         defaultProps={{
           minute: 75,
+        }}
+      ></Composition>
+      <Composition
+        id="NewScore"
+        height={1920}
+        width={1080}
+        component={NewScore}
+        durationInFrames={300}
+        fps={30}
+        defaultProps={{
+          homeScore: 1,
+          awayScore: 0,
+          awayTeam: Teams.ZURICH,
         }}
       ></Composition>
     </>
