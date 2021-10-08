@@ -1,5 +1,5 @@
 .root {
-  --navigation-width: 80px;
+  --navigation-width: 100px;
 
   min-height: 100vh;
   padding: 0 0 0 var(--navigation-width);
@@ -14,14 +14,25 @@
   width: var(--navigation-width);
 }
 
-.header {
-  margin: 0 0 auto 0;
+.content {
+  width: calc(100%);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.main {
+.header {
+  margin: 0 0 auto 0;
 }
 
 .footer {
   margin: auto 0 0 0;
   background-color: var(--c-bkg-dark);
+  padding: var(--space-gutter) var(--space-section);
+  color: #fff;
+  text-align: center;
+}
+
+.main {
+  min-height: 100%;
 }

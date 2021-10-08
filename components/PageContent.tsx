@@ -15,7 +15,7 @@ const PageContent = ({
       <Navigation className={styles.navigation} />
       <div className={styles.content}>
         <main className={styles.main}>{children}</main>
-        <footer className={styles.footer}> footer</footer>
+        <footer className={styles.footer}>© 2021 hackantons</footer>
       </div>
     </div>
   );

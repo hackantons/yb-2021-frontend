@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <PageContent>
       <div className={styles.container}>
-        <h1>Hello World</h1>
+        <h1>YB Media Center</h1>
       </div>
     </PageContent>
   );

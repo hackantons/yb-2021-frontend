@@ -14,8 +14,8 @@ const LINKS: Record<
   }
 > = {
   create: {
-    path: '/',
-    icon: 'plus',
+    path: '/create',
+    icon: 'videoPlusOutline',
     title: 'Create',
   },
 };
@@ -28,7 +28,7 @@ const Navigation = ({ className = '' }: { className?: string }) => {
       <Link href="/">
         <a
           className={cn(styles.link, {
-            [styles.linkActive]: route === '/',
+            [styles.linkActive]: '/' === route,
           })}
         >
           <img src="yb-logo.svg" />
@@ -38,10 +38,11 @@ const Navigation = ({ className = '' }: { className?: string }) => {
         <Link key={key} href={link.path}>
           <a
             className={cn(styles.link, {
-              [styles.linkActive]: route === link.path,
+              [styles.linkActive]: styles.path === route,
             })}
           >
-            <span>{link.title}</span>
+            <Icon className={styles.linkIcon} icon={link.icon} />
+            <span className={styles.linkTitle}>{link.title}</span>
           </a>
         </Link>
       ))}
