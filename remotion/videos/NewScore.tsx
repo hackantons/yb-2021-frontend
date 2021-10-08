@@ -18,8 +18,8 @@ const container: React.CSSProperties = {
   display: 'block',
   textAlign: 'center',
   position: 'relative',
-  height: 200,
   overflow: 'hidden',
+  height: 200,
 };
 
 export const NewScore: React.FC<{

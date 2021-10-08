@@ -27,7 +27,7 @@ export const Main: React.FC<{
 }) => {
   return (
     <Series>
-      <Series.Sequence durationInFrames={20}>
+      <Series.Sequence durationInFrames={40}>
         <Minute minute={minute}></Minute>
       </Series.Sequence>
       <Series.Sequence durationInFrames={50}>

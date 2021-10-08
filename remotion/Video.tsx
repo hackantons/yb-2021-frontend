@@ -1,5 +1,12 @@
 import { Composition } from 'remotion';
-import { Sponsors, Teams } from '../utils/infos';
+import {
+  FPS,
+  GOAL_VIDEO_DURATION,
+  Sponsors,
+  Teams,
+  VIDEO_HEIGHT,
+  VIDEO_WIDTH,
+} from '../utils/infos';
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
@@ -12,11 +19,11 @@ export const Video = () => {
     <>
       <Composition
         id="Goal"
-        height={1920}
-        width={1080}
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
         component={Main}
-        durationInFrames={300}
-        fps={30}
+        durationInFrames={GOAL_VIDEO_DURATION}
+        fps={FPS}
         defaultProps={{
           firstName: 'Christian',
           lastName: 'Fassnacht',
@@ -30,10 +37,10 @@ export const Video = () => {
       ></Composition>
       <Composition
         id="Player"
-        height={1920}
-        width={1080}
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
         component={Goal}
-        durationInFrames={300}
+        durationInFrames={200}
         fps={30}
         defaultProps={{
           firstName: 'Christian',
@@ -43,26 +50,26 @@ export const Video = () => {
       ></Composition>
       <Composition
         id="Score"
-        height={1920}
-        width={1080}
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
         component={Score}
-        durationInFrames={300}
+        durationInFrames={200}
         fps={30}
       ></Composition>
       <Composition
         id="Jana"
-        height={1920}
-        width={1080}
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
         component={Jana}
-        durationInFrames={300}
+        durationInFrames={200}
         fps={30}
       ></Composition>
       <Composition
         id="Minute"
-        height={1920}
-        width={1080}
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
         component={Minute}
-        durationInFrames={300}
+        durationInFrames={200}
         fps={30}
         defaultProps={{
           minute: 75,
@@ -70,10 +77,10 @@ export const Video = () => {
       ></Composition>
       <Composition
         id="NewScore"
-        height={1920}
-        width={1080}
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
         component={NewScore}
-        durationInFrames={300}
+        durationInFrames={200}
         fps={30}
         defaultProps={{
           homeScore: 1,

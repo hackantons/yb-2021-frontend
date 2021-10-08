@@ -3,13 +3,23 @@ import React, { useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { Form, FormElement, InputSelect, InputText } from '@theme';
 import cn from '@utils/classnames';
-import { PlayerI, TEAM_API, Teams } from '@utils/infos';
+import {
+  PlayerI,
+  TEAM_API,
+  Teams,
+  Sponsors,
+  VIDEO_HEIGHT,
+  VIDEO_WIDTH,
+  FPS,
+  GOAL_VIDEO_DURATION,
+} from '@utils/infos';
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
 import Download from './Download';
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
   const filteredTeams = Object.values(Teams).filter((e) => e !== 'yb');
+  const filteredSponsors = Object.values(Sponsors);
   console.log('filteredTeams', filteredTeams, filteredTeams[0]);
   const form = useForm<{
     playerIndex: string;
@@ -17,6 +27,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     homeScore: number;
     awayScore: number;
     awayTeam: Teams;
+    sponsor: Sponsors;
   }>({
     defaultValues: {
       playerIndex: '0',
@@ -24,6 +35,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
       homeScore: 1,
       awayScore: 0,
       awayTeam: filteredTeams[0],
+      sponsor: filteredSponsors[0],
     },
   });
 
@@ -42,10 +54,10 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             width: 400,
           }}
           component={Main}
-          compositionHeight={1920}
-          compositionWidth={1080}
-          fps={30}
-          durationInFrames={300}
+          compositionHeight={VIDEO_HEIGHT}
+          compositionWidth={VIDEO_WIDTH}
+          fps={FPS}
+          durationInFrames={GOAL_VIDEO_DURATION}
           controls
           loop
           autoPlay
@@ -57,6 +69,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             homeScore: formValues.homeScore <= 1 ? 1 : formValues.homeScore,
             awayScore: formValues.awayScore,
             awayTeam: formValues.awayTeam,
+            sponsor: Sponsors.BIER,
           }}
         />
       </div>
