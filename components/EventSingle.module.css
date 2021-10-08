@@ -1,0 +1,13 @@
+.root {
+}
+
+.type {
+  font-size: var(--fs-small);
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  margin-top: 0.3em;
+  font-size: var(--fs-xsmall);
+}
