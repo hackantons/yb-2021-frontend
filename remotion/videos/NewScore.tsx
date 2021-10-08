@@ -30,9 +30,11 @@ export const NewScore: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
+  const opacity = interpolate(frame, [0, 10], [0, 1]);
+
   const animation = spring({
     fps,
-    frame,
+    frame: frame - 8,
     config: {
       damping: 200,
     },
@@ -48,6 +50,7 @@ export const NewScore: React.FC<{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          opacity,
         }}
       >
         <div

@@ -9,7 +9,7 @@ export const SlidingText: React.FC<{
   delay: number;
 }> = ({ left, delay, top, color, children, fontSize }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
   const trans = spring({
     fps,
     frame: frame - delay,
@@ -18,6 +18,11 @@ export const SlidingText: React.FC<{
       damping: 200,
     },
   });
+  const fadeOut = interpolate(
+    frame,
+    [durationInFrames - 10, durationInFrames - 1],
+    [1, 0]
+  );
   return (
     <div
       style={{
@@ -27,6 +32,7 @@ export const SlidingText: React.FC<{
         left,
         top,
         overflow: 'hidden',
+        opacity: fadeOut,
       }}
     >
       <h1

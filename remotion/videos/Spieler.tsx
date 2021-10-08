@@ -26,7 +26,7 @@ export const Spieler: React.FC<{
   lastName: string;
   seasonGoal: number;
 }> = ({ firstName, lastName, seasonGoal }) => {
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   useFont();
 
@@ -42,9 +42,14 @@ export const Spieler: React.FC<{
     interpolate(frame, [0, 50], [1.1, 1.15]) *
     interpolate(spr, [0, 1], [0.9, 1.05]);
 
-  const opacity = interpolate(frame, [0, 10], [0, 1], {
-    extrapolateRight: 'clamp',
-  });
+  const opacity = interpolate(
+    frame,
+    [0, 10, durationInFrames - 10, durationInFrames - 1],
+    [0, 1, 1, 0],
+    {
+      extrapolateRight: 'clamp',
+    }
+  );
 
   return (
     <AbsoluteFill>
