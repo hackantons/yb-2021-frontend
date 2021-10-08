@@ -14,6 +14,11 @@ export const Video = () => {
         component={Main}
         durationInFrames={300}
         fps={30}
+        defaultProps={{
+          firstName: 'Christian',
+          lastName: 'Fassnacht',
+          seasonGoal: 10,
+        }}
       ></Composition>
       <Composition
         id="Player"
@@ -22,6 +27,11 @@ export const Video = () => {
         component={Goal}
         durationInFrames={300}
         fps={30}
+        defaultProps={{
+          firstName: 'Christian',
+          lastName: 'Fassnacht',
+          seasonGoal: 10,
+        }}
       ></Composition>
       <Composition
         id="Score"
