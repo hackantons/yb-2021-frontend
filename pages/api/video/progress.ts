@@ -25,6 +25,5 @@ export default async function handler(
     functionName,
     region: 'eu-central-1'
   })
-
   res.status(200).json({ overallProgress: progress.overallProgress, outputFile: progress.outputFile })
 }

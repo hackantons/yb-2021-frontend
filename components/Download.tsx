@@ -19,7 +19,8 @@ const Download = () => {
     const inputProps = {
       firstName: 'Jonas',
       lastName: 'Niestroj',
-      seasonGoal: 5
+      seasonGoal: 5,
+      minute: 10
     }
     const body = {
       composition: 'Goal',
