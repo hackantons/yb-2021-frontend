@@ -71,8 +71,9 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
       <div className={styles.preview}>
         <Player
           style={{
-            display: 'inline-block',
+            display: 'block',
             width: 400,
+            marginBottom: 0,
           }}
           component={Main}
           compositionHeight={VIDEO_HEIGHT}
@@ -85,12 +86,12 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
           inputProps={{
             firstName: selectedPlayer.firstName,
             lastName: selectedPlayer.lastName,
-            seasonGoal: selectedPlayer.stat.goals,
+            seasonGoal: selectedPlayer.stat.goals + 1,
             minute: formValues.minute,
             homeScore: formValues.homeScore <= 1 ? 1 : formValues.homeScore,
             awayScore: formValues.awayScore,
             awayTeam: formValues.awayTeam,
-            sponsor: Sponsors.BIER,
+            sponsor: formValues.sponsor,
           }}
         />
       </div>
@@ -162,7 +163,6 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             Input={InputText}
             form={form}
             type="number"
-            disabled
           />
           <FormElement
             name="awayTeam"
@@ -170,6 +170,19 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             Input={InputSelect}
             form={form}
             options={filteredTeams.reduce(
+              (acc, team) => ({
+                ...acc,
+                [team]: team,
+              }),
+              {}
+            )}
+          />
+          <FormElement
+            name="sponsor"
+            label="Sponsors"
+            Input={InputSelect}
+            form={form}
+            options={filteredSponsors.reduce(
               (acc, team) => ({
                 ...acc,
                 [team]: team,
