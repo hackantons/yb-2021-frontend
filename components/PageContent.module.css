@@ -1,11 +1,17 @@
 .root {
+  --navigation-width: 80px;
+
   min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 0 0 0 var(--navigation-width);
   height: 100vh;
+}
+
+.navigation {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--navigation-width);
 }
 
 .header {
@@ -17,4 +23,5 @@
 
 .footer {
   margin: auto 0 0 0;
+  background-color: var(--c-bkg-dark);
 }
