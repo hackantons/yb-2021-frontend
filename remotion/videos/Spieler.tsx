@@ -5,33 +5,71 @@ import {
   delayRender,
   Img,
   interpolate,
+  spring,
   useCurrentFrame,
+  useVideoConfig,
 } from 'remotion';
+import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { SlidingText } from './SlidingText';
-// @ts-expect-error
-import ybfont from './big_noodle_titling.ttf';
 import fassnacht from './fassnacht-removebg.png';
 
-const font = new FontFace('Antique Olive Std', `url(${ybfont})`).load();
+const font = new FontFace(
+  'Antique Olive Std',
+  `url(https://jonnyburger.s3.eu-central-1.amazonaws.com/big_noodle_titling.ttf)`
+).load();
 
 font.then(async () => document.fonts.add(await font));
 
 const player: React.CSSProperties = {
   position: 'absolute',
   bottom: 0,
-  right: 0,
+  right: '-5%',
 };
 
 export const Spieler: React.FC = () => {
+  const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const [waitForFont] = useState(() => delayRender());
+
   useEffect(() => {
     continueRender(waitForFont);
   }, [waitForFont]);
-  const colorDodgeFlicker =
-    frame > 10 ? 1 : Math.floor(frame / 3) % 2 === 0 ? 1 : 0;
+
+  const spr = spring({
+    fps,
+    frame,
+    config: {
+      damping: 200,
+    },
+  });
+
+  const playerScale =
+    interpolate(frame, [0, 50], [1.1, 1.15]) *
+    interpolate(spr, [0, 1], [0.8, 1]);
+
   return (
     <AbsoluteFill>
+      <Img
+        style={{
+          ...player,
+          mixBlendMode: 'color-dodge',
+          transform: `scale(${playerScale})`,
+          transformOrigin: '75% 75%',
+        }}
+        // @ts-ignore
+        src={fassnacht}
+      ></Img>
+      <Img
+        style={{
+          ...player,
+          opacity: 0.4,
+          transform: `scale(${playerScale})`,
+          transformOrigin: '75% 75%',
+        }}
+        // @ts-ignore
+
+        src={fassnacht}
+      ></Img>
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         CHRISTIAN
       </SlidingText>
@@ -41,17 +79,6 @@ export const Spieler: React.FC = () => {
       <SlidingText delay={6} fontSize={80} color="#ffcf00" left={100} top={530}>
         10. SAISONTOR
       </SlidingText>
-      <Img
-        style={{ ...player, mixBlendMode: 'color-dodge' }}
-        // @ts-ignore
-        src={fassnacht}
-      ></Img>
-      <Img
-        style={{ ...player, opacity: colorDodgeFlicker }}
-        // @ts-ignore
-
-        src={fassnacht}
-      ></Img>
     </AbsoluteFill>
   );
 };
