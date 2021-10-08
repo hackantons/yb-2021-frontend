@@ -11,7 +11,7 @@ import { Background } from './Background';
 const player: React.CSSProperties = {
   position: 'absolute',
   right: '25%',
-  bottom: '-10%',
+  top: '20%',
 };
 
 export const Jana: React.FC = () => {
@@ -39,29 +39,27 @@ export const Jana: React.FC = () => {
 
   return (
     <>
-      <Background>
-        <Img
-          style={{
-            ...player,
-            mixBlendMode: 'color-dodge',
-            transform: `scale(${playerScale})`,
-            transformOrigin: '75% 75%',
-          }}
-          // @ts-ignore
-          src={src}
-        ></Img>
-        <Img
-          style={{
-            ...player,
-            opacity: 0.1,
-            transform: `scale(${playerScale})`,
-            transformOrigin: '75% 75%',
-          }}
-          // @ts-ignore
+      <Img
+        style={{
+          ...player,
+          mixBlendMode: 'color-dodge',
+          transform: `scale(${playerScale})`,
+          transformOrigin: '75% 75%',
+        }}
+        // @ts-ignore
+        src={src}
+      ></Img>
+      <Img
+        style={{
+          ...player,
+          opacity: 0.1,
+          transform: `scale(${playerScale})`,
+          transformOrigin: '75% 75%',
+        }}
+        // @ts-ignore
 
-          src={src}
-        ></Img>
-      </Background>
+        src={src}
+      ></Img>
     </>
   );
 };

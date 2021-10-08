@@ -6,6 +6,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from 'remotion';
+import { Background } from './Background';
 
 const player: React.CSSProperties = {
   position: 'absolute',
@@ -16,7 +17,7 @@ const player: React.CSSProperties = {
 export const DefaultSpieler: React.FC<{
   playerNumber: number;
   portrait: string;
-}> = ( { portrait, playerNumber } ) => {
+}> = ({ portrait, playerNumber }) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -32,13 +33,13 @@ export const DefaultSpieler: React.FC<{
     interpolate(frame, [0, 50], [1.1, 1.15]) *
     interpolate(spr, [0, 1], [0.9, 1.05]);
 
-    if (playerNumber === 30) {
-      playerScale *= 2
-    }
+  if (playerNumber === 30) {
+    playerScale *= 2;
+  }
 
-    if (playerNumber === 20) {
-      playerScale *= 1.1
-    }
+  if (playerNumber === 20) {
+    playerScale *= 1.1;
+  }
 
   const opacity = interpolate(
     frame,
@@ -57,8 +58,7 @@ export const DefaultSpieler: React.FC<{
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
           filter: `drop-shadow(0 0 20px black)`,
-          opacity
-
+          opacity,
         }}
         src={portrait}
       ></Img>
@@ -67,7 +67,7 @@ export const DefaultSpieler: React.FC<{
           ...player,
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
-          opacity: opacity * 0.4
+          opacity: opacity * 0.4,
         }}
         src={portrait}
       ></Img>

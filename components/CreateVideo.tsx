@@ -1,6 +1,7 @@
 import { Player } from '@remotion/player';
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
+import { MainComp } from 'remotion/videos/MainComp';
 import { useRouter } from 'next/router';
 import {
   Form,
@@ -22,10 +23,10 @@ import {
   FPS,
   GOAL_VIDEO_DURATION,
 } from '@utils/infos';
+import { buildMessage } from '@utils/tweets';
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
 import { mapSponsor, mapTeam } from './map-team';
-import { buildMessage } from '@utils/tweets'
 
 interface RenderResponse {
   renderId: string;
@@ -38,6 +39,7 @@ interface ProgressResponse {
 }
 
 interface InputProps {
+  comp: 'Main' | 'MainSquare';
   playerIndex: string;
   minute: number;
   homeScore: number;
@@ -52,13 +54,14 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
   const [videoFile, setVideoFile] = React.useState<string>(null);
-  const [tweetMessage, setTweetMessage] = React.useState<string>('')
+  const [tweetMessage, setTweetMessage] = React.useState<string>('');
 
   const filteredTeams = Object.values(Teams).filter((e) => e !== 'yb');
   const filteredSponsors = Object.values(Sponsors);
 
   const form = useForm<InputProps>({
     defaultValues: {
+      comp: 'Main',
       playerIndex: Object.keys(TEAM_API)[0],
       minute: 20,
       homeScore: 1,
@@ -97,9 +100,13 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             width: 400,
             marginBottom: 0,
           }}
-          component={Main}
-          compositionHeight={VIDEO_HEIGHT}
-          compositionWidth={VIDEO_WIDTH}
+          component={formValues.comp === 'MainSquare' ? MainComp : Main}
+          compositionHeight={
+            formValues.comp === 'MainSquare' ? 1080 : VIDEO_HEIGHT
+          }
+          compositionWidth={
+            formValues.comp === 'MainSquare' ? 1080 : VIDEO_WIDTH
+          }
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
@@ -134,7 +141,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
 
               if (progressJson.overallProgress === 1) {
                 window.clearInterval(intervalId);
-                setTweetMessage(buildMessage(inputProps))
+                setTweetMessage(buildMessage(inputProps));
                 setVideoFile(progressJson.outputFile);
                 setVideoInProgress(false);
                 setVideoProgress(0);
@@ -142,6 +149,16 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             }, 1000);
           })}
         >
+          <FormElement
+            name="comp"
+            label="Format"
+            Input={InputSelect}
+            form={form}
+            options={{
+              Main: 'Portrait',
+              MainSquare: 'Square',
+            }}
+          />
           <FormElement
             name="playerIndex"
             label="Spieler"

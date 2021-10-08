@@ -14,7 +14,7 @@ export const SponsorLogo: React.FC<{
     >
       <Img
         style={{
-          width: 400,
+          width: '30%',
           marginBottom: 30,
           opacity: sponsor === Sponsors.ISOLUTIONS ? 1 : 0.9,
         }}
