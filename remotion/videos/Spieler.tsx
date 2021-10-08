@@ -10,14 +10,10 @@ import {
   useVideoConfig,
 } from 'remotion';
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
+import { isClientSide } from '@utils/helpers';
 import { SlidingText } from './SlidingText';
-// @ts-expect-error
-import ybfont from './big_noodle_titling.ttf';
 import fassnacht from './fassnacht-removebg.png';
-
-const font = new FontFace('Antique Olive Std', `url(${ybfont})`).load();
-
-font.then(async () => document.fonts.add(await font));
+import { useFont } from './use-font';
 
 const player: React.CSSProperties = {
   position: 'absolute',
@@ -28,11 +24,7 @@ const player: React.CSSProperties = {
 export const Spieler: React.FC = () => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
-  const [waitForFont] = useState(() => delayRender());
-
-  useEffect(() => {
-    continueRender(waitForFont);
-  }, [waitForFont]);
+  useFont();
 
   const spr = spring({
     fps,

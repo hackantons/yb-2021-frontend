@@ -17,7 +17,7 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 5080,
+          "hostPort": 3000,
           "protocol": "tcp",
           "containerPort": 3000
         }
@@ -122,7 +122,7 @@
   "pidMode": null,
   "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
-  "cpu": "256",
+  "cpu": "1024",
   "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
