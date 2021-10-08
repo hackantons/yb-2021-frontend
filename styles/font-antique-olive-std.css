@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Antique Olive Std Compact';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Antique Olive Std Compact'),
+    url('./fonts/Antique-Olive-Std-Compact_3864.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Antique Olive Std Roman'),
+    url('./fonts/Antique-Olive-Std-Roman_3869.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Antique Olive Std Italic'),
+    url('./fonts/Antique-Olive-Std-Italic_3865.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Antique Olive Std Light'),
+    url('./fonts/Antique-Olive-Std-Light_3866.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std Condensed';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Antique Olive Std Bold Condensed'),
+    url('./fonts/Antique-Olive-Std-Bold-Condensed_3862.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Antique Olive Std Bold'),
+    url('./fonts/Antique-Olive-Std-Bold_3863.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Antique Olive Std Black'),
+    url('./fonts/Antique-Olive-Std-Black_3861.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std Nord';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Antique Olive Std Nord'),
+    url('./fonts/Antique-Olive-Std-Nord_3868.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Antique Olive Std Nord';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Antique Olive Std Nord Italic'),
+    url('./fonts/Antique-Olive-Std-Nord-Italic_3867.woff') format('woff');
+}
