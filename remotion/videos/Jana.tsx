@@ -10,7 +10,7 @@ import { Background } from './Background';
 
 const player: React.CSSProperties = {
   position: 'absolute',
-  right: '10%',
+  right: '25%',
   bottom: '-10%',
 };
 

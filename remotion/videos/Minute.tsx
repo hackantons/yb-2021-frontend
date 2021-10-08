@@ -45,7 +45,7 @@ export const Minute: React.FC<{
             marginLeft: -20,
           }}
         >
-          {minute}.
+          {Math.max(minute, 1)}.
         </div>
         <div
           style={{

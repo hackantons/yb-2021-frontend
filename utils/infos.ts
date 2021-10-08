@@ -20,20 +20,6 @@ export interface PlayerI {
 
 export const TEAM_API: Array<PlayerI> = [
   {
-    firstName: 'David',
-    lastName: 'von Ballmoos',
-    position: POSITIONEN.TOR,
-    number: 26,
-    stat: {
-      games: 6,
-      goals: 10,
-    },
-    assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
-    },
-  },
-  {
     firstName: 'Sandro',
     lastName: 'Lauper',
     number: 30,
@@ -89,6 +75,34 @@ export const TEAM_API: Array<PlayerI> = [
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
+  {
+    firstName: 'David',
+    lastName: 'von Ballmoos',
+    position: POSITIONEN.TOR,
+    number: 26,
+    stat: {
+      games: 6,
+      goals: 10,
+    },
+    assets: {
+      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
+      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+    },
+  },
+  {
+    firstName: 'Jana',
+    lastName: 'Neuhaus',
+    position: POSITIONEN.TOR,
+    number: 99,
+    stat: {
+      games: 6,
+      goals: 4,
+    },
+    assets: {
+      portrait: 'https://www.bscyb.ch/kader-frauen?s=264',
+      action: 'https://www.bscyb.ch/kader-frauen?s=264',
+    },
+  },
 ];
 
 export enum Teams {
@@ -108,4 +122,4 @@ export enum Sponsors {
 export const VIDEO_HEIGHT = 1920;
 export const VIDEO_WIDTH = 1280;
 export const FPS = 30;
-export const GOAL_VIDEO_DURATION = 220;
+export const GOAL_VIDEO_DURATION = 265;
