@@ -1,5 +1,5 @@
 import { Composition } from 'remotion';
-import { Teams } from '../utils/infos';
+import { Sponsors, Teams } from '../utils/infos';
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
@@ -25,6 +25,7 @@ export const Video = () => {
           homeScore: 1,
           awayScore: 0,
           awayTeam: Teams.ZURICH,
+          sponsor: Sponsors.SWISSCOM,
         }}
       ></Composition>
       <Composition
@@ -78,6 +79,7 @@ export const Video = () => {
           homeScore: 1,
           awayScore: 0,
           awayTeam: Teams.ZURICH,
+          sponsor: Sponsors.ISOLUTIONS,
         }}
       ></Composition>
     </>

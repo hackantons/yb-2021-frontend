@@ -7,8 +7,9 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from 'remotion';
-import { Teams } from '../../utils/infos';
+import { Sponsors, Teams } from '../../utils/infos';
 import { Background } from './Background';
+import { SponsorLogo } from './SponsorLogo';
 import { TeamLogo } from './TeamLogo';
 import { useFont } from './use-font';
 
@@ -25,7 +26,8 @@ export const NewScore: React.FC<{
   awayTeam: Teams;
   homeScore: number;
   awayScore: number;
-}> = ({ awayTeam, homeScore, awayScore }) => {
+  sponsor: Sponsors;
+}> = ({ awayTeam, homeScore, awayScore, sponsor }) => {
   useFont();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -94,6 +96,7 @@ export const NewScore: React.FC<{
           <div style={{ width: 30 }} />
           <TeamLogo team={awayTeam} />
         </div>
+        <SponsorLogo sponsor={sponsor}></SponsorLogo>
       </AbsoluteFill>
     </Background>
   );

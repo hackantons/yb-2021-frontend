@@ -98,3 +98,9 @@ export enum Teams {
   LUZERN = 'luzern',
   LUGANO = 'lugano',
 }
+
+export enum Sponsors {
+  SWISSCOM = 'swisscom',
+  BIER = 'bier',
+  ISOLUTIONS = 'isolutions',
+}

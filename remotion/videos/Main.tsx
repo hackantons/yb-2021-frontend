@@ -1,6 +1,6 @@
 import React from 'react';
 import { Series } from 'remotion';
-import { Teams } from '../../utils/infos';
+import { Sponsors, Teams } from '../../utils/infos';
 import { Goal } from './Goal';
 import { Minute } from './Minute';
 import { NewScore } from './NewScore';
@@ -14,6 +14,7 @@ export const Main: React.FC<{
   awayScore: number;
   homeScore: number;
   awayTeam: Teams;
+  sponsor: Sponsors;
 }> = ({
   firstName,
   lastName,
@@ -22,6 +23,7 @@ export const Main: React.FC<{
   awayScore,
   awayTeam,
   homeScore,
+  sponsor,
 }) => {
   return (
     <Series>
@@ -43,6 +45,7 @@ export const Main: React.FC<{
           awayScore={awayScore}
           awayTeam={awayTeam}
           homeScore={homeScore}
+          sponsor={sponsor}
         ></NewScore>
       </Series.Sequence>
     </Series>
