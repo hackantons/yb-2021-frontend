@@ -18,6 +18,11 @@ const LINKS: Record<
     icon: 'videoPlusOutline',
     title: 'Create',
   },
+  currentGame: {
+    path: '/create/event',
+    icon: 'calendarRangeOutline',
+    title: 'Event',
+  },
 };
 
 const Navigation = ({ className = '' }: { className?: string }) => {
@@ -31,7 +36,7 @@ const Navigation = ({ className = '' }: { className?: string }) => {
             [styles.linkActive]: '/' === route,
           })}
         >
-          <img src="yb-logo.svg" />
+          <img alt="BSCYB Logo" src="/yb-logo.svg" />
         </a>
       </Link>
       {Object.entries(LINKS).map(([key, link]) => (

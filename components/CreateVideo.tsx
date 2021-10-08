@@ -1,14 +1,15 @@
 import { Player } from '@remotion/player';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import {
   Form,
   FormControls,
   FormElement,
   InputSelect,
   InputText,
-  PortalBox,
 } from '@theme';
+import EventList from '@comps/EventList';
 import ShareFileModal from '@comps/ShareFileModal';
 import cn from '@utils/classnames';
 import {
@@ -35,6 +36,8 @@ interface ProgressResponse {
 }
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
+  const { route } = useRouter();
+
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
   const [videoFile, setVideoFile] = React.useState<string>(null);
@@ -68,6 +71,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
 
   return (
     <div className={cn(className, styles.root)}>
+      {route === '/create/event' && <EventList className={styles.events} />}
       <div className={styles.preview}>
         <Player
           style={{
