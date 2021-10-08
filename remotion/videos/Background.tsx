@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import { AbsoluteFill } from 'remotion';
+import { Publikum } from './Publikum';
 import { Spieler } from './Spieler';
 import texture from './texture.jpg';
 
@@ -16,6 +17,8 @@ export const Background: React.FC<{}> = ({ children }) => {
   return (
     <AbsoluteFill style={container}>
       <AbsoluteFill style={background}></AbsoluteFill>
+      <Publikum></Publikum>
+
       <AbsoluteFill>{children}</AbsoluteFill>
     </AbsoluteFill>
   );

@@ -8,6 +8,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import { Background } from './Background';
+import { Publikum } from './Publikum';
 import { useFont } from './use-font';
 
 export const Score: React.FC = () => {
