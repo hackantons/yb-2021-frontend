@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  vertical-align: top;
+  margin-top: var(--space-gutter);
+}
+
+.containerStacked {
+  display: block;
+}
+
+.labelContainer {
+  width: 300px;
+  margin-right: var(--space-gutter-half);
+  display: block;
+}
+
+.containerStacked .labelContainer {
+  margin-right: 0;
+  width: 100%;
+  margin-bottom: var(--space-gutter-half);
+}
+
+.description {
+  color: #676767;
+  margin-top: 0.2em;
+
+  p {
+    font-size: 0.8em;
+  }
+}
+
+.label {
+  font-weight: bold;
+}
+
+.content {
+  flex: 1 1 auto;
+}
+
+.input:not([type='checkbox']) {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.error {
+  color: #dc3232;
+  font-size: 0.8em !important;
+}
