@@ -17,8 +17,8 @@ export const Stroke: React.FC<{
 }> = ({ seed }) => {
   const frame = useCurrentFrame();
   const { durationInFrames, width: w, height: h } = useVideoConfig();
-  const HEIGHT = h === VIDEO_HEIGHT ? 1280 : h;
-  const WIDTH = w === VIDEO_WIDTH ? 720 : w;
+  const HEIGHT = h === VIDEO_HEIGHT ? 1920 : h;
+  const WIDTH = w === VIDEO_WIDTH ? 1080 : w;
 
   const size = Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT);
 

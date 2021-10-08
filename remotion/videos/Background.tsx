@@ -10,6 +10,7 @@ const container: React.CSSProperties = {
 
 const background: React.CSSProperties = {
   backgroundImage: `url(${texture})`,
+  backgroundSize: 'cover',
   opacity: 0.12,
 };
 

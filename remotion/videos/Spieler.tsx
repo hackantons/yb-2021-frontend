@@ -10,7 +10,9 @@ import {
   useVideoConfig,
 } from 'remotion';
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
-import { isClientSide } from '@utils/helpers';
+import { isClientSide } from '../../utils/helpers';
+import { VIDEO_HEIGHT, VIDEO_WIDTH } from '../../utils/infos';
+import { Background } from './Background';
 import { Carola } from './Carola';
 import { DefaultSpieler } from './DefaultSpieler';
 import { Jana } from './Jana';
@@ -25,19 +27,30 @@ export const Spieler: React.FC<{
   playerNumber: number;
   portraitAction: string;
 }> = ({ firstName, lastName, seasonGoal, playerNumber, portraitAction }) => {
-  const { fps, durationInFrames } = useVideoConfig();
+  const { fps, durationInFrames, width, height } = useVideoConfig();
   const frame = useCurrentFrame();
   useFont();
 
+  const translate = height === VIDEO_HEIGHT ? 0 : (1920 - 1080) / 2;
+
   return (
     <AbsoluteFill>
-      {playerNumber === 98 ? (
-        <Carola></Carola>
-      ) : playerNumber === 99 ? (
-        <Jana></Jana>
-      ) : (
-        <DefaultSpieler playerNumber = { playerNumber } portrait={portraitAction} />
-      )}
+      <AbsoluteFill>
+        <Background>
+          <AbsoluteFill style={{}}>
+            {playerNumber === 98 ? (
+              <Carola></Carola>
+            ) : playerNumber === 99 ? (
+              <Jana></Jana>
+            ) : (
+              <DefaultSpieler
+                playerNumber={playerNumber}
+                portrait={portraitAction}
+              />
+            )}
+          </AbsoluteFill>
+        </Background>
+      </AbsoluteFill>
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
       </SlidingText>

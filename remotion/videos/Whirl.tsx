@@ -10,8 +10,8 @@ import { Stroke } from './Stroke';
 export const Whirl: React.FC = () => {
   const { durationInFrames, height, width } = useVideoConfig();
 
-  const HEIGHT = height === VIDEO_HEIGHT ? 1280 : height;
-  const WIDTH = width === VIDEO_WIDTH ? 720 : width;
+  const HEIGHT = height === VIDEO_HEIGHT ? 1920 : height;
+  const WIDTH = width === VIDEO_WIDTH ? 1080 : width;
   const frame = useCurrentFrame();
   const rotation = interpolate(frame, [0, durationInFrames], [0, Math.PI]);
   const size = Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT);

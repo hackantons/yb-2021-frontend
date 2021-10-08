@@ -39,29 +39,27 @@ export const Jana: React.FC = () => {
 
   return (
     <>
-      <Background>
-        <Img
-          style={{
-            ...player,
-            mixBlendMode: 'color-dodge',
-            transform: `scale(${playerScale})`,
-            transformOrigin: '75% 75%',
-          }}
-          // @ts-ignore
-          src={src}
-        ></Img>
-        <Img
-          style={{
-            ...player,
-            opacity: 0.1,
-            transform: `scale(${playerScale})`,
-            transformOrigin: '75% 75%',
-          }}
-          // @ts-ignore
+      <Img
+        style={{
+          ...player,
+          mixBlendMode: 'color-dodge',
+          transform: `scale(${playerScale})`,
+          transformOrigin: '75% 75%',
+        }}
+        // @ts-ignore
+        src={src}
+      ></Img>
+      <Img
+        style={{
+          ...player,
+          opacity: 0.1,
+          transform: `scale(${playerScale})`,
+          transformOrigin: '75% 75%',
+        }}
+        // @ts-ignore
 
-          src={src}
-        ></Img>
-      </Background>
+        src={src}
+      ></Img>
     </>
   );
 };

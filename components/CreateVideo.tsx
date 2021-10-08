@@ -24,6 +24,7 @@ import {
 } from '@utils/infos';
 import { buildMessage } from '@utils/tweets';
 import { Main } from '../remotion/videos/Main';
+import { MainComp } from '../remotion/videos/MainComp';
 import styles from './CreateVideo.module.css';
 
 interface RenderResponse {
@@ -37,6 +38,7 @@ interface ProgressResponse {
 }
 
 interface InputProps {
+  comp: 'Main' | 'MainSquare';
   playerIndex: string;
   minute: number;
   homeScore: number;
@@ -63,6 +65,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
 
   const form = useForm<InputProps>({
     defaultValues: {
+      comp: 'Main',
       playerIndex: Object.keys(TEAM_API)[0],
       minute: 20,
       homeScore: 1,
@@ -101,9 +104,13 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             width: 400,
             marginBottom: 0,
           }}
-          component={Main}
-          compositionHeight={VIDEO_HEIGHT}
-          compositionWidth={VIDEO_WIDTH}
+          component={formValues.comp === 'MainSquare' ? MainComp : Main}
+          compositionHeight={
+            formValues.comp === 'MainSquare' ? 1080 : VIDEO_HEIGHT
+          }
+          compositionWidth={
+            formValues.comp === 'MainSquare' ? 1080 : VIDEO_WIDTH
+          }
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
@@ -146,6 +153,16 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             }, 1000);
           })}
         >
+          <FormElement
+            name="comp"
+            label="Format"
+            Input={InputSelect}
+            form={form}
+            options={{
+              Main: 'Portrait',
+              MainSquare: 'Square',
+            }}
+          />
           <FormElement
             name="playerIndex"
             label="Spieler"

@@ -42,7 +42,7 @@ export const TEAM_API: Record<number, PlayerI> = {
     position: POSITIONEN.MITTELFELD,
     stat: {
       games: 0,
-      goals: 0,
+      goals: 9,
     },
     assets: {
       portrait:
@@ -57,8 +57,8 @@ export const TEAM_API: Record<number, PlayerI> = {
     number: 16,
     position: POSITIONEN.MITTELFELD,
     stat: {
-      games: 0,
-      goals: 0,
+      games: 2,
+      goals: 8,
     },
     assets: {
       portrait:
