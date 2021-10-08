@@ -104,3 +104,8 @@ export enum Sponsors {
   BIER = 'bier',
   ISOLUTIONS = 'isolutions',
 }
+
+export const VIDEO_HEIGHT = 1920;
+export const VIDEO_WIDTH = 1280;
+export const FPS = 30;
+export const GOAL_VIDEO_DURATION = 220;

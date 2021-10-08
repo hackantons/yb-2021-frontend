@@ -18,8 +18,6 @@ const container: React.CSSProperties = {
   display: 'block',
   textAlign: 'center',
   position: 'relative',
-  height: 200,
-  overflow: 'hidden',
 };
 
 export const NewScore: React.FC<{
@@ -64,7 +62,7 @@ export const NewScore: React.FC<{
             fontSize: 200,
             justifyContent: 'center',
             alignItems: 'center',
-            height: 200,
+            overflow: 'hidden',
           }}
         >
           <TeamLogo team={Teams.YB} />
