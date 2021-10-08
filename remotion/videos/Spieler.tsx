@@ -30,7 +30,7 @@ export const Spieler: React.FC<{
 
   return (
     <AbsoluteFill>
-      {playerNumber === 99 ? <Jana></Jana> : <DefaultSpieler portrait = { portraitAction } />}
+      {playerNumber === 99 ? <Jana></Jana> : <DefaultSpieler playerNumber = { playerNumber } portrait = { portraitAction } />}
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
       </SlidingText>
