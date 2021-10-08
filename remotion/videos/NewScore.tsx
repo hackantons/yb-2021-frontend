@@ -1,5 +1,12 @@
 import React from 'react';
-import { AbsoluteFill, Img } from 'remotion';
+import {
+  AbsoluteFill,
+  Img,
+  interpolate,
+  spring,
+  useCurrentFrame,
+  useVideoConfig,
+} from 'remotion';
 import { Teams } from '../../utils/infos';
 import { Background } from './Background';
 import { TeamLogo } from './TeamLogo';
@@ -10,6 +17,8 @@ const container: React.CSSProperties = {
   display: 'block',
   textAlign: 'center',
   position: 'relative',
+  height: 200,
+  overflow: 'hidden',
 };
 
 export const NewScore: React.FC<{
@@ -18,6 +27,20 @@ export const NewScore: React.FC<{
   awayScore: number;
 }> = ({ awayTeam, homeScore, awayScore }) => {
   useFont();
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const animation = spring({
+    fps,
+    frame,
+    config: {
+      damping: 200,
+    },
+  });
+
+  const oldTranslateY = interpolate(animation, [0, 1], [0, -200]);
+  const newTranslateY = interpolate(animation, [0, 1], [200, 0]);
+
   return (
     <Background>
       <AbsoluteFill
@@ -36,15 +59,30 @@ export const NewScore: React.FC<{
             fontSize: 200,
             justifyContent: 'center',
             alignItems: 'center',
+            height: 200,
           }}
         >
           <TeamLogo team={Teams.YB} />
           <div style={{ width: 30 }} />
           <div style={container}>
-            <div style={{ width: 120, top: 0, position: 'absolute' }}>
-              {homeScore}
+            <div
+              style={{
+                width: 120,
+                top: 0,
+                position: 'absolute',
+                transform: `translateY(${oldTranslateY}px)`,
+              }}
+            >
+              {homeScore - 1}
             </div>
-            <div style={{ width: 120, top: 0, position: 'absolute' }}>
+            <div
+              style={{
+                width: 120,
+                top: 0,
+                position: 'absolute',
+                transform: `translateY(${newTranslateY}px)`,
+              }}
+            >
               {homeScore}
             </div>
           </div>

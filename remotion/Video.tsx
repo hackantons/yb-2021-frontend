@@ -22,6 +22,9 @@ export const Video = () => {
           lastName: 'Fassnacht',
           seasonGoal: 10,
           minute: 10,
+          homeScore: 1,
+          awayScore: 0,
+          awayTeam: Teams.ZURICH,
         }}
       ></Composition>
       <Composition
