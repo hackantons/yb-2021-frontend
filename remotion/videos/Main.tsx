@@ -1,6 +1,7 @@
 import React from 'react';
 import { Series } from 'remotion';
 import { Sponsors, Teams } from '../../utils/infos';
+import { SevenTwentyPScaler } from './1080pScaler';
 import { Goal } from './Goal';
 import { Minute } from './Minute';
 import { NewScore } from './NewScore';
@@ -27,33 +28,35 @@ export const Main: React.FC<{
   homeScore,
   sponsor,
   portrait,
-  playerNumber
+  playerNumber,
 }) => {
   return (
-    <Series>
-      <Series.Sequence durationInFrames={40}>
-        <Minute minute={minute}></Minute>
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={70}>
-        <Score></Score>
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={90}>
-        <Goal
-          firstName={firstName}
-          lastName={lastName}
-          seasonGoal={seasonGoal}
-          portrait={portrait}
-          playerNumber={playerNumber}
-        ></Goal>
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={65}>
-        <NewScore
-          awayScore={awayScore}
-          awayTeam={awayTeam}
-          homeScore={homeScore}
-          sponsor={sponsor}
-        ></NewScore>
-      </Series.Sequence>
-    </Series>
+    <SevenTwentyPScaler>
+      <Series>
+        <Series.Sequence durationInFrames={40}>
+          <Minute minute={minute}></Minute>
+        </Series.Sequence>
+        <Series.Sequence durationInFrames={70}>
+          <Score></Score>
+        </Series.Sequence>
+        <Series.Sequence durationInFrames={90}>
+          <Goal
+            firstName={firstName}
+            lastName={lastName}
+            seasonGoal={seasonGoal}
+            portrait={portrait}
+            playerNumber={playerNumber}
+          ></Goal>
+        </Series.Sequence>
+        <Series.Sequence durationInFrames={65}>
+          <NewScore
+            awayScore={awayScore}
+            awayTeam={awayTeam}
+            homeScore={homeScore}
+            sponsor={sponsor}
+          ></NewScore>
+        </Series.Sequence>
+      </Series>
+    </SevenTwentyPScaler>
   );
 };

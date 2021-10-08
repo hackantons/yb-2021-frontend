@@ -29,7 +29,8 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 5,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
@@ -43,7 +44,8 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 0,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/22_Maier.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/22_Maier.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
@@ -57,7 +59,8 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 0,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_Aebischer.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_Aebischer.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
@@ -71,7 +74,8 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 0,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
@@ -85,7 +89,8 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 10,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
@@ -119,7 +124,7 @@ export enum Sponsors {
   ISOLUTIONS = 'isolutions',
 }
 
-export const VIDEO_HEIGHT = 1920;
-export const VIDEO_WIDTH = 1280;
+export const VIDEO_HEIGHT = 1280;
+export const VIDEO_WIDTH = 720;
 export const FPS = 30;
 export const GOAL_VIDEO_DURATION = 265;
