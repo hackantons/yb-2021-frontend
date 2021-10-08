@@ -9,11 +9,21 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     <div className={cn(className, styles.root)}>
       <div className={styles.preview}>
         <Player
+          style={{
+            display: 'inline-block',
+            width: 400,
+          }}
           component={Goal}
           compositionHeight={1920}
           compositionWidth={1080}
           fps={30}
           durationInFrames={300}
+          controls
+          inputProps={{
+            firstName: 'Nico',
+            lastName: 'Martin',
+            seasonGoal: 5,
+          }}
         />
       </div>
       <div className={styles.form}>FORM</div>

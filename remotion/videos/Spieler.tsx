@@ -12,7 +12,6 @@ import {
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { isClientSide } from '@utils/helpers';
 import { SlidingText } from './SlidingText';
-import fassnacht from './fassnacht-removebg.png';
 import { useFont } from './use-font';
 
 const player: React.CSSProperties = {
@@ -21,7 +20,11 @@ const player: React.CSSProperties = {
   right: '-5%',
 };
 
-export const Spieler: React.FC = () => {
+export const Spieler: React.FC<{
+  firstName: string;
+  lastName: string;
+  seasonGoal: number;
+}> = ({ firstName, lastName, seasonGoal }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   useFont();
@@ -48,7 +51,7 @@ export const Spieler: React.FC = () => {
           transformOrigin: '75% 75%',
         }}
         // @ts-ignore
-        src={fassnacht}
+        src="fassnacht-removebg.png"
       ></Img>
       <Img
         style={{
@@ -59,16 +62,16 @@ export const Spieler: React.FC = () => {
         }}
         // @ts-ignore
 
-        src={fassnacht}
+        src="fassnacht-removebg.png"
       ></Img>
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
-        CHRISTIAN
+        {firstName}
       </SlidingText>
       <SlidingText delay={3} fontSize={200} color="white" left={100} top={320}>
-        FASSNACHT
+        {lastName}
       </SlidingText>
       <SlidingText delay={6} fontSize={80} color="#ffcf00" left={100} top={530}>
-        10. SAISONTOR
+        {seasonGoal}. SAISONTOR
       </SlidingText>
     </AbsoluteFill>
   );
