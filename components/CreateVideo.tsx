@@ -1,18 +1,23 @@
 import { Player } from '@remotion/player';
 import React, { useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { Form, FormElement, InputSelect } from '@theme';
+import { Form, FormElement, InputSelect, InputText } from '@theme';
 import cn from '@utils/classnames';
 import { PlayerI, TEAM_API } from '@utils/infos';
-import { Goal } from '../remotion/videos/Goal';
+import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
   const form = useForm<{
     playerIndex: string;
+    minute: number;
+    homeScore: number;
+    awayScore: number;
+    awayTeam: any;
   }>({
     defaultValues: {
       playerIndex: '0',
+      minute: 0,
     },
   });
 
@@ -30,20 +35,24 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             display: 'inline-block',
             width: 400,
           }}
-          component={Goal}
+          component={Main}
           compositionHeight={1920}
           compositionWidth={1080}
           fps={30}
           durationInFrames={300}
           controls
+          loop
+          autoPlay
           inputProps={{
             firstName: selectedPlayer.firstName,
             lastName: selectedPlayer.lastName,
             seasonGoal: selectedPlayer.stat.goals,
+            minute: formValues.minute,
           }}
         />
       </div>
       <div className={styles.form}>
+        <h2 className={styles.formTitle}>Video Settings</h2>
         <Form
           onSubmit={form.handleSubmit((data) => {
             console.log(data);
@@ -51,6 +60,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
         >
           <FormElement
             name="playerIndex"
+            label="Spieler"
             Input={InputSelect}
             form={form}
             options={TEAM_API.reduce(
@@ -60,6 +70,12 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
               }),
               {}
             )}
+          />
+          <FormElement
+            name="minute"
+            label="Minute"
+            Input={InputText}
+            form={form}
           />
         </Form>
       </div>

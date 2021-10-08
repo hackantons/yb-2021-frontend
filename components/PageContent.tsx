@@ -5,16 +5,16 @@ import styles from './PageContent.module.css';
 
 const PageContent = ({
   className = '',
-  children,
+  Main,
 }: {
   className?: string;
-  children?: JSX.Element | Array<JSX.Element>;
+  Main: Function;
 }) => {
   return (
     <div className={cn(className, styles.root)}>
       <Navigation className={styles.navigation} />
       <div className={styles.content}>
-        <main className={styles.main}>{children}</main>
+        <Main className={styles.main} />
         <footer className={styles.footer}>© 2021 hackantons</footer>
       </div>
     </div>

@@ -11,3 +11,4 @@ export type { IconType } from './icons';
 export { default as Form } from './form/Form';
 export { default as FormElement } from './form/FormElement';
 export { default as InputSelect } from './form/InputSelect';
+export { default as InputText } from './form/InputText';

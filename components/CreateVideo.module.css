@@ -1,10 +1,22 @@
 .root {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  padding: 0 var(--space-gutter);
+  //background-color: var(--c-black);
+  height: 100%;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .preview {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .form {
+}
+
+.formTitle {
+  margin-bottom: 3rem;
 }
