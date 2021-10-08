@@ -18,6 +18,10 @@
 
   table {
     margin: 1em 0;
+    tr th {
+      margin-right: 1em;
+    }
+
     tr td,
     tr th {
       text-align: left;

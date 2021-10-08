@@ -8,6 +8,7 @@
   --c-gray: #585858;
   --c-gray-hover: #6b6b6b;
   --c-p: var(--c-black);
+  --c-p-light: var(--c-black-light);
   --c-p-semi: #ffffffd4;
   --c-p-white: #fff;
   --c-bkg: #fff;

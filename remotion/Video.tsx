@@ -2,8 +2,8 @@ import { Composition } from 'remotion';
 import {
   FPS,
   GOAL_VIDEO_DURATION,
-  Sponsors,
-  Teams,
+  SPONSORS,
+  TEAMS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from '../utils/infos';
@@ -35,11 +35,11 @@ export const Video = () => {
           minute: 10,
           homeScore: 1,
           awayScore: 0,
-          awayTeam: Teams.ZURICH,
-          sponsor: Sponsors.SWISSCOM,
+          awayTeam: TEAMS.zurich,
+          sponsor: SPONSORS.swisscom,
           playerNumber: 99,
         }}
-      ></Composition>
+      />
       <Composition
         id="GoalSquare"
         height={1080}
@@ -56,11 +56,11 @@ export const Video = () => {
           minute: 10,
           homeScore: 1,
           awayScore: 0,
-          awayTeam: Teams.ZURICH,
-          sponsor: Sponsors.SWISSCOM,
+          awayTeam: TEAMS.zurich,
+          sponsor: SPONSORS.swisscom,
           playerNumber: 99,
         }}
-      ></Composition>
+      />
       <Composition
         id="Player"
         height={VIDEO_HEIGHT}
@@ -76,7 +76,7 @@ export const Video = () => {
           seasonGoal: 10,
           playerNumber: 99,
         }}
-      ></Composition>
+      />
       <Composition
         id="Score"
         height={VIDEO_HEIGHT}
@@ -84,7 +84,7 @@ export const Video = () => {
         component={Score}
         durationInFrames={200}
         fps={30}
-      ></Composition>
+      />
       <Composition
         id="Jana"
         height={VIDEO_HEIGHT}
@@ -92,7 +92,7 @@ export const Video = () => {
         component={Jana}
         durationInFrames={200}
         fps={30}
-      ></Composition>
+      />
       <Composition
         id="Minute"
         height={VIDEO_HEIGHT}
@@ -103,7 +103,7 @@ export const Video = () => {
         defaultProps={{
           minute: 75,
         }}
-      ></Composition>
+      />
       <Composition
         id="NewScore"
         height={VIDEO_HEIGHT}
@@ -114,22 +114,10 @@ export const Video = () => {
         defaultProps={{
           homeScore: 1,
           awayScore: 0,
-          awayTeam: Teams.ZURICH,
-          sponsor: Sponsors.ISOLUTIONS,
+          awayTeam: TEAMS.zurich,
+          sponsor: SPONSORS.isolutions,
         }}
-      ></Composition>
-      <Composition
-        id="Substitution"
-        height={VIDEO_HEIGHT}
-        width={VIDEO_WIDTH}
-        component={Substitution}
-        durationInFrames={200}
-        fps={30}
-        defaultProps={{
-          player1: 16,
-          player2: 20,
-        }}
-      ></Composition>
+      />
     </>
   );
 };

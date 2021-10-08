@@ -1,9 +1,8 @@
 import React from 'react';
 import { Img } from 'remotion';
-import { Teams } from '../../utils/infos';
 
 export const TeamLogo: React.FC<{
-  team: Teams;
+  team: string;
 }> = ({ team }) => {
   return (
     <Img

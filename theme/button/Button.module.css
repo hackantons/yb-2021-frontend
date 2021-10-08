@@ -1,6 +1,6 @@
 .root {
-  --c-button-background: var(--c-yellow);
-  --c-button-color: var(--c-p);
+  --c-button-background: var(--c-p);
+  --c-button-color: #fff;
 
   display: inline-flex;
   cursor: pointer;
@@ -15,6 +15,8 @@
   border: 1px solid var(--c-button-background);
   font-weight: bold;
   text-decoration: none;
+  margin: 0;
+  border-radius: 100px;
   //font-size: var(--fs);
   //box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
@@ -24,7 +26,7 @@
 }
 
 .isSquare {
-  padding: 0.4em;
+  padding: 0 1em;
 }
 
 .size-medium {
@@ -33,6 +35,9 @@
 .icon {
   position: relative;
   z-index: 1;
+  transform: scale(1.3);
+  line-height: 1;
+  display: block;
 }
 
 .loader {
@@ -91,6 +96,7 @@
   position: relative;
   z-index: 70;
   display: block;
+  line-height: 1;
 }
 
 .progress {
@@ -98,7 +104,7 @@
   bottom: 0;
   left: 0;
   top: 0;
-  background-color: var(--c-yellow-dark);
+  background-color: var(--c-light);
   width: 50%;
   z-index: 40;
 }
