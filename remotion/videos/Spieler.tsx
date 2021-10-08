@@ -13,6 +13,7 @@ import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { isClientSide } from '@utils/helpers';
 import { SlidingText } from './SlidingText';
 import fassnacht from './fassnacht-removebg.png';
+import { useFont } from './use-font';
 
 const player: React.CSSProperties = {
   position: 'absolute',
@@ -23,17 +24,7 @@ const player: React.CSSProperties = {
 export const Spieler: React.FC = () => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
-  const [waitForFont] = useState(() => delayRender());
-
-  useEffect(() => {
-    const font = new FontFace(
-      'YB',
-      `url(https://jonnyburger.s3.eu-central-1.amazonaws.com/big_noodle_titling.ttf)`
-    ).load();
-    font.then(async () => document.fonts.add(await font));
-
-    continueRender(waitForFont);
-  }, [waitForFont]);
+  useFont();
 
   const spr = spring({
     fps,
