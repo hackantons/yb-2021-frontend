@@ -24,6 +24,7 @@ import {
 } from '@utils/infos';
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
+import { mapSponsor, mapTeam } from './map-team';
 
 interface RenderResponse {
   renderId: string;
@@ -86,6 +87,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
           loop
+          spaceKeyToPlayOrPause
           autoPlay
           inputProps={{
             firstName: selectedPlayer.firstName,
@@ -96,6 +98,8 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             awayScore: formValues.awayScore,
             awayTeam: formValues.awayTeam,
             sponsor: formValues.sponsor,
+            portrait: selectedPlayer.assets.portrait,
+            playerNumber: selectedPlayer.number
           }}
         />
       </div>
@@ -151,13 +155,14 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             label="Minute"
             Input={InputText}
             form={form}
+            min={1}
+            max={90}
             type="number"
           />
           <FormElement
             name="homeScore"
             label="Score YB"
             Input={InputText}
-            min="1"
             form={form}
             type="number"
           />
@@ -176,20 +181,20 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredTeams.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: team,
+                [team]: mapTeam(team),
               }),
               {}
             )}
           />
           <FormElement
             name="sponsor"
-            label="Sponsors"
+            label="Sponsor"
             Input={InputSelect}
             form={form}
             options={filteredSponsors.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: team,
+                [team]: mapSponsor(team),
               }),
               {}
             )}

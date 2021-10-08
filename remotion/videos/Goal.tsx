@@ -6,14 +6,18 @@ import { Spieler } from './Spieler';
 export const Goal: React.FC<{
   firstName: string;
   lastName: string;
+  playerNumber: number;
   seasonGoal: number;
-}> = ({ firstName, lastName, seasonGoal }) => {
+  portrait: string;
+}> = ({ firstName, lastName, seasonGoal, playerNumber, portrait }) => {
   return (
     <Background>
       <Spieler
         firstName={firstName}
         lastName={lastName}
         seasonGoal={seasonGoal}
+        portrait={portrait}
+        playerNumber={playerNumber}
       />
     </Background>
   );

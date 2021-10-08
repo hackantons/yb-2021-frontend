@@ -27,12 +27,14 @@ export const Video = () => {
         defaultProps={{
           firstName: 'Christian',
           lastName: 'Fassnacht',
+          portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
           seasonGoal: 10,
           minute: 10,
           homeScore: 1,
           awayScore: 0,
           awayTeam: Teams.ZURICH,
           sponsor: Sponsors.SWISSCOM,
+          playerNumber: 99,
         }}
       ></Composition>
       <Composition
@@ -45,7 +47,9 @@ export const Video = () => {
         defaultProps={{
           firstName: 'Christian',
           lastName: 'Fassnacht',
+          portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
           seasonGoal: 10,
+          playerNumber: 99,
         }}
       ></Composition>
       <Composition

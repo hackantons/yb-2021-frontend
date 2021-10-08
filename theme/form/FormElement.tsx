@@ -26,6 +26,8 @@ const FormElement = ({
   inputClassName?: string;
   sanitizeValue?: Function;
   stacked?: boolean;
+  min?: number;
+  max?: number;
   [key: string]: any;
 }) => {
   const { field } = useController({
