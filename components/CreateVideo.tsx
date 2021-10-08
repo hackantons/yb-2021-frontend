@@ -56,7 +56,9 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
   const [videoFile, setVideoFile] = React.useState<string>(null);
   const [tweetMessage, setTweetMessage] = React.useState<string>('');
 
-  const filteredTeams = Object.values(Teams).filter((e) => e !== 'yb');
+  const filteredTeams: Array<Teams> = Object.values(Teams).filter(
+    (e) => e !== 'BSCYB'
+  );
   const filteredSponsors = Object.values(Sponsors);
 
   const form = useForm<InputProps>({
@@ -203,7 +205,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredTeams.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: mapTeam(team),
+                [team]: team,
               }),
               {}
             )}
@@ -216,7 +218,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredSponsors.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: mapSponsor(team),
+                [team]: team,
               }),
               {}
             )}

@@ -114,17 +114,17 @@ export const TEAM_API: Record<number, PlayerI> = {
 };
 
 export enum Teams {
-  YB = 'yb',
-  ZURICH = 'zurich',
-  BASEL = 'basel',
-  LUZERN = 'luzern',
-  LUGANO = 'lugano',
+  YB = 'BSCYB',
+  ZURICH = 'FC Zürich',
+  BASEL = 'FC Basel',
+  LUZERN = 'FC Luzern',
+  LUGANO = 'FC Lugano',
 }
 
 export enum Sponsors {
-  SWISSCOM = 'swisscom',
-  BIER = 'bier',
-  ISOLUTIONS = 'isolutions',
+  SWISSCOM = 'Swisscom',
+  BIER = 'Feldschlösschen',
+  ISOLUTIONS = 'iSolutions',
 }
 
 export const VIDEO_HEIGHT = 1280;

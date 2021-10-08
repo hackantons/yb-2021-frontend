@@ -1,7 +1,7 @@
 import Twit from 'twit';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-var twitterVideo = require('twitter-video');
+const twitterVideo = require('twitter-video');
 
 const fs = require('fs');
 
