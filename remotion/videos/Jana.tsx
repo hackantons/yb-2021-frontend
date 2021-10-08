@@ -7,11 +7,6 @@ import {
   useVideoConfig,
 } from 'remotion';
 import { Background } from './Background';
-import jana1 from './res/jana/1.png';
-import jana2 from './res/jana/2.png';
-import jana3 from './res/jana/3.png';
-import jana4 from './res/jana/4.png';
-import jana5 from './res/jana/5.png';
 
 const player: React.CSSProperties = {
   position: 'absolute',
@@ -30,7 +25,12 @@ export const Jana: React.FC = () => {
     },
   });
 
-  const src = [jana1, jana2, jana3, jana4][Math.min(3, Math.floor(frame / 15))];
+  const src = [
+    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/1.png',
+    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/2.png',
+    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/3.png',
+    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/4.png',
+  ][Math.min(3, Math.floor(frame / 15))];
 
   const playerScale =
     interpolate(frame, [0, 50], [1.1, 1.15]) *

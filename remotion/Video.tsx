@@ -2,6 +2,8 @@ import { Composition } from 'remotion';
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
+import { Minute } from './videos/Minute';
+import { NewScore } from './videos/NewScore';
 import { Score } from './videos/Score';
 
 export const Video = () => {
@@ -18,6 +20,7 @@ export const Video = () => {
           firstName: 'Christian',
           lastName: 'Fassnacht',
           seasonGoal: 10,
+          minute: 10,
         }}
       ></Composition>
       <Composition
@@ -46,6 +49,25 @@ export const Video = () => {
         height={1920}
         width={1080}
         component={Jana}
+        durationInFrames={300}
+        fps={30}
+      ></Composition>
+      <Composition
+        id="Minute"
+        height={1920}
+        width={1080}
+        component={Minute}
+        durationInFrames={300}
+        fps={30}
+        defaultProps={{
+          minute: 75,
+        }}
+      ></Composition>
+      <Composition
+        id="NewScore"
+        height={1920}
+        width={1080}
+        component={NewScore}
         durationInFrames={300}
         fps={30}
       ></Composition>

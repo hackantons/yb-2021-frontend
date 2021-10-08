@@ -1,32 +1,30 @@
 import React from 'react';
 import {
   AbsoluteFill,
-  Img,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from 'remotion';
 import { Background } from './Background';
-import { Publikum } from './Publikum';
+import { YELLOW } from './colors';
 import { useFont } from './use-font';
 
-export const Score: React.FC = () => {
+export const Minute: React.FC<{
+  minute: number;
+}> = ({ minute }) => {
   useFont();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const progress =
+  const prog =
     spring({
       fps,
       frame,
       config: {
-        mass: 0.3,
         damping: 200,
       },
     }) +
     frame / 1000;
-  const scale = interpolate(progress, [0, 1], [10, 1]);
-  const offset = interpolate(progress, [0, 1], [-216, 0]);
   return (
     <Background>
       <AbsoluteFill
@@ -34,28 +32,33 @@ export const Score: React.FC = () => {
           position: 'absolute',
           justifyContent: 'center',
           alignItems: 'center',
+          transform: `scale(${interpolate(prog, [0, 1], [1, 1.2])})`,
         }}
       >
-        <Img
-          src="https://jonnyburger.s3.eu-central-1.amazonaws.com/splash.png"
+        <div
           style={{
-            mixBlendMode: 'soft-light',
-            position: 'absolute',
-            transform: `scale(${progress})`,
-          }}
-        />
-        <h1
-          style={{
-            fontSize: 200,
             color: 'white',
+            fontSize: 400,
             fontFamily: 'YB',
-            transform: `scale(${scale})`,
-            position: 'relative',
-            marginLeft: offset,
+            textAlign: 'center',
+            lineHeight: 1,
+            marginLeft: -20,
           }}
         >
-          {'GOOOOOOAL'}
-        </h1>
+          {minute}.
+        </div>
+        <div
+          style={{
+            color: YELLOW,
+            fontSize: 100,
+            fontFamily: 'YB',
+            textAlign: 'center',
+            lineHeight: 1,
+            letterSpacing: '0.3em',
+          }}
+        >
+          Minute
+        </div>
       </AbsoluteFill>
     </Background>
   );

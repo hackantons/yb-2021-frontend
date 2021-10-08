@@ -3,7 +3,7 @@ enum POSITIONEN {
   MITTELFELD = 'Mittelfeld',
 }
 
-export const TEAM_API: Array<{
+export interface PlayerI {
   firstName: string;
   lastName: string;
   position: POSITIONEN;
@@ -16,7 +16,9 @@ export const TEAM_API: Array<{
     portrait: string;
     action: string;
   };
-}> = [
+}
+
+export const TEAM_API: Array<PlayerI> = [
   {
     firstName: 'David',
     lastName: 'von Ballmoos',
@@ -37,7 +39,49 @@ export const TEAM_API: Array<{
     number: 30,
     position: POSITIONEN.MITTELFELD,
     stat: {
-      games: 6,
+      games: 9,
+      goals: 0,
+    },
+    assets: {
+      portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
+      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+    },
+  },
+  {
+    firstName: 'Nico',
+    lastName: 'Maier',
+    number: 22,
+    position: POSITIONEN.MITTELFELD,
+    stat: {
+      games: 0,
+      goals: 0,
+    },
+    assets: {
+      portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
+      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+    },
+  },
+  {
+    firstName: 'Michel',
+    lastName: 'Aebischer',
+    number: 20,
+    position: POSITIONEN.MITTELFELD,
+    stat: {
+      games: 0,
+      goals: 0,
+    },
+    assets: {
+      portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
+      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+    },
+  },
+  {
+    firstName: 'Christian',
+    lastName: 'Fassnacht',
+    number: 16,
+    position: POSITIONEN.MITTELFELD,
+    stat: {
+      games: 0,
       goals: 0,
     },
     assets: {
@@ -46,3 +90,11 @@ export const TEAM_API: Array<{
     },
   },
 ];
+
+export enum Teams {
+  YB = 'yb',
+  ZURICH = 'zurich',
+  BASEL = 'basel',
+  LUZERN = 'luzern',
+  LUGANO = 'lugano',
+}

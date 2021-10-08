@@ -12,6 +12,7 @@ import {
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { isClientSide } from '@utils/helpers';
 import { SlidingText } from './SlidingText';
+import { YELLOW } from './colors';
 import { useFont } from './use-font';
 
 const player: React.CSSProperties = {
@@ -51,7 +52,7 @@ export const Spieler: React.FC<{
           transformOrigin: '75% 75%',
         }}
         // @ts-ignore
-        src="fassnacht-removebg.png"
+        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
       ></Img>
       <Img
         style={{
@@ -62,7 +63,7 @@ export const Spieler: React.FC<{
         }}
         // @ts-ignore
 
-        src="fassnacht-removebg.png"
+        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
       ></Img>
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
@@ -70,7 +71,7 @@ export const Spieler: React.FC<{
       <SlidingText delay={3} fontSize={200} color="white" left={100} top={320}>
         {lastName}
       </SlidingText>
-      <SlidingText delay={6} fontSize={80} color="#ffcf00" left={100} top={530}>
+      <SlidingText delay={6} fontSize={80} color={YELLOW} left={100} top={530}>
         {seasonGoal}. SAISONTOR
       </SlidingText>
     </AbsoluteFill>
