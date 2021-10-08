@@ -79,7 +79,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     awayScore: formValues.awayScore,
     awayTeam: formValues.awayTeam,
     sponsor: formValues.sponsor,
-    portrait: selectedPlayer.assets.portrait,
+    portraitAction: selectedPlayer.assets.action,
     playerNumber: selectedPlayer.number,
   };
 

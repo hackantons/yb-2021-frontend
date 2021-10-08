@@ -31,22 +31,7 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
-    },
-  },
-  22: {
-    firstName: 'Nico',
-    lastName: 'Maier',
-    number: 22,
-    position: POSITIONEN.MITTELFELD,
-    stat: {
-      games: 0,
-      goals: 0,
-    },
-    assets: {
-      portrait:
-        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/22_Maier.png',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_lauper_action.png',
     },
   },
   20: {
@@ -61,7 +46,7 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_Aebischer.png',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_aebischer_action.png',
     },
   },
   16: {
@@ -76,7 +61,7 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_fassnacht_action.png',
     },
   },
   26: {
@@ -91,7 +76,7 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
-      action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
+      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_ballmoos_action.png',
     },
   },
   99: {
