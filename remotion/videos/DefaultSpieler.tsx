@@ -48,9 +48,7 @@ export const DefaultSpieler: React.FC<{
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
           filter: `drop-shadow(0 0 20px black)`,
-          opacity,
-          width: `70%`,
-          height: `70%`
+          opacity
 
         }}
         src={portrait}
@@ -60,9 +58,7 @@ export const DefaultSpieler: React.FC<{
           ...player,
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
-          opacity: opacity * 0.4,
-          width: `70%`,
-          height: `70%`
+          opacity: opacity * 0.4
         }}
         src={portrait}
       ></Img>

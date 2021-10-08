@@ -16,7 +16,7 @@ export const Main: React.FC<{
   homeScore: number;
   awayTeam: Teams;
   sponsor: Sponsors;
-  portrait: string;
+  portraitAction: string;
   playerNumber: number;
 }> = ({
   firstName,
@@ -27,7 +27,7 @@ export const Main: React.FC<{
   awayTeam,
   homeScore,
   sponsor,
-  portrait,
+  portraitAction,
   playerNumber,
 }) => {
   return (
@@ -44,7 +44,7 @@ export const Main: React.FC<{
             firstName={firstName}
             lastName={lastName}
             seasonGoal={seasonGoal}
-            portrait={portrait}
+            portraitAction={portraitAction}
             playerNumber={playerNumber}
           />
         </Series.Sequence>

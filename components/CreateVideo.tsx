@@ -25,6 +25,7 @@ import {
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
 import { mapSponsor, mapTeam } from './map-team';
+import { buildMessage } from '@utils/tweets'
 
 interface RenderResponse {
   renderId: string;
@@ -36,24 +37,27 @@ interface ProgressResponse {
   outputFile: string | null;
 }
 
+interface InputProps {
+  playerIndex: string;
+  minute: number;
+  homeScore: number;
+  awayScore: number;
+  awayTeam: Teams;
+  sponsor: Sponsors;
+}
+
 const CreateVideo = ({ className = '' }: { className?: string }) => {
   const { route } = useRouter();
 
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
   const [videoFile, setVideoFile] = React.useState<string>(null);
+  const [tweetMessage, setTweetMessage] = React.useState<string>('')
 
   const filteredTeams = Object.values(Teams).filter((e) => e !== 'yb');
   const filteredSponsors = Object.values(Sponsors);
 
-  const form = useForm<{
-    playerIndex: string;
-    minute: number;
-    homeScore: number;
-    awayScore: number;
-    awayTeam: Teams;
-    sponsor: Sponsors;
-  }>({
+  const form = useForm<InputProps>({
     defaultValues: {
       playerIndex: Object.keys(TEAM_API)[0],
       minute: 20,
@@ -79,7 +83,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     awayScore: formValues.awayScore,
     awayTeam: formValues.awayTeam,
     sponsor: formValues.sponsor,
-    portrait: selectedPlayer.assets.portrait,
+    portraitAction: selectedPlayer.assets.action,
     playerNumber: selectedPlayer.number,
   };
 
@@ -127,9 +131,10 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
               });
               const progressJson = (await progress.json()) as ProgressResponse;
               setVideoProgress(Math.ceil(progressJson.overallProgress * 100));
-              console.log(progressJson);
+
               if (progressJson.overallProgress === 1) {
                 window.clearInterval(intervalId);
+                setTweetMessage(buildMessage(inputProps))
                 setVideoFile(progressJson.outputFile);
                 setVideoInProgress(false);
                 setVideoProgress(0);
@@ -211,6 +216,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
         <ShareFileModal
           onClose={() => setVideoFile('')}
           videoFile={videoFile}
+          tweetMessage={tweetMessage}
         />
       )}
     </div>
