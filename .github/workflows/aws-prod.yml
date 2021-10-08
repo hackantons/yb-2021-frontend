@@ -44,7 +44,6 @@ jobs:
           task-definition: task-definition.json
           container-name: ybhackathon-2021-backend
           image: ${{ steps.build-image.outputs.image }}
-          aws-sm-name: ybhackathon-2021-secret
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
