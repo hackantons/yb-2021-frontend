@@ -3,7 +3,7 @@ import { getRenderProgress } from '@remotion/lambda';
 
 type Data = {
   overallProgress: number
-  outputFile: string
+  outputFile: string | null
 }
 
 type RequestData = {
