@@ -46,3 +46,11 @@ export const TEAM_API: Array<{
     },
   },
 ];
+
+export enum Teams {
+  YB = 'yb',
+  ZURICH = 'zurich',
+  BASEL = 'basel',
+  LUZERN = 'luzern',
+  LUGANO = 'lugano',
+}

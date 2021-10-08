@@ -3,6 +3,7 @@ import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
 import { Minute } from './videos/Minute';
+import { NewScore } from './videos/NewScore';
 import { Score } from './videos/Score';
 
 export const Video = () => {
@@ -61,6 +62,14 @@ export const Video = () => {
         defaultProps={{
           minute: 75,
         }}
+      ></Composition>
+      <Composition
+        id="NewScore"
+        height={1920}
+        width={1080}
+        component={NewScore}
+        durationInFrames={300}
+        fps={30}
       ></Composition>
     </>
   );
