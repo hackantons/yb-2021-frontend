@@ -11,12 +11,15 @@ const EventSingle = ({
   event: EventI;
 }) => {
   return (
-    <div className={cn(className, styles.root)}>
+    <button
+      onClick={() => console.log(event)}
+      className={cn(className, styles.root)}
+    >
       <p className={styles.type}>
         <b>{event.type}</b> <span>Min. {event.minute}</span>
       </p>
       <p className={styles.text}>{event.text}</p>
-    </div>
+    </button>
   );
 };
 
