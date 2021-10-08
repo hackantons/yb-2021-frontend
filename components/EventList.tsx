@@ -207,7 +207,7 @@ const events: Array<EventI> = [
 const EventList = ({ className = '' }: { className?: string }) => {
   return (
     <div className={cn(className, styles.root)}>
-      <h3>YB Basel 23.09.18</h3>
+      <h3>YB - Basel 23.09.18</h3>
       <table>
         <tr>
           <th>Spielort</th>

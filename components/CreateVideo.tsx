@@ -22,10 +22,9 @@ import {
   FPS,
   GOAL_VIDEO_DURATION,
 } from '@utils/infos';
+import { buildMessage } from '@utils/tweets';
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
-import { mapSponsor, mapTeam } from './map-team';
-import { buildMessage } from '@utils/tweets'
 
 interface RenderResponse {
   renderId: string;
@@ -52,9 +51,11 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
   const [videoFile, setVideoFile] = React.useState<string>(null);
-  const [tweetMessage, setTweetMessage] = React.useState<string>('')
+  const [tweetMessage, setTweetMessage] = React.useState<string>('');
 
-  const filteredTeams = Object.values(Teams).filter((e) => e !== 'yb');
+  const filteredTeams: Array<Teams> = Object.values(Teams).filter(
+    (e) => e !== 'BSCYB'
+  );
   const filteredSponsors = Object.values(Sponsors);
 
   const form = useForm<InputProps>({
@@ -134,7 +135,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
 
               if (progressJson.overallProgress === 1) {
                 window.clearInterval(intervalId);
-                setTweetMessage(buildMessage(inputProps))
+                setTweetMessage(buildMessage(inputProps));
                 setVideoFile(progressJson.outputFile);
                 setVideoInProgress(false);
                 setVideoProgress(0);
@@ -186,7 +187,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredTeams.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: mapTeam(team),
+                [team]: team,
               }),
               {}
             )}
@@ -199,7 +200,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredSponsors.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: mapSponsor(team),
+                [team]: team,
               }),
               {}
             )}
