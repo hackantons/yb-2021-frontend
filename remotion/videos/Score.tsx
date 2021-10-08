@@ -17,7 +17,7 @@ export const Score: React.FC = () => {
     fps,
     frame,
     config: {
-      mass: 0.1,
+      mass: 0.3,
       damping: 200,
     },
   });
