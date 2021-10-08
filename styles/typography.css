@@ -6,6 +6,7 @@
   --fs-h5: 1rem;
   --fs-h6: 1rem;
   --fs-small: 0.8rem;
+  --fs-xsmall: 0.7rem;
   --font-heading: 'Antique Olive Std', sans-serif;
   --font: 'Roboto', sans-serif;
 }
@@ -63,7 +64,7 @@ p {
 
 b,
 strong {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .subtext {

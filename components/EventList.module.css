@@ -1,0 +1,12 @@
+.root {
+  width: 400px;
+}
+
+.entry {
+  border-top: 1px dashed var(--c-border);
+  padding: 1rem 0;
+
+  &:last-child {
+    border-bottom: 1px dashed var(--c-border);
+  }
+}
