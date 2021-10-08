@@ -1,7 +1,9 @@
 import React from 'react';
 import { Series } from 'remotion';
+import { Teams } from '../../utils/infos';
 import { Goal } from './Goal';
 import { Minute } from './Minute';
+import { NewScore } from './NewScore';
 import { Score } from './Score';
 
 export const Main: React.FC<{
@@ -9,21 +11,39 @@ export const Main: React.FC<{
   lastName: string;
   seasonGoal: number;
   minute: number;
-}> = ({ firstName, lastName, seasonGoal, minute }) => {
+  awayScore: number;
+  homeScore: number;
+  awayTeam: Teams;
+}> = ({
+  firstName,
+  lastName,
+  seasonGoal,
+  minute,
+  awayScore,
+  awayTeam,
+  homeScore,
+}) => {
   return (
     <Series>
       <Series.Sequence durationInFrames={20}>
         <Minute minute={minute}></Minute>
       </Series.Sequence>
-      <Series.Sequence durationInFrames={40}>
+      <Series.Sequence durationInFrames={50}>
         <Score></Score>
       </Series.Sequence>
-      <Series.Sequence durationInFrames={50}>
+      <Series.Sequence durationInFrames={65}>
         <Goal
           firstName={firstName}
           lastName={lastName}
           seasonGoal={seasonGoal}
         ></Goal>
+      </Series.Sequence>
+      <Series.Sequence durationInFrames={65}>
+        <NewScore
+          awayScore={awayScore}
+          awayTeam={awayTeam}
+          homeScore={homeScore}
+        ></NewScore>
       </Series.Sequence>
     </Series>
   );

@@ -42,6 +42,10 @@ export const Spieler: React.FC<{
     interpolate(frame, [0, 50], [1.1, 1.15]) *
     interpolate(spr, [0, 1], [0.9, 1.05]);
 
+  const opacity = interpolate(frame, [0, 10], [0, 1], {
+    extrapolateRight: 'clamp',
+  });
+
   return (
     <AbsoluteFill>
       <Img
@@ -50,19 +54,18 @@ export const Spieler: React.FC<{
           mixBlendMode: 'color-dodge',
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
+          filter: `drop-shadow(0 0 20px black)`,
+          opacity,
         }}
-        // @ts-ignore
         src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
       ></Img>
       <Img
         style={{
           ...player,
-          opacity: 0.4,
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
+          opacity: opacity * 0.4,
         }}
-        // @ts-ignore
-
         src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
       ></Img>
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
