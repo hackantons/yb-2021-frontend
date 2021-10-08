@@ -70,6 +70,19 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     [formValues]
   );
 
+  const inputProps = {
+    firstName: selectedPlayer.firstName,
+    lastName: selectedPlayer.lastName,
+    seasonGoal: selectedPlayer.stat.goals + 1,
+    minute: formValues.minute,
+    homeScore: formValues.homeScore <= 1 ? 1 : formValues.homeScore,
+    awayScore: formValues.awayScore,
+    awayTeam: formValues.awayTeam,
+    sponsor: formValues.sponsor,
+    portrait: selectedPlayer.assets.portrait,
+    playerNumber: selectedPlayer.number,
+  };
+
   return (
     <div className={cn(className, styles.root)}>
       {route === '/create/event' && <EventList className={styles.events} />}
@@ -89,18 +102,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
           loop
           spaceKeyToPlayOrPause
           autoPlay
-          inputProps={{
-            firstName: selectedPlayer.firstName,
-            lastName: selectedPlayer.lastName,
-            seasonGoal: selectedPlayer.stat.goals + 1,
-            minute: formValues.minute,
-            homeScore: formValues.homeScore <= 1 ? 1 : formValues.homeScore,
-            awayScore: formValues.awayScore,
-            awayTeam: formValues.awayTeam,
-            sponsor: formValues.sponsor,
-            portrait: selectedPlayer.assets.portrait,
-            playerNumber: selectedPlayer.number
-          }}
+          inputProps={inputProps}
         />
       </div>
       <div className={styles.form}>
@@ -111,7 +113,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
 
             const body = {
               composition: 'Goal',
-              inputProps: data,
+              inputProps,
             };
 
             setVideoInProgress(true);
