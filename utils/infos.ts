@@ -122,4 +122,4 @@ export enum Sponsors {
 export const VIDEO_HEIGHT = 1920;
 export const VIDEO_WIDTH = 1280;
 export const FPS = 30;
-export const GOAL_VIDEO_DURATION = 220;
+export const GOAL_VIDEO_DURATION = 265;

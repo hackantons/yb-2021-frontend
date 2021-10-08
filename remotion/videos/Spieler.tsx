@@ -34,7 +34,7 @@ export const Spieler: React.FC<{
       <SlidingText delay={3} fontSize={200} color="white" left={100} top={320}>
         {lastName}
       </SlidingText>
-      <SlidingText delay={6} fontSize={80} color={YELLOW} left={100} top={530}>
+      <SlidingText delay={30} fontSize={80} color={YELLOW} left={100} top={530}>
         {seasonGoal}. SAISONTOR
       </SlidingText>
     </AbsoluteFill>
