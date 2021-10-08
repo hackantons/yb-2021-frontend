@@ -1,16 +1,36 @@
 import { Player } from '@remotion/player';
 import React, { useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { Form, FormElement, InputSelect, InputText } from '@theme';
+import {
+  Form,
+  FormControls,
+  FormElement,
+  InputSelect,
+  InputText,
+  PortalBox,
+} from '@theme';
+import ShareFileModal from '@comps/ShareFileModal';
 import cn from '@utils/classnames';
 import { PlayerI, TEAM_API, Teams } from '@utils/infos';
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
-import Download from './Download';
+
+interface RenderResponse {
+  renderId: string;
+  bucketName: string;
+}
+
+interface ProgressResponse {
+  overallProgress: number;
+  outputFile: string | null;
+}
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
+  const [videoProgress, setVideoProgress] = React.useState<number>(0);
+  const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
+  const [videoFile, setVideoFile] = React.useState<string>(null);
+
   const filteredTeams = Object.values(Teams).filter((e) => e !== 'yb');
-  console.log('filteredTeams', filteredTeams, filteredTeams[0]);
   const form = useForm<{
     playerIndex: string;
     minute: number;
@@ -63,8 +83,32 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
       <div className={styles.form}>
         <h2 className={styles.formTitle}>Video Settings</h2>
         <Form
-          onSubmit={form.handleSubmit((data) => {
-            console.log(data);
+          onSubmit={form.handleSubmit(async (data) => {
+            data.homeScore = data.homeScore <= 1 ? 1 : data.homeScore;
+
+            const body = {
+              composition: 'Goal',
+              inputProps: data,
+            };
+
+            setVideoInProgress(true);
+            const response = await fetch('/api/video/render', {
+              method: 'POST',
+              body: JSON.stringify(body),
+            });
+            const responseBody = (await response.json()) as RenderResponse;
+            const intervalId = setInterval(async () => {
+              const progress = await fetch('/api/video/progress', {
+                method: 'POST',
+                body: JSON.stringify(responseBody),
+              });
+              const progressJson = (await progress.json()) as ProgressResponse;
+              setVideoProgress(Math.ceil(progressJson.overallProgress * 100));
+              if (progressJson.overallProgress === 1) {
+                window.clearInterval(intervalId);
+                window.location.assign(progressJson.outputFile);
+              }
+            }, 1000);
           })}
         >
           <FormElement
@@ -116,9 +160,20 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
               {}
             )}
           />
+          <FormControls
+            align="right"
+            loading={videoInProgress}
+            progress={videoProgress}
+            value="Video generieren"
+          />
         </Form>
-        <Download />
       </div>
+      {videoFile && (
+        <ShareFileModal
+          onClose={() => setVideoFile('')}
+          videoFile={videoFile}
+        />
+      )}
     </div>
   );
 };

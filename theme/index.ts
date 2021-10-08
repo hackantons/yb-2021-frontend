@@ -12,3 +12,7 @@ export { default as Form } from './form/Form';
 export { default as FormElement } from './form/FormElement';
 export { default as InputSelect } from './form/InputSelect';
 export { default as InputText } from './form/InputText';
+export { default as FormControls } from './form/FormControls';
+
+export { default as Button } from './button/Button';
+export { default as ButtonGroup } from './button/ButtonGroup';

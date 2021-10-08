@@ -1,0 +1,103 @@
+.root {
+  --c-button-background: var(--c-yellow);
+  --c-button-color: var(--c-p);
+
+  display: inline-flex;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  padding: 0 2em;
+  height: 3rem;
+  background-color: var(--c-button-background);
+  color: var(--c-button-color);
+  align-items: center;
+  transition: all 200ms ease-in-out;
+  border: 1px solid var(--c-button-background);
+  font-weight: bold;
+  //font-size: var(--fs);
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.isSquare {
+  padding: 0.4em;
+}
+
+.size-medium {
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 1em;
+  height: 1em;
+  color: var(--c-button-color);
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 200ms ease-in-out;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.isLoading {
+  .loader {
+    opacity: 1;
+  }
+
+  .content,
+  .icon {
+    opacity: 0;
+  }
+}
+
+.isDisabled {
+  pointer-events: none;
+  opacity: 0.8;
+
+  &::before {
+    opacity: 0;
+  }
+
+  .icon {
+    color: var(--c-p);
+  }
+}
+
+.hasContent .icon {
+  margin-right: 0.4em;
+}
+
+.iconRight {
+  flex-direction: row-reverse;
+
+  &.hasContent .icon {
+    margin-right: 0;
+    margin-left: 0.4em;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 70;
+  display: block;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  background-color: var(--c-yellow-dark);
+  width: 50%;
+  z-index: 40;
+}
