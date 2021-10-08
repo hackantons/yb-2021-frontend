@@ -6,6 +6,7 @@ import cn from '@utils/classnames';
 import { PlayerI, TEAM_API } from '@utils/infos';
 import { Goal } from '../remotion/videos/Goal';
 import styles from './CreateVideo.module.css';
+import Download from './Download'
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
   const form = useForm<{
@@ -62,6 +63,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             )}
           />
         </Form>
+        <Download />
       </div>
     </div>
   );
