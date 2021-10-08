@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { AbsoluteFill, continueRender, delayRender, Img } from 'remotion';
+import {
+  AbsoluteFill,
+  continueRender,
+  delayRender,
+  Img,
+  interpolate,
+  useCurrentFrame,
+} from 'remotion';
+import { SlidingText } from './SlidingText';
+// @ts-expect-error
 import ybfont from './big_noodle_titling.ttf';
 import fassnacht from './fassnacht-removebg.png';
 
@@ -14,49 +23,35 @@ const player: React.CSSProperties = {
 };
 
 export const Spieler: React.FC = () => {
+  const frame = useCurrentFrame();
   const [waitForFont] = useState(() => delayRender());
   useEffect(() => {
     continueRender(waitForFont);
   }, [waitForFont]);
+  const colorDodgeFlicker =
+    frame > 10 ? 1 : Math.floor(frame / 3) % 2 === 0 ? 1 : 0;
   return (
     <AbsoluteFill>
-      <h1
-        style={{
-          color: 'white',
-          fontSize: 200,
-          position: 'absolute',
-          left: 100,
-          top: -30,
-          fontFamily: 'Antique Olive Std',
-        }}
-      >
+      <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         CHRISTIAN
-      </h1>
-      <h1
-        style={{
-          color: 'white',
-          fontSize: 200,
-          position: 'absolute',
-          left: 100,
-          top: 180,
-          fontFamily: 'Antique Olive Std',
-        }}
-      >
+      </SlidingText>
+      <SlidingText delay={3} fontSize={200} color="white" left={100} top={320}>
         FASSNACHT
-      </h1>
-      <h2
-        style={{
-          fontSize: 80,
-          position: 'absolute',
-          left: 103,
-          top: 480,
-          fontFamily: 'Antique Olive Std',
-          color: '#ffcf00',
-        }}
-      >
+      </SlidingText>
+      <SlidingText delay={6} fontSize={80} color="#ffcf00" left={100} top={530}>
         10. SAISONTOR
-      </h2>
-      <Img style={player} src={fassnacht}></Img>
+      </SlidingText>
+      <Img
+        style={{ ...player, mixBlendMode: 'color-dodge' }}
+        // @ts-ignore
+        src={fassnacht}
+      ></Img>
+      <Img
+        style={{ ...player, opacity: colorDodgeFlicker }}
+        // @ts-ignore
+
+        src={fassnacht}
+      ></Img>
     </AbsoluteFill>
   );
 };
