@@ -1,0 +1,31 @@
+.root {
+  background-color: var(--c-yellow);
+}
+
+.link {
+  padding: 1.2em 0.7em;
+  color: var(--c-p);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @mixin transition;
+
+  &:hover {
+    background-color: var(--c-bkg-dark);
+    color: #fff;
+  }
+
+  border-bottom: 1px solid rgba(32, 32, 32, 0.3);
+}
+
+.linkActive {
+}
+
+.linkIcon {
+  font-size: 30px;
+  margin-bottom: 0.2em;
+}
+
+.linkTitle {
+}
