@@ -1,4 +1,11 @@
 .root {
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  outline: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
 }
 
 .type {
@@ -8,6 +15,6 @@
 }
 
 .text {
-  margin-top: 0.3em;
+  margin-top: 0.1em;
   font-size: var(--fs-xsmall);
 }
