@@ -122,7 +122,7 @@
   "pidMode": null,
   "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
-  "cpu": "256",
+  "cpu": "1024",
   "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
