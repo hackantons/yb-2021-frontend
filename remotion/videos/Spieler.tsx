@@ -11,6 +11,7 @@ import {
 } from 'remotion';
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { isClientSide } from '@utils/helpers';
+import { Carola } from './Carola';
 import { DefaultSpieler } from './DefaultSpieler';
 import { Jana } from './Jana';
 import { SlidingText } from './SlidingText';
@@ -30,7 +31,13 @@ export const Spieler: React.FC<{
 
   return (
     <AbsoluteFill>
-      {playerNumber === 99 ? <Jana></Jana> : <DefaultSpieler portrait = { portrait } />}
+      {playerNumber === 98 ? (
+        <Carola></Carola>
+      ) : playerNumber === 99 ? (
+        <Jana></Jana>
+      ) : (
+        <DefaultSpieler portrait={portrait} />
+      )}
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
       </SlidingText>

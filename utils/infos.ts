@@ -97,8 +97,22 @@ export const TEAM_API: Array<PlayerI> = [
   {
     firstName: 'Jana',
     lastName: 'Neuhaus',
-    position: POSITIONEN.TOR,
+    position: POSITIONEN.MITTELFELD,
     number: 99,
+    stat: {
+      games: 6,
+      goals: 4,
+    },
+    assets: {
+      portrait: 'https://www.bscyb.ch/kader-frauen?s=264',
+      action: 'https://www.bscyb.ch/kader-frauen?s=264',
+    },
+  },
+  {
+    firstName: 'Carola',
+    lastName: 'Fasel',
+    position: POSITIONEN.MITTELFELD,
+    number: 98,
     stat: {
       games: 6,
       goals: 4,
