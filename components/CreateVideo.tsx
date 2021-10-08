@@ -91,7 +91,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             homeScore: formValues.homeScore <= 1 ? 1 : formValues.homeScore,
             awayScore: formValues.awayScore,
             awayTeam: formValues.awayTeam,
-            sponsor: Sponsors.BIER,
+            sponsor: formValues.sponsor,
           }}
         />
       </div>
@@ -168,6 +168,19 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             Input={InputSelect}
             form={form}
             options={filteredTeams.reduce(
+              (acc, team) => ({
+                ...acc,
+                [team]: team,
+              }),
+              {}
+            )}
+          />
+          <FormElement
+            name="sponsor"
+            label="Sponsors"
+            Input={InputSelect}
+            form={form}
+            options={filteredSponsors.reduce(
               (acc, team) => ({
                 ...acc,
                 [team]: team,
