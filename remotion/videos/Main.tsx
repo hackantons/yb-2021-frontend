@@ -46,7 +46,7 @@ export const Main: React.FC<{
             seasonGoal={seasonGoal}
             portrait={portrait}
             playerNumber={playerNumber}
-          ></Goal>
+          />
         </Series.Sequence>
         <Series.Sequence durationInFrames={65}>
           <NewScore
@@ -54,7 +54,7 @@ export const Main: React.FC<{
             awayTeam={awayTeam}
             homeScore={homeScore}
             sponsor={sponsor}
-          ></NewScore>
+          />
         </Series.Sequence>
       </Series>
     </SevenTwentyPScaler>
