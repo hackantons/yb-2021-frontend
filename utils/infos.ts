@@ -26,7 +26,7 @@ export const TEAM_API: Array<PlayerI> = [
     number: 26,
     stat: {
       games: 6,
-      goals: 0,
+      goals: 10,
     },
     assets: {
       portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
@@ -40,7 +40,7 @@ export const TEAM_API: Array<PlayerI> = [
     position: POSITIONEN.MITTELFELD,
     stat: {
       games: 9,
-      goals: 0,
+      goals: 5,
     },
     assets: {
       portrait: 'https://center.bscyb.dev/team/david-von-ballmoos',
