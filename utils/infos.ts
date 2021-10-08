@@ -113,19 +113,19 @@ export const TEAM_API: Record<number, PlayerI> = {
   },
 };
 
-export enum Teams {
-  YB = 'BSCYB',
-  ZURICH = 'FC Zürich',
-  BASEL = 'FC Basel',
-  LUZERN = 'FC Luzern',
-  LUGANO = 'FC Lugano',
-}
+export const TEAMS = {
+  yb: 'BSCYB',
+  zurich: 'FC Zürich',
+  basel: 'FC Basel',
+  luzern: 'FC Luzern',
+  lugano: 'FC Lugano',
+};
 
-export enum Sponsors {
-  SWISSCOM = 'Swisscom',
-  BIER = 'Feldschlösschen',
-  ISOLUTIONS = 'iSolutions',
-}
+export const SPONSORS = {
+  swisscom: 'Swisscom',
+  bier: 'Feldschlösschen',
+  isolutions: 'iSolutions',
+};
 
 export const VIDEO_HEIGHT = 1280;
 export const VIDEO_WIDTH = 720;

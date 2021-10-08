@@ -15,8 +15,8 @@ import cn from '@utils/classnames';
 import {
   PlayerI,
   TEAM_API,
-  Teams,
-  Sponsors,
+  TEAMS,
+  SPONSORS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
   FPS,
@@ -41,8 +41,8 @@ interface InputProps {
   minute: number;
   homeScore: number;
   awayScore: number;
-  awayTeam: Teams;
-  sponsor: Sponsors;
+  awayTeam: string;
+  sponsor: string;
 }
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
@@ -53,10 +53,13 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
   const [videoFile, setVideoFile] = React.useState<string>(null);
   const [tweetMessage, setTweetMessage] = React.useState<string>('');
 
-  const filteredTeams: Array<Teams> = Object.values(Teams).filter(
-    (e) => e !== 'BSCYB'
+  const filteredTeams: Record<string, string> = Object.entries(TEAMS).reduce(
+    (acc, [index, title]) => ({
+      ...acc,
+      ...(index !== 'yb' ? { [index]: title } : {}),
+    }),
+    {}
   );
-  const filteredSponsors = Object.values(Sponsors);
 
   const form = useForm<InputProps>({
     defaultValues: {
@@ -64,8 +67,8 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
       minute: 20,
       homeScore: 1,
       awayScore: 0,
-      awayTeam: filteredTeams[0],
-      sponsor: filteredSponsors[0],
+      awayTeam: Object.keys(filteredTeams)[0],
+      sponsor: Object.keys(SPONSORS)[0],
     },
   });
 
@@ -184,26 +187,14 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             label="Gegner"
             Input={InputSelect}
             form={form}
-            options={filteredTeams.reduce(
-              (acc, team) => ({
-                ...acc,
-                [team]: team,
-              }),
-              {}
-            )}
+            options={filteredTeams}
           />
           <FormElement
             name="sponsor"
             label="Sponsor"
             Input={InputSelect}
             form={form}
-            options={filteredSponsors.reduce(
-              (acc, team) => ({
-                ...acc,
-                [team]: team,
-              }),
-              {}
-            )}
+            options={SPONSORS}
           />
           <FormControls
             align="right"

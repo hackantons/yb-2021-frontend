@@ -1,6 +1,5 @@
 import React from 'react';
 import { Series } from 'remotion';
-import { Sponsors, Teams } from '../../utils/infos';
 import { Goal } from './Goal';
 import { Minute } from './Minute';
 import { NewScore } from './NewScore';
@@ -13,8 +12,8 @@ export const MainComp: React.FC<{
   minute: number;
   awayScore: number;
   homeScore: number;
-  awayTeam: Teams;
-  sponsor: Sponsors;
+  awayTeam: string;
+  sponsor: string;
   portraitAction: string;
   playerNumber: number;
 }> = ({

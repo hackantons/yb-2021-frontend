@@ -49,6 +49,7 @@ export default async function handler(
     T.post('statuses/update', params, function (err, data, response) {
       res
         .status(200)
+        // @ts-ignore
         .json({ url: `https://twitter.com/HackAnton1/status/${data.id_str}` });
     });
   });
