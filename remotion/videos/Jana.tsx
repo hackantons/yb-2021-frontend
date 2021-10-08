@@ -11,7 +11,7 @@ import { Background } from './Background';
 const player: React.CSSProperties = {
   position: 'absolute',
   right: '25%',
-  top: '20%',
+  bottom: '-10%',
 };
 
 export const Jana: React.FC = () => {
