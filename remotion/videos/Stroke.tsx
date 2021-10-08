@@ -7,18 +7,18 @@ import {
   useVideoConfig,
 } from 'remotion';
 import SimplexNoise from 'simplex-noise';
+import { VIDEO_HEIGHT, VIDEO_WIDTH } from '../../utils/infos';
 import { YELLOW } from './colors';
 
 const n = new SimplexNoise();
-
-const HEIGHT = 1920;
-const WIDTH = 1080;
 
 export const Stroke: React.FC<{
   seed: number;
 }> = ({ seed }) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const { durationInFrames, width: w, height: h } = useVideoConfig();
+  const HEIGHT = h === VIDEO_HEIGHT ? 1280 : h;
+  const WIDTH = w === VIDEO_WIDTH ? 720 : w;
 
   const size = Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT);
 

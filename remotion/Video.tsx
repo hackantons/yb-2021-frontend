@@ -10,6 +10,7 @@ import {
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
+import { MainComp } from './videos/MainComp';
 import { Minute } from './videos/Minute';
 import { NewScore } from './videos/NewScore';
 import { Score } from './videos/Score';
@@ -22,6 +23,27 @@ export const Video = () => {
         height={VIDEO_HEIGHT}
         width={VIDEO_WIDTH}
         component={Main}
+        durationInFrames={GOAL_VIDEO_DURATION}
+        fps={FPS}
+        defaultProps={{
+          firstName: 'Christian',
+          lastName: 'Fassnacht',
+          portraitAction:
+            'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
+          seasonGoal: 10,
+          minute: 10,
+          homeScore: 1,
+          awayScore: 0,
+          awayTeam: Teams.ZURICH,
+          sponsor: Sponsors.SWISSCOM,
+          playerNumber: 99,
+        }}
+      ></Composition>
+      <Composition
+        id="GoalSquare"
+        height={1080}
+        width={1080}
+        component={MainComp}
         durationInFrames={GOAL_VIDEO_DURATION}
         fps={FPS}
         defaultProps={{

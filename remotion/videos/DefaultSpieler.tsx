@@ -14,8 +14,9 @@ const player: React.CSSProperties = {
 };
 
 export const DefaultSpieler: React.FC<{
+  playerNumber: number;
   portrait: string;
-}> = ( { portrait } ) => {
+}> = ( { portrait, playerNumber } ) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -27,9 +28,17 @@ export const DefaultSpieler: React.FC<{
     },
   });
 
-  const playerScale =
+  let playerScale =
     interpolate(frame, [0, 50], [1.1, 1.15]) *
     interpolate(spr, [0, 1], [0.9, 1.05]);
+
+    if (playerNumber === 30) {
+      playerScale *= 2
+    }
+
+    if (playerNumber === 20) {
+      playerScale *= 1.1
+    }
 
   const opacity = interpolate(
     frame,

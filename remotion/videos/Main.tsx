@@ -3,6 +3,7 @@ import { Series } from 'remotion';
 import { Sponsors, Teams } from '../../utils/infos';
 import { SevenTwentyPScaler } from './1080pScaler';
 import { Goal } from './Goal';
+import { MainComp } from './MainComp';
 import { Minute } from './Minute';
 import { NewScore } from './NewScore';
 import { Score } from './Score';
@@ -18,45 +19,10 @@ export const Main: React.FC<{
   sponsor: Sponsors;
   portraitAction: string;
   playerNumber: number;
-}> = ({
-  firstName,
-  lastName,
-  seasonGoal,
-  minute,
-  awayScore,
-  awayTeam,
-  homeScore,
-  sponsor,
-  portraitAction,
-  playerNumber,
-}) => {
+}> = (props) => {
   return (
     <SevenTwentyPScaler>
-      <Series>
-        <Series.Sequence durationInFrames={40}>
-          <Minute minute={minute}></Minute>
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={70}>
-          <Score></Score>
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={90}>
-          <Goal
-            firstName={firstName}
-            lastName={lastName}
-            seasonGoal={seasonGoal}
-            portraitAction={portraitAction}
-            playerNumber={playerNumber}
-          />
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={65}>
-          <NewScore
-            awayScore={awayScore}
-            awayTeam={awayTeam}
-            homeScore={homeScore}
-            sponsor={sponsor}
-          />
-        </Series.Sequence>
-      </Series>
+      <MainComp {...props}></MainComp>
     </SevenTwentyPScaler>
   );
 };

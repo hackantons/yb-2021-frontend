@@ -1,7 +1,7 @@
 import Twit from 'twit';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-var twitterVideo = require('twitter-video');
+const twitterVideo = require('twitter-video');
 
 const fs = require('fs');
 
@@ -37,7 +37,9 @@ export default async function handler(
   const videoRes = await fetch(body.videoPath);
   const fileStream = fs.createWriteStream(`${id}.mp4`);
   await new Promise((resolve, reject) => {
+    // @ts-expect-error
     videoRes.body.pipe(fileStream);
+    // @ts-expect-error
     videoRes.body.on('error', reject);
     fileStream.on('finish', resolve);
   });
