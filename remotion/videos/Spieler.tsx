@@ -11,11 +11,12 @@ import {
 } from 'remotion';
 import { interpolateAs } from 'next/dist/shared/lib/router/router';
 import { SlidingText } from './SlidingText';
-// @ts-expect-error
-import ybfont from './big_noodle_titling.ttf';
 import fassnacht from './fassnacht-removebg.png';
 
-const font = new FontFace('Antique Olive Std', `url(${ybfont})`).load();
+const font = new FontFace(
+  'Antique Olive Std',
+  `url(https://jonnyburger.s3.eu-central-1.amazonaws.com/big_noodle_titling.ttf)`
+).load();
 
 font.then(async () => document.fonts.add(await font));
 
