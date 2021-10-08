@@ -23,6 +23,7 @@ import {
 } from '@utils/infos';
 import { Main } from '../remotion/videos/Main';
 import styles from './CreateVideo.module.css';
+import { mapSponsor, mapTeam } from './map-team';
 
 interface RenderResponse {
   renderId: string;
@@ -175,7 +176,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredTeams.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: team,
+                [team]: mapTeam(team),
               }),
               {}
             )}
@@ -188,7 +189,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             options={filteredSponsors.reduce(
               (acc, team) => ({
                 ...acc,
-                [team]: team,
+                [team]: mapSponsor(team),
               }),
               {}
             )}
