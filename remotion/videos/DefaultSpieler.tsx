@@ -13,7 +13,9 @@ const player: React.CSSProperties = {
   right: '-5%',
 };
 
-export const DefaultSpieler: React.FC = () => {
+export const DefaultSpieler: React.FC<{
+  portrait: string;
+}> = ( { portrait } ) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -47,8 +49,11 @@ export const DefaultSpieler: React.FC = () => {
           transformOrigin: '75% 75%',
           filter: `drop-shadow(0 0 20px black)`,
           opacity,
+          width: `70%`,
+          height: `70%`
+
         }}
-        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
+        src={portrait}
       ></Img>
       <Img
         style={{
@@ -56,8 +61,10 @@ export const DefaultSpieler: React.FC = () => {
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
           opacity: opacity * 0.4,
+          width: `70%`,
+          height: `70%`
         }}
-        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
+        src={portrait}
       ></Img>
     </>
   );
