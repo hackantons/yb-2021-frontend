@@ -36,7 +36,7 @@ export const Spieler: React.FC = () => {
 
   const playerScale =
     interpolate(frame, [0, 50], [1.1, 1.15]) *
-    interpolate(spr, [0, 1], [0.8, 1]);
+    interpolate(spr, [0, 1], [0.9, 1.05]);
 
   return (
     <AbsoluteFill>
