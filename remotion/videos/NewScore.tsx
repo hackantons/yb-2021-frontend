@@ -72,7 +72,6 @@ export const NewScore: React.FC<{
               style={{
                 width: 120,
                 top: 0,
-                position: 'absolute',
                 transform: `translateY(${oldTranslateY}px)`,
               }}
             >

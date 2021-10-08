@@ -11,17 +11,16 @@ import { YELLOW } from './colors';
 
 const n = new SimplexNoise();
 
+const HEIGHT = 1920;
+const WIDTH = 1080;
+
 export const Stroke: React.FC<{
   seed: number;
 }> = ({ seed }) => {
   const frame = useCurrentFrame();
-  const {
-    width: origWidth,
-    height: origHeight,
-    durationInFrames,
-  } = useVideoConfig();
+  const { durationInFrames } = useVideoConfig();
 
-  const size = Math.sqrt(origWidth * origWidth + origHeight * origHeight);
+  const size = Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT);
 
   const color = YELLOW;
 

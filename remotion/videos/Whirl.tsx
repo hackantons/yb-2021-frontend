@@ -6,11 +6,14 @@ import {
 } from 'remotion';
 import { Stroke } from './Stroke';
 
+const HEIGHT = 1920;
+const WIDTH = 1080;
+
 export const Whirl: React.FC = () => {
-  const { width, height, durationInFrames } = useVideoConfig();
+  const { durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const rotation = interpolate(frame, [0, durationInFrames], [0, Math.PI]);
-  const size = Math.sqrt(width * width + height * height);
+  const size = Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT);
   const opacity = interpolate(
     frame,
     [0, 10, durationInFrames - 30, durationInFrames - 1],
@@ -22,8 +25,8 @@ export const Whirl: React.FC = () => {
         width: size,
         height: size,
         opacity,
-        transform: `translateY(${(height - size) / 2}px) translateX(${
-          (width - size) / 2
+        transform: `translateY(${(HEIGHT - size) / 2}px) translateX(${
+          (WIDTH - size) / 2
         }px) rotate(${rotation}rad)`,
       }}
     >
