@@ -1,7 +1,6 @@
 import { Player } from '@remotion/player';
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { MainComp } from 'remotion/videos/MainComp';
 import { useRouter } from 'next/router';
 import {
   Form,
@@ -25,8 +24,8 @@ import {
 } from '@utils/infos';
 import { buildMessage } from '@utils/tweets';
 import { Main } from '../remotion/videos/Main';
+import { MainComp } from '../remotion/videos/MainComp';
 import styles from './CreateVideo.module.css';
-import { mapSponsor, mapTeam } from './map-team';
 
 interface RenderResponse {
   renderId: string;
