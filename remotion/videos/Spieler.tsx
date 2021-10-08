@@ -25,7 +25,8 @@ export const Spieler: React.FC<{
   firstName: string;
   lastName: string;
   seasonGoal: number;
-}> = ({ firstName, lastName, seasonGoal }) => {
+  portrait: string;
+}> = ({ firstName, lastName, seasonGoal, portrait }) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   useFont();
@@ -61,8 +62,10 @@ export const Spieler: React.FC<{
           transformOrigin: '75% 75%',
           filter: `drop-shadow(0 0 20px black)`,
           opacity,
+          width: "70%",
+          height: "70%"
         }}
-        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
+        src={portrait}
       ></Img>
       <Img
         style={{
@@ -70,8 +73,10 @@ export const Spieler: React.FC<{
           transform: `scale(${playerScale})`,
           transformOrigin: '75% 75%',
           opacity: opacity * 0.4,
+          width: "70%",
+          height: "70%"
         }}
-        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/fassnacht-removebg.png"
+        src={portrait}
       ></Img>
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
