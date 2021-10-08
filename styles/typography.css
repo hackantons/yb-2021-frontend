@@ -1,0 +1,79 @@
+:root {
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.3rem;
+  --fs-h4: 1rem;
+  --fs-h5: 1rem;
+  --fs-h6: 1rem;
+  --fs-small: 0.8rem;
+  --font-heading: 'Antique Olive Std', sans-serif;
+  --font: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 130%;
+  font-weight: 300;
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  font-size: var(--fs-h6);
+  line-height: 110%;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+h4,
+h5 {
+  font-size: var(--fs-h4);
+  font-family: var(--font);
+  font-weight: 500;
+  line-height: 130%;
+}
+
+p {
+  color: var(--c-p);
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--c-yellow);
+    color: var(--c-p-white);
+  }
+}
+
+b,
+strong {
+  font-weight: 500;
+}
+
+.subtext {
+  font-size: 0.9rem;
+}
+
+p.error {
+  color: var(--c-red);
+}
+
+p.success {
+  color: var(--c-green);
+}

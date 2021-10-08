@@ -1,0 +1,10 @@
+@define-mixin mobile {
+  @media (max-width: 900px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin transition $speed: 100ms, $property: all, $function: ease-in,
+  $delay: 0ms {
+  transition: $speed $property $function $delay;
+}
