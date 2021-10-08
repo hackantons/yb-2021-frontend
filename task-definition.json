@@ -31,7 +31,20 @@
       "dnsServers": null,
       "mountPoints": [],
       "workingDirectory": null,
-      "secrets": [],
+      "secrets": [
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-secret-KbrPI3:AWS_ACCESS_KEY_ID"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-secret-KbrPI3:AWS_SECRET_ACCESS_KEY"
+        },
+        {
+          "name": "AWS_REGION",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-secret-KbrPI3:AWS_REGION"
+        }
+      ],
       "dockerSecurityOptions": null,
       "memory": null,
       "memoryReservation": null,

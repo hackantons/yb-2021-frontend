@@ -9,9 +9,10 @@
 }
 
 .labelContainer {
-  width: 300px;
+  width: 150px;
   margin-right: var(--space-gutter-half);
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .containerStacked .labelContainer {
@@ -30,11 +31,12 @@
 }
 
 .label {
-  font-weight: bold;
+  //font-weight: bold;
 }
 
 .content {
   flex: 1 1 auto;
+  width: 300px;
 }
 
 .input:not([type='checkbox']) {
