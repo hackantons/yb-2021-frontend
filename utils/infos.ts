@@ -31,7 +31,8 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
-      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_lauper_action.png',
+      action:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_lauper_action.png',
     },
   },
   20: {
@@ -46,7 +47,8 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_Aebischer.png',
-      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_aebischer_action.png',
+      action:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_aebischer_action.png',
     },
   },
   16: {
@@ -61,7 +63,8 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
-      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_fassnacht_action.png',
+      action:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_fassnacht_action.png',
     },
   },
   26: {
@@ -76,14 +79,29 @@ export const TEAM_API: Record<number, PlayerI> = {
     assets: {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
-      action: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_ballmoos_action.png',
+      action:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_ballmoos_action.png',
     },
   },
   99: {
     firstName: 'Jana',
     lastName: 'Neuhaus',
-    position: POSITIONEN.TOR,
+    position: POSITIONEN.MITTELFELD,
     number: 99,
+    stat: {
+      games: 6,
+      goals: 4,
+    },
+    assets: {
+      portrait: 'https://www.bscyb.ch/kader-frauen?s=264',
+      action: 'https://www.bscyb.ch/kader-frauen?s=264',
+    },
+  },
+  98: {
+    firstName: 'Carola',
+    lastName: 'Fasel',
+    position: POSITIONEN.MITTELFELD,
+    number: 98,
     stat: {
       games: 6,
       goals: 4,
