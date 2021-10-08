@@ -55,7 +55,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     sponsor: Sponsors;
   }>({
     defaultValues: {
-      playerIndex: '0',
+      playerIndex: Object.keys(TEAM_API)[0],
       minute: 20,
       homeScore: 1,
       awayScore: 0,
@@ -79,7 +79,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     awayScore: formValues.awayScore,
     awayTeam: formValues.awayTeam,
     sponsor: formValues.sponsor,
-    portrait: selectedPlayer.assets.portrait,
+    portraitAction: selectedPlayer.assets.action,
     playerNumber: selectedPlayer.number,
   };
 
@@ -109,8 +109,6 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
         <h2 className={styles.formTitle}>Video Settings</h2>
         <Form
           onSubmit={form.handleSubmit(async (data) => {
-            data.homeScore = data.homeScore <= 1 ? 1 : data.homeScore;
-
             const body = {
               composition: 'Goal',
               inputProps,
@@ -144,8 +142,8 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             label="Spieler"
             Input={InputSelect}
             form={form}
-            options={TEAM_API.reduce(
-              (acc, p, index) => ({
+            options={Object.entries(TEAM_API).reduce(
+              (acc, [index, p]) => ({
                 ...acc,
                 [index]: `${p.firstName} ${p.lastName}`,
               }),

@@ -23,8 +23,8 @@ export const Spieler: React.FC<{
   lastName: string;
   seasonGoal: number;
   playerNumber: number;
-  portrait: string;
-}> = ({ firstName, lastName, seasonGoal, playerNumber, portrait }) => {
+  portraitAction: string;
+}> = ({ firstName, lastName, seasonGoal, playerNumber, portraitAction }) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   useFont();
@@ -36,7 +36,7 @@ export const Spieler: React.FC<{
       ) : playerNumber === 99 ? (
         <Jana></Jana>
       ) : (
-        <DefaultSpieler portrait={portrait} />
+        <DefaultSpieler portrait={portraitAction} />
       )}
       <SlidingText delay={0} fontSize={200} color="white" left={100} top={120}>
         {firstName}
