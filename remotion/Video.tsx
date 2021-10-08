@@ -10,6 +10,7 @@ import {
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';
+import { MainComp } from './videos/MainComp';
 import { Minute } from './videos/Minute';
 import { NewScore } from './videos/NewScore';
 import { Score } from './videos/Score';
@@ -40,9 +41,9 @@ export const Video = () => {
       ></Composition>
       <Composition
         id="GoalSquare"
-        height={VIDEO_WIDTH}
-        width={VIDEO_WIDTH}
-        component={Main}
+        height={1080}
+        width={1080}
+        component={MainComp}
         durationInFrames={GOAL_VIDEO_DURATION}
         fps={FPS}
         defaultProps={{
