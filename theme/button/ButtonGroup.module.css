@@ -1,6 +1,7 @@
 .group {
   display: flex;
   vertical-align: center;
+  align-items: center;
 
   & > * + * {
     margin-left: 1rem;

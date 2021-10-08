@@ -1,6 +1,6 @@
 import React from 'react';
 import { AbsoluteFill, Img } from 'remotion';
-import { SPONSORS } from '@utils/infos';
+import { SPONSORS } from '../../utils/infos';
 
 export const SponsorLogo: React.FC<{
   sponsor: string;

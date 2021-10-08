@@ -6,7 +6,7 @@ import {
   TEAMS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
-} from '@utils/infos';
+} from '../utils/infos';
 import { Goal } from './videos/Goal';
 import { Jana } from './videos/Jana';
 import { Main } from './videos/Main';

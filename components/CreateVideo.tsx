@@ -8,7 +8,7 @@ import cn from '@utils/classnames';
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
   const { route } = useRouter();
-  const [videoFile, setVideoFile] = React.useState<string>(null);
+  const [videoFile, setVideoFile] = React.useState<string>('');
   const [tweetMessage, setTweetMessage] = React.useState<string>('');
   const [fileName, setFileName] = React.useState<string>('');
 
