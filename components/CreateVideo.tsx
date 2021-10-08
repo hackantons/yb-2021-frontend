@@ -149,13 +149,14 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             label="Minute"
             Input={InputText}
             form={form}
+            min={1}
+            max={90}
             type="number"
           />
           <FormElement
             name="homeScore"
             label="Score YB"
             Input={InputText}
-            min="1"
             form={form}
             type="number"
           />
