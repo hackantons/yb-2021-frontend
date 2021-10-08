@@ -14,6 +14,7 @@ import { MainComp } from './videos/MainComp';
 import { Minute } from './videos/Minute';
 import { NewScore } from './videos/NewScore';
 import { Score } from './videos/Score';
+import { Substitution } from './videos/Substitution';
 
 export const Video = () => {
   return (
