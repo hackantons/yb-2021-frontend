@@ -3,6 +3,7 @@ import React from 'react';
 import cn from '@utils/classnames';
 import { Goal } from '../remotion/videos/Goal';
 import styles from './CreateVideo.module.css';
+import Download from './Download'
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
   return (
@@ -27,6 +28,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
         />
       </div>
       <div className={styles.form}>FORM</div>
+      <Download />
     </div>
   );
 };

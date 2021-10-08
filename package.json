@@ -11,6 +11,7 @@
     "deployvideo": "npx remotion lambda sites create remotion/index.tsx --site-name hackantons"
   },
   "dependencies": {
+    "@ramonak/react-progress-bar": "^3.2.1",
     "@remotion/player": "2.5.0-alpha.b28f7f17",
     "@svgr/webpack": "^5.5.0",
     "@types/react-dom": "^17.0.9",
@@ -22,8 +23,8 @@
   "devDependencies": {
     "@remotion/bundler": "2.5.0-alpha.b28f7f17",
     "@remotion/cli": "2.5.0-alpha.b28f7f17",
-    "@remotion/renderer": "2.5.0-alpha.b28f7f17",
     "@remotion/lambda": "2.5.0-alpha.b28f7f17",
+    "@remotion/renderer": "2.5.0-alpha.b28f7f17",
     "@trivago/prettier-plugin-sort-imports": "^2.0.4",
     "@types/react": "17.0.27",
     "autoprefixer": "^10.3.7",
