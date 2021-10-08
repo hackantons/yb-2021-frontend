@@ -73,7 +73,7 @@ export const Score: React.FC = () => {
             opacity: fadeOut,
           }}
         >
-          {'GOOOOOOAL'.split('').map((letter, i) => {
+          {'GOOOOOAL!!'.split('').map((letter, i) => {
             return (
               <span
                 key={i}
