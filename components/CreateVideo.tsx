@@ -160,7 +160,6 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             Input={InputText}
             form={form}
             type="number"
-            disabled
           />
           <FormElement
             name="awayTeam"
