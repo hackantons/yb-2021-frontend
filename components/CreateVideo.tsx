@@ -55,7 +55,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     sponsor: Sponsors;
   }>({
     defaultValues: {
-      playerIndex: '0',
+      playerIndex: Object.keys(TEAM_API)[0],
       minute: 20,
       homeScore: 1,
       awayScore: 0,
@@ -99,7 +99,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             awayTeam: formValues.awayTeam,
             sponsor: formValues.sponsor,
             portrait: selectedPlayer.assets.portrait,
-            playerNumber: selectedPlayer.number
+            playerNumber: selectedPlayer.number,
           }}
         />
       </div>
@@ -142,8 +142,8 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             label="Spieler"
             Input={InputSelect}
             form={form}
-            options={TEAM_API.reduce(
-              (acc, p, index) => ({
+            options={Object.entries(TEAM_API).reduce(
+              (acc, [index, p]) => ({
                 ...acc,
                 [index]: `${p.firstName} ${p.lastName}`,
               }),

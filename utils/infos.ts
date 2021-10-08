@@ -18,8 +18,8 @@ export interface PlayerI {
   };
 }
 
-export const TEAM_API: Array<PlayerI> = [
-  {
+export const TEAM_API: Record<number, PlayerI> = {
+  30: {
     firstName: 'Sandro',
     lastName: 'Lauper',
     number: 30,
@@ -29,11 +29,12 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 5,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
-  {
+  22: {
     firstName: 'Nico',
     lastName: 'Maier',
     number: 22,
@@ -43,11 +44,12 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 0,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/22_Maier.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/22_Maier.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
-  {
+  20: {
     firstName: 'Michel',
     lastName: 'Aebischer',
     number: 20,
@@ -57,11 +59,12 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 0,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_Aebischer.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/20_Aebischer.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
-  {
+  16: {
     firstName: 'Christian',
     lastName: 'Fassnacht',
     number: 16,
@@ -71,11 +74,12 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 0,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
-  {
+  26: {
     firstName: 'David',
     lastName: 'von Ballmoos',
     position: POSITIONEN.TOR,
@@ -85,11 +89,12 @@ export const TEAM_API: Array<PlayerI> = [
       goals: 10,
     },
     assets: {
-      portrait: 'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/26_von_Ballmoos.png',
       action: 'https://center.bscyb.dev/team/david-von-ballmoos-action',
     },
   },
-  {
+  99: {
     firstName: 'Jana',
     lastName: 'Neuhaus',
     position: POSITIONEN.TOR,
@@ -103,7 +108,7 @@ export const TEAM_API: Array<PlayerI> = [
       action: 'https://www.bscyb.ch/kader-frauen?s=264',
     },
   },
-];
+};
 
 export enum Teams {
   YB = 'yb',
@@ -124,7 +129,7 @@ export const VIDEO_WIDTH = 1280;
 export const FPS = 30;
 export const GOAL_VIDEO_DURATION = 265;
 
-enum EVENT_TYPES {
+export enum EVENT_TYPES {
   GOAL = 'Tor',
   CHANGE = 'Wechsel',
 }
@@ -132,34 +137,8 @@ enum EVENT_TYPES {
 export interface EventI {
   timestamp: number;
   type: EVENT_TYPES;
+  team: string;
   minute: number;
   text: string;
   payload: Object;
 }
-
-export const events: Array<EventI> = [
-  {
-    timestamp: 1633719378,
-    type: EVENT_TYPES.GOAL,
-    minute: 30,
-    text: 'Tor für BSCYB von Nico Maier',
-    payload: {
-      playerIndex: 2,
-      minute: 30,
-      homeScore: 7,
-      awayScore: 2,
-      awayTeam: Teams.BASEL,
-    },
-  },
-  {
-    timestamp: 1633719379,
-    type: EVENT_TYPES.CHANGE,
-    minute: 30,
-    text: 'Christian Fasnacht kommt für Michel Aebischer',
-    payload: {
-      playerInIndex: 4,
-      playerOutIndex: 3,
-      minute: 30,
-    },
-  },
-];
