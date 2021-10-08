@@ -31,7 +31,7 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
   }>({
     defaultValues: {
       playerIndex: '0',
-      minute: 0,
+      minute: 20,
       homeScore: 1,
       awayScore: 0,
       awayTeam: filteredTeams[0],
