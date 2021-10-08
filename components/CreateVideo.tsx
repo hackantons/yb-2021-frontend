@@ -94,7 +94,8 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
             awayScore: formValues.awayScore,
             awayTeam: formValues.awayTeam,
             sponsor: formValues.sponsor,
-            playerNumber: selectedPlayer.number,
+            portrait: selectedPlayer.assets.portrait,
+            playerNumber: selectedPlayer.number
           }}
         />
       </div>

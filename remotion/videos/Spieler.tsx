@@ -22,7 +22,10 @@ export const Spieler: React.FC<{
   lastName: string;
   seasonGoal: number;
   playerNumber: number;
-}> = ({ firstName, lastName, playerNumber, seasonGoal }) => {
+  portrait: string;
+}> = ({ firstName, lastName, seasonGoal, playerNumber, portrait }) => {
+  const { fps, durationInFrames } = useVideoConfig();
+  const frame = useCurrentFrame();
   useFont();
 
   return (

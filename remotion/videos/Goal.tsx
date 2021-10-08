@@ -8,13 +8,15 @@ export const Goal: React.FC<{
   lastName: string;
   playerNumber: number;
   seasonGoal: number;
-}> = ({ firstName, lastName, playerNumber, seasonGoal }) => {
+  portrait: string;
+}> = ({ firstName, lastName, seasonGoal, playerNumber, portrait }) => {
   return (
     <Background>
       <Spieler
         firstName={firstName}
         lastName={lastName}
         seasonGoal={seasonGoal}
+        portrait={portrait}
         playerNumber={playerNumber}
       />
     </Background>
