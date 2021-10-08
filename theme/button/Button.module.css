@@ -104,7 +104,7 @@
   bottom: 0;
   left: 0;
   top: 0;
-  background-color: var(--c-light);
+  background-color: var(--c-p-light);
   width: 50%;
   z-index: 40;
 }
