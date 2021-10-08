@@ -52,7 +52,7 @@ const ShadowBox = ({
             [styles.headerShadow]: shadow,
           })}
         >
-          {title !== null && <h1 className={styles.title}>{title}</h1>}{' '}
+          <h1 className={styles.title}>{title}</h1>
           {!preventClose && (
             <CloseButton className={styles.close} onClick={onClose} />
           )}

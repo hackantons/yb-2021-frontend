@@ -1,5 +1,7 @@
 import React from 'react';
-import { PortalBox } from '@theme';
+import { Button, PortalBox } from '@theme';
+
+// todo: download file name
 
 const ShareFileModal = ({
   videoFile,
@@ -7,6 +9,15 @@ const ShareFileModal = ({
 }: {
   videoFile: string;
   onClose: () => void;
-}) => <PortalBox close={onClose}>{videoFile}</PortalBox>;
+}) => (
+  <PortalBox title="Success!" close={onClose} size="small">
+    <p>Das Video wurde erfolgreich erstellt.</p>
+    <br />
+    <br />
+    <Button icon="trayArrowDown" useAnchor href={videoFile} download>
+      Download
+    </Button>
+  </PortalBox>
+);
 
 export default ShareFileModal;

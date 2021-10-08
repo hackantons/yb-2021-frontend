@@ -3,18 +3,22 @@ import ReactDOM from 'react-dom';
 import { isClientSide } from '@utils/helpers';
 import { ShadowBox } from '../index';
 
-let element = isClientSide() ? document.querySelector('#shadowbox') : null;
-if (!element && isClientSide()) {
-  element = document.createElement('div');
-  element.setAttribute('id', '#shadowbox');
-}
-
 const Portal = ({
   children,
 }: {
   children?: JSX.Element | JSX.Element[] | string;
   //@ts-ignore
-}) => ReactDOM.createPortal(children, element);
+}) => {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  return mounted
+    ? ReactDOM.createPortal(children, document.querySelector('#shadowbox'))
+    : null;
+};
 
 const PortalBox = ({
   children,
