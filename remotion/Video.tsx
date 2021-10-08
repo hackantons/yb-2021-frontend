@@ -39,6 +39,27 @@ export const Video = () => {
         }}
       ></Composition>
       <Composition
+        id="GoalSquare"
+        height={VIDEO_WIDTH}
+        width={VIDEO_WIDTH}
+        component={Main}
+        durationInFrames={GOAL_VIDEO_DURATION}
+        fps={FPS}
+        defaultProps={{
+          firstName: 'Christian',
+          lastName: 'Fassnacht',
+          portraitAction:
+            'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_Fassnacht.png',
+          seasonGoal: 10,
+          minute: 10,
+          homeScore: 1,
+          awayScore: 0,
+          awayTeam: Teams.ZURICH,
+          sponsor: Sponsors.SWISSCOM,
+          playerNumber: 99,
+        }}
+      ></Composition>
+      <Composition
         id="Player"
         height={VIDEO_HEIGHT}
         width={VIDEO_WIDTH}

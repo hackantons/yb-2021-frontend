@@ -9,8 +9,9 @@ export const useFont = () => {
       'YB',
       `url(https://jonnyburger.s3.eu-central-1.amazonaws.com/big_noodle_titling.ttf)`
     ).load();
-    font.then(async () => document.fonts.add(await font));
-
-    continueRender(waitForFont);
+    font.then(async () => {
+      document.fonts.add(await font);
+      continueRender(waitForFont);
+    });
   }, [waitForFont]);
 };
