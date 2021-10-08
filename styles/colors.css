@@ -1,15 +1,15 @@
 :root {
-  --c-black: #000;
+  --c-black: #232323;
   --c-black-hover: #343434;
   --c-black-light: #373737;
-  --c-yellow: #fab042;
+  --c-yellow: #ffcf00;
   --c-yellow-hover: #ffc74e;
   --c-gray: #585858;
   --c-gray-hover: #6b6b6b;
-  --c-p: #ffffffd9;
+  --c-p: var(--c-black);
   --c-p-semi: #ffffffd4;
   --c-p-white: #fff;
-  --c-bkg: #383838;
+  --c-bkg: #fff;
   --c-bkg-dark: #323232;
   --c-bkg-light: #454545;
   --c-red: #dc361a;
