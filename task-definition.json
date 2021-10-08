@@ -58,7 +58,7 @@
     }
   ],
   "placementConstraints": [],
-  "memory": "1024",
+  "memory": "2048",
   "taskRoleArn": "arn:aws:iam::829534015160:role/RoleForYBHackathon2021BackendTask",
   "compatibilities": ["EC2", "FARGATE"],
   "taskDefinitionArn": "arn:aws:ecs:eu-central-1:829534015160:task-definition/ybhackathon-2021-backend:1",
