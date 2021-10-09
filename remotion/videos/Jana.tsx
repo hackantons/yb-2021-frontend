@@ -5,6 +5,7 @@ import {
   spring,
   useCurrentFrame,
   useVideoConfig,
+  Video,
 } from 'remotion';
 import { Background } from './Background';
 
@@ -16,7 +17,7 @@ const player: React.CSSProperties = {
 
 export const Jana: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames, height } = useVideoConfig();
   const spr = spring({
     fps,
     frame,
@@ -25,41 +26,25 @@ export const Jana: React.FC = () => {
     },
   });
 
-  const src = [
-    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/1.png',
-    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/2.png',
-    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/3.png',
-    'https://jonnyburger.s3.eu-central-1.amazonaws.com/jana/4.png',
-  ][Math.min(3, Math.floor(frame / 15))];
-
-  const playerScale =
-    interpolate(frame, [0, 50], [1.1, 1.15]) *
-    interpolate(spr, [0, 1], [0.9, 1.05]) *
-    1.8;
+  const fadeOut = interpolate(
+    frame,
+    [durationInFrames - 10, durationInFrames],
+    [1, 0]
+  );
 
   return (
     <>
-      <Img
+      <Video
+        src="https://jonnyburger.s3.eu-central-1.amazonaws.com/jana.webm"
         style={{
-          ...player,
-          mixBlendMode: 'color-dodge',
-          transform: `scale(${playerScale})`,
-          transformOrigin: '75% 75%',
+          mixBlendMode: 'lighten',
+          opacity: fadeOut,
+          transform:
+            height === 1080
+              ? `translateY(-400px) translateX(300px)`
+              : undefined,
         }}
-        // @ts-ignore
-        src={src}
-      ></Img>
-      <Img
-        style={{
-          ...player,
-          opacity: 0.1,
-          transform: `scale(${playerScale})`,
-          transformOrigin: '75% 75%',
-        }}
-        // @ts-ignore
-
-        src={src}
-      ></Img>
+      ></Video>
     </>
   );
 };

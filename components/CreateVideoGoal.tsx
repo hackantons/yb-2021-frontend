@@ -67,7 +67,7 @@ const CreateVideo = ({
 
   const form = useForm<InputProps>({
     defaultValues: {
-      playerIndex: Object.keys(TEAM_API)[0],
+      playerIndex: '16',
       minute: 20,
       homeScore: 1,
       awayScore: 0,
