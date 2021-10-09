@@ -206,6 +206,15 @@ const CreateVideo = ({
           })}
         >
           <FormElement
+            name="minute"
+            label="Minute"
+            Input={InputText}
+            form={form}
+            min={1}
+            max={90}
+            type="number"
+          />
+          <FormElement
             name="playerIndex"
             label="Spieler"
             Input={InputSelect}
@@ -218,15 +227,7 @@ const CreateVideo = ({
               {}
             )}
           />
-          <FormElement
-            name="minute"
-            label="Minute"
-            Input={InputText}
-            form={form}
-            min={1}
-            max={90}
-            type="number"
-          />
+
           <FormElement
             name="homeScore"
             label="Score YB"
