@@ -25,6 +25,7 @@
 .linkIcon {
   font-size: 30px;
   margin-bottom: 0.2em;
+  opacity: 0.6;
 }
 
 .linkTitle {
