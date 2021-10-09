@@ -10,9 +10,9 @@ const Home: NextPage = () => {
       Main={({ className = '' }) => (
         <div className={cn(className, styles.container)}>
           <Head>
-            <title>YB VIDEO CENTER</title>
+            <title>YB Smart Content Center</title>
           </Head>
-          <h1>YB Media Center</h1>
+          <h1>YB Smart Content Center</h1>
         </div>
       )}
     />
