@@ -24,7 +24,8 @@ export const Substitution: React.FC<{
   player1: number;
   player2: number;
   minute: number;
-}> = ({ player1, player2, minute }) => {
+  type: 'square' | 'portrait';
+}> = ({ player1, player2, minute, type }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -86,6 +87,7 @@ export const Substitution: React.FC<{
             type="up"
             playerNumber={player1}
             opacity={firstOpacity}
+            orientation={type}
           ></SubstitutionPanel>
           <SubstitutionPanel
             slide={0}
@@ -94,6 +96,7 @@ export const Substitution: React.FC<{
             type="down"
             playerNumber={player2}
             opacity={secondOpacity}
+            orientation={type}
           ></SubstitutionPanel>
         </AbsoluteFill>
         <MinuteClock minute={minute}></MinuteClock>

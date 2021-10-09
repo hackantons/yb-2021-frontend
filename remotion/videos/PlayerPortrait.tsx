@@ -8,7 +8,8 @@ export const PlayerPortrait: React.FC<{
   style: React.CSSProperties;
   height: number;
   playerNumber: number;
-}> = ({ style, height, playerNumber }) => {
+  orientiation: 'portrait' | 'square';
+}> = ({ style, height, playerNumber, orientiation }) => {
   useFont();
   return (
     <AbsoluteFill
@@ -40,7 +41,7 @@ export const PlayerPortrait: React.FC<{
           <div
             style={{
               backgroundColor: YELLOW,
-              fontSize: 60,
+              fontSize: orientiation === 'square' ? 80 : 60,
               lineHeight: 1.1,
               paddingLeft: 10,
               paddingRight: 10,

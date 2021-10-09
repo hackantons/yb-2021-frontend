@@ -129,6 +129,21 @@ export const Video = () => {
           player1: 16,
           player2: 20,
           minute: 79,
+          type: 'portrait',
+        }}
+      ></Composition>
+      <Composition
+        id="SubstitutionSquare"
+        height={1080}
+        width={1080}
+        component={Substitution}
+        durationInFrames={150}
+        fps={30}
+        defaultProps={{
+          player1: 16,
+          player2: 20,
+          minute: 79,
+          type: 'square',
         }}
       ></Composition>
     </>

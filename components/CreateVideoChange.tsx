@@ -70,8 +70,12 @@ const CreateVideo = ({
             marginBottom: 0,
           }}
           component={Substitution}
-          compositionHeight={VIDEO_HEIGHT}
-          compositionWidth={VIDEO_WIDTH}
+          compositionHeight={
+            formValues.comp === 'Substitution' ? VIDEO_HEIGHT : 1080
+          }
+          compositionWidth={
+            formValues.comp === 'Substitution' ? VIDEO_WIDTH : 1080
+          }
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
           controls

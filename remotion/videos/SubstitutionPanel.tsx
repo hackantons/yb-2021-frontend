@@ -10,7 +10,16 @@ export const SubstitutionPanel: React.FC<{
   backgroundColor: string;
   playerNumber: number;
   opacity: number;
-}> = ({ type, height, slide, backgroundColor, playerNumber, opacity }) => {
+  orientation: 'portrait' | 'square';
+}> = ({
+  type,
+  height,
+  slide,
+  backgroundColor,
+  orientation,
+  playerNumber,
+  opacity,
+}) => {
   const actualHeight = height * 0.8;
   const slideOffset = slide * actualHeight;
   return (
@@ -30,6 +39,7 @@ export const SubstitutionPanel: React.FC<{
       <PlayerPortrait
         height={actualHeight}
         playerNumber={playerNumber}
+        orientiation={orientation}
         style={{ bottom: -slideOffset, position: 'absolute' }}
       ></PlayerPortrait>
     </div>
