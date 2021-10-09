@@ -135,7 +135,7 @@ const CreateVideo = ({
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: 'Goal',
+              composition: formValues.comp,
               inputProps,
             };
             setTweetMessage(buildMessage(inputProps));

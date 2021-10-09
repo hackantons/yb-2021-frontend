@@ -48,7 +48,7 @@ const CreateVideo = ({
       comp: 'Substitution',
       player1: Object.keys(TEAM_API)[0],
       player2: Object.keys(TEAM_API)[1],
-      minute: 20,
+      minute: 70,
     },
   });
 
@@ -104,7 +104,7 @@ const CreateVideo = ({
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: 'Goal',
+              composition: formValues.comp,
               inputProps,
             };
 
