@@ -8,6 +8,8 @@ import {
   InputSelect,
   InputText,
 } from '@theme';
+import { ActiveFormType } from '@comps/CreateVideo';
+import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
 import {
   PlayerI,
@@ -37,9 +39,11 @@ interface InputProps {
 const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
+  setActiveType = (str) => {},
 }: {
-  setTweetMessage?: (res: string) => void;
-  setVideoFile?: (res: string) => void;
+  setTweetMessage?: (str: string) => void;
+  setVideoFile?: (str: string) => void;
+  setActiveType: (str: ActiveFormType) => void;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
@@ -110,6 +114,24 @@ const CreateVideo = ({
       </div>
       <div className={styles.form}>
         <h2 className={styles.formTitle}>Video Settings</h2>
+        <div className={styles.setActiveType}>
+          Template:{' '}
+          <button
+            className={cn(
+              styles.setActiveTypeButton,
+              styles.setActiveTypeButtonActive
+            )}
+            onClick={() => setActiveType('change')}
+          >
+            Auswechslung
+          </button>
+          <button
+            className={cn(styles.setActiveTypeButton)}
+            onClick={() => setActiveType('goal')}
+          >
+            Tor
+          </button>
+        </div>
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
