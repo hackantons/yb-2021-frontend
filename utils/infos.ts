@@ -80,7 +80,7 @@ export const TEAM_API: Record<number, PlayerI> = {
       portrait:
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
       action:
-        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_lauper_action.png',
+        'https://jonnyburger.s3.eu-central-1.amazonaws.com/DDFPsZ9XgAEhA_o-removebg.png',
     },
   },
   26: {
@@ -90,7 +90,7 @@ export const TEAM_API: Record<number, PlayerI> = {
     number: 26,
     stat: {
       games: 6,
-      goals: 10,
+      goals: 0,
     },
     assets: {
       portrait:

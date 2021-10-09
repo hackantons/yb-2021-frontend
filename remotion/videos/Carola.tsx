@@ -16,7 +16,7 @@ const player: React.CSSProperties = {
 
 export const Carola: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, height } = useVideoConfig();
   const spr = spring({
     fps,
     frame,
@@ -37,13 +37,16 @@ export const Carola: React.FC = () => {
     interpolate(spr, [0, 1], [0.9, 1.05]) *
     1.8;
 
+  const transform =
+    height === 1080 ? `translateY(200px) translateX(100px)` : '';
+
   return (
     <>
       <Img
         style={{
           ...player,
           mixBlendMode: 'color-dodge',
-          transform: `scale(${playerScale})`,
+          transform: `scale(${playerScale}) ${transform}`,
           transformOrigin: '75% 75%',
         }}
         // @ts-ignore
@@ -53,7 +56,7 @@ export const Carola: React.FC = () => {
         style={{
           ...player,
           opacity: 0.1,
-          transform: `scale(${playerScale})`,
+          transform: `scale(${playerScale}) ${transform}`,
           transformOrigin: '75% 75%',
         }}
         // @ts-ignore

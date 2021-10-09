@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "name": "yb-hack-ui",
+  "description": null,
+  "icons": {
+    "60": "/assets/icon/89d2f4b1343543a2d391624069e8c2c9/firefox_app_60x60.png",
+    "128": "/assets/icon/89d2f4b1343543a2d391624069e8c2c9/firefox_app_128x128.png",
+    "512": "/assets/icon/89d2f4b1343543a2d391624069e8c2c9/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "Nico Martin :: https://nico.dev",
+    "url": null
+  }
+}
