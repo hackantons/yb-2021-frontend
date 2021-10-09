@@ -9,6 +9,7 @@ import {
   InputSelect,
   InputText,
 } from '@theme';
+import { UPDATE_FORM_EVENT } from '@comps/EventSingle';
 import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
 import { Orientiation } from '@utils/hack';
@@ -37,14 +38,14 @@ const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
   setActiveType = (str) => {},
-  formUpdates = null,
   orientation,
+  values = {},
 }: {
   setTweetMessage?: (str: string) => void;
   setVideoFile?: (str: string) => void;
   setActiveType?: (str: string) => void;
-  formUpdates?: Array<[string, string]>;
   orientation: Orientiation;
+  values: Partial<InputProps>;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
@@ -58,8 +59,11 @@ const CreateVideo = ({
   });
 
   React.useEffect(() => {
-    formUpdates && formUpdates.map((v) => console.log('update', v[0], v[1]));
-  }, [formUpdates]);
+    Object.entries(values).map(([key, value]) =>
+      // @ts-ignore
+      form.setValue(key, value)
+    );
+  }, [values]);
 
   const formValues = useWatch({ control: form.control });
 

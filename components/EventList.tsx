@@ -10,10 +10,11 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.CHANGE,
     minute: 30,
     text: 'Schick für Mbabu',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
-      playerInIndex: 19,
-      playerOutIndex: 43,
+      minute: 30,
+      player2: 19,
+      player1: 43,
     },
   },
   {
@@ -21,12 +22,13 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 33,
     text: 'Fassnacht (Sulejmani) 1:0',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 33,
       playerIndex: 16,
       homeScore: 1,
       awayScore: 0,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
@@ -34,12 +36,13 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 42,
     text: 'Sulejmani 2:0',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 42,
       playerIndex: 7,
       homeScore: 2,
       awayScore: 0,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
@@ -47,12 +50,13 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 52,
     text: 'Camara (Sulejmani) 3:0',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 52,
       playerIndex: 4,
       homeScore: 3,
       awayScore: 0,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
@@ -60,12 +64,13 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 60,
     text: 'Hoarau (Sanogo) 4:0',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 60,
       playerIndex: 99,
       homeScore: 4,
       awayScore: 0,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
@@ -73,10 +78,11 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.CHANGE,
     minute: 65,
     text: 'Bertone für Fassnacht',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
-      playerInIndex: 6,
-      playerOutIndex: 16,
+      minute: 65,
+      player2: 6,
+      player1: 16,
     },
   },
   {
@@ -84,10 +90,11 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.CHANGE,
     minute: 67,
     text: 'Zuffi für Pululu',
-    team: TEAMS.basel,
+    team: 'basel',
     formValues: {
-      playerInIndex: 6,
-      playerOutIndex: 37,
+      minute: 67,
+      player2: 6,
+      player1: 37,
     },
   },
   {
@@ -95,12 +102,13 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 70,
     text: 'Aebischer (Bertone) 5:0',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 70,
       playerIndex: 20,
       homeScore: 5,
       awayScore: 0,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
@@ -108,10 +116,11 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.CHANGE,
     minute: 71,
     text: 'Assalé für Sulejmani',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
-      playerInIndex: 17,
-      playerOutIndex: 7,
+      minute: 71,
+      player2: 17,
+      player1: 7,
     },
   },
   {
@@ -119,10 +128,11 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.CHANGE,
     minute: 73,
     text: 'Bua für Okafor',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
-      playerInIndex: 33,
-      playerOutIndex: 11,
+      minute: 73,
+      player2: 33,
+      player1: 11,
     },
   },
   {
@@ -130,12 +140,13 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 75,
     text: 'Van Wolfswinkel 5:1',
-    team: TEAMS.basel,
+    team: 'basel',
     formValues: {
+      minute: 75,
       playerIndex: 9,
       homeScore: 5,
       awayScore: 1,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
@@ -143,36 +154,39 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.GOAL,
     minute: 80,
     text: 'Bertone (Schick) 6:1',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 80,
       playerIndex: 9,
       homeScore: 6,
       awayScore: 1,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
   {
     timestamp: 1633719379,
     type: EVENT_TYPES.CHANGE,
-    minute: 73,
+    minute: 86,
     text: 'Oberlin für Ajeti',
-    team: TEAMS.basel,
+    team: 'basel',
     formValues: {
-      playerInIndex: 19,
-      playerOutIndex: 22,
+      minute: 86,
+      player2: 19,
+      player1: 22,
     },
   },
   {
     timestamp: 1633719378,
     type: EVENT_TYPES.GOAL,
-    minute: 80,
+    minute: 89,
     text: 'Assalé (Moumi Ngamaleu) 7:1',
-    team: TEAMS.yb,
+    team: 'yb',
     formValues: {
+      minute: 89,
       playerIndex: 17,
       homeScore: 7,
       awayScore: 1,
-      awayTeam: TEAMS.basel,
+      awayTeam: 'basel',
     },
   },
 ];
@@ -180,9 +194,11 @@ const events: Array<EventI> = [
 const EventList = ({
   setActiveType,
   className = '',
+  setDefaultValues,
 }: {
   className?: string;
   setActiveType?: (str: string) => void;
+  setDefaultValues?: (str: Object) => void;
 }) => {
   return (
     <div className={cn(className, styles.root)}>
@@ -210,6 +226,7 @@ const EventList = ({
             key={i}
             event={event}
             className={styles.entry}
+            setDefaultValues={setDefaultValues}
           />
         ))}
       </div>

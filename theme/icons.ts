@@ -3,6 +3,7 @@ import facebook from './_icons/facebook.svg';
 import instagram from './_icons/instagram.svg';
 import plus from './_icons/plus.svg';
 import trayArrowDown from './_icons/tray-arrow-down.svg';
+import tune from './_icons/tune.svg';
 import twitter from './_icons/twitter.svg';
 import videoPlusOutline from './_icons/video-plus-outline.svg';
 
@@ -14,6 +15,7 @@ const icons = {
   calendarRangeOutline,
   facebook,
   instagram,
+  tune,
 };
 
 export type IconType = keyof typeof icons;

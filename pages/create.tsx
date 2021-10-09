@@ -1,5 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 import CreateVideo from '@comps/CreateVideo';
 import PageContent from '@comps/PageContent';
 import cn from '@utils/classnames';
@@ -9,9 +10,14 @@ import styles from '../styles/Home.module.css';
 
 const Create: NextPage = () => {
   return (
-    <PageContent
-      Main={({ className = '' }) => <CreateVideo className={className} />}
-    />
+    <React.Fragment>
+      <Head>
+        <title>Create Video - YB MEDIA CENTER</title>
+      </Head>
+      <PageContent
+        Main={({ className = '' }) => <CreateVideo className={className} />}
+      />{' '}
+    </React.Fragment>
   );
 };
 

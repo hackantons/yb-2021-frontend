@@ -23,6 +23,11 @@ const LINKS: Record<
     icon: 'calendarRangeOutline',
     title: 'Event',
   },
+  manage: {
+    path: '/',
+    icon: 'tune',
+    title: 'Manage',
+  },
 };
 
 const Navigation = ({ className = '' }: { className?: string }) => {
