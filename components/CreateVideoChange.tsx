@@ -16,7 +16,6 @@ import {
   PlayerI,
   TEAM_API,
   TEAMS,
-  SPONSORS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
   FPS,
@@ -30,7 +29,6 @@ interface InputProps {
   player1: string;
   player2: string;
   minute: number;
-  sponsor: string;
 }
 
 const CreateVideo = ({
@@ -49,9 +47,8 @@ const CreateVideo = ({
     defaultValues: {
       comp: 'Substitution',
       player1: Object.keys(TEAM_API)[0],
-      player2: Object.keys(TEAM_API)[0],
+      player2: Object.keys(TEAM_API)[1],
       minute: 20,
-      sponsor: Object.keys(SPONSORS)[0],
     },
   });
 
@@ -135,26 +132,34 @@ const CreateVideo = ({
             label="Spieler Out"
             Input={InputSelect}
             form={form}
-            options={Object.entries(TEAM_API).reduce(
-              (acc, [index, p]) => ({
-                ...acc,
-                [index]: `${p.firstName} ${p.lastName}`,
-              }),
-              {}
-            )}
+            options={Object.entries(TEAM_API)
+              .filter(([a, b]) => {
+                return a !== '99' && a !== '98';
+              })
+              .reduce(
+                (acc, [index, p]) => ({
+                  ...acc,
+                  [index]: `${p.firstName} ${p.lastName}`,
+                }),
+                {}
+              )}
           />
           <FormElement
             name="player2"
             label="Spieler In"
             Input={InputSelect}
             form={form}
-            options={Object.entries(TEAM_API).reduce(
-              (acc, [index, p]) => ({
-                ...acc,
-                [index]: `${p.firstName} ${p.lastName}`,
-              }),
-              {}
-            )}
+            options={Object.entries(TEAM_API)
+              .filter(([a, b]) => {
+                return a !== '99' && a !== '98';
+              })
+              .reduce(
+                (acc, [index, p]) => ({
+                  ...acc,
+                  [index]: `${p.firstName} ${p.lastName}`,
+                }),
+                {}
+              )}
           />
           <FormElement
             name="minute"
@@ -164,13 +169,6 @@ const CreateVideo = ({
             min={1}
             max={90}
             type="number"
-          />
-          <FormElement
-            name="sponsor"
-            label="Sponsor"
-            Input={InputSelect}
-            form={form}
-            options={SPONSORS}
           />
           <FormControls
             align="right"

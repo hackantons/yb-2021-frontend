@@ -34,15 +34,18 @@ export const PlayerPortrait: React.FC<{
             justifyContent: 'center',
             alignItems: 'center',
             width: '100%',
+            height: '100%',
           }}
         >
           <div
             style={{
               backgroundColor: YELLOW,
               fontSize: 60,
-              padding: '10px 8px',
+              lineHeight: 1.1,
+              paddingLeft: 10,
+              paddingRight: 10,
               fontFamily: 'YB',
-              display: 'inline-block',
+              display: 'block',
               textAlign: 'center',
             }}
           >
