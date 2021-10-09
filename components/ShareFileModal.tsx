@@ -62,12 +62,20 @@ const ShareFileModal = ({
           onClick={() => alert('Haaaaalt Stop! Das ist nur eine Hackaton Demo')}
         />
         <Button
+          icon="tiktok"
+          style={{
+            backgroundColor: '#EE1D51',
+            borderColor: '#EE1D51',
+          }}
+          onClick={() => alert('Haaaaalt Stop! Das ist nur eine Hackaton Demo')}
+        />
+        <Button
           icon="facebook"
           style={{
             backgroundColor: '#1877F2',
             borderColor: '#1877F2',
           }}
-          onClick={() => alert('Haaaaalt Stop! Das ist nur eine Hackaton Demo')}
+          onClick={() => alert('Sorry, Facebook ist wieder mal down :(')}
         />
       </ButtonGroup>
       {tweetMessageInput && (

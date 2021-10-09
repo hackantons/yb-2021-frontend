@@ -2,6 +2,7 @@ import calendarRangeOutline from './_icons/calendar-range-outline.svg';
 import facebook from './_icons/facebook.svg';
 import instagram from './_icons/instagram.svg';
 import plus from './_icons/plus.svg';
+import tiktok from './_icons/tiktok.svg';
 import trayArrowDown from './_icons/tray-arrow-down.svg';
 import tune from './_icons/tune.svg';
 import twitter from './_icons/twitter.svg';
@@ -16,6 +17,7 @@ const icons = {
   facebook,
   instagram,
   tune,
+  tiktok,
 };
 
 export type IconType = keyof typeof icons;
