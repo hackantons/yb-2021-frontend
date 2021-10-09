@@ -117,7 +117,19 @@ export const Video = () => {
           awayTeam: TEAMS.zurich,
           sponsor: SPONSORS.isolutions,
         }}
-      />
+      ></Composition>
+      <Composition
+        id="Substitution"
+        height={VIDEO_HEIGHT}
+        width={VIDEO_WIDTH}
+        component={Substitution}
+        durationInFrames={200}
+        fps={30}
+        defaultProps={{
+          player1: 16,
+          player2: 20,
+        }}
+      ></Composition>
     </>
   );
 };

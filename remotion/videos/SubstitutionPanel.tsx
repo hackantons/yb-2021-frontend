@@ -1,4 +1,5 @@
 import React from 'react';
+import { Pattern } from './Pattern';
 import { PlayerPortrait } from './PlayerPortrait';
 import { YELLOW } from './colors';
 
@@ -8,7 +9,8 @@ export const SubstitutionPanel: React.FC<{
   slide: number;
   backgroundColor: string;
   playerNumber: number;
-}> = ({ type, height, slide, backgroundColor, playerNumber }) => {
+  opacity: number;
+}> = ({ type, height, slide, backgroundColor, playerNumber, opacity }) => {
   const actualHeight = height * 0.8;
   const slideOffset = slide * actualHeight;
   return (
@@ -21,8 +23,10 @@ export const SubstitutionPanel: React.FC<{
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      <Pattern opacity={opacity} inverted={type === 'down'} />
       <PlayerPortrait
         height={actualHeight}
         playerNumber={playerNumber}
