@@ -39,6 +39,22 @@
         {
           "name": "AWS_SECRET_ACCESS_KEY",
           "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-access-secret-key-remotion-roC51w"
+        },
+        {
+          "name": "CONSUMER_KEY",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-consumer-key-twitter-OOtLlv"
+        },
+        {
+          "name": "CONSUMER_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-consumer-secret-twitter-YPSgZQ"
+        },
+        {
+          "name": "ACCESS_TOKEN",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-access-token-twitter-giGmpX"
+        },
+        {
+          "name": "ACCESS_TOKEN_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-access-token-secret-twitter-vqQidJ"
         }
       ],
       "dockerSecurityOptions": null,
