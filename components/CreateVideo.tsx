@@ -10,7 +10,6 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
   const { route } = useRouter();
   const [videoFile, setVideoFile] = React.useState<string>('');
   const [tweetMessage, setTweetMessage] = React.useState<string>('');
-  const [fileName, setFileName] = React.useState<string>('');
 
   return (
     <div className={cn(className, styles.root)}>
@@ -18,14 +17,12 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
       <CreateVideoGoal
         setTweetMessage={setTweetMessage}
         setVideoFile={setVideoFile}
-        setFileName={setFileName}
       />
       {videoFile && (
         <ShareFileModal
           onClose={() => setVideoFile('')}
           videoFile={videoFile}
           tweetMessage={tweetMessage}
-          fileName={fileName}
         />
       )}
     </div>

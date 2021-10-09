@@ -37,11 +37,9 @@ interface InputProps {
 const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
-  setFileName = (str) => {},
 }: {
   setTweetMessage?: (res: string) => void;
   setVideoFile?: (res: string) => void;
-  setFileName?: (res: string) => void;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
@@ -119,9 +117,6 @@ const CreateVideo = ({
               inputProps,
             };
             setTweetMessage(buildMessage(inputProps));
-            setFileName(
-              `goal-${inputProps.firstName}-${inputProps.lastName}-min${inputProps.minute}`
-            );
 
             fetchVideo(body, setVideoProgress).then((file) => {
               setVideoFile(file);

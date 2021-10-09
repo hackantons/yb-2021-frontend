@@ -9,3 +9,17 @@
   width: 100%;
   height: 6rem;
 }
+
+.tweetLink {
+  margin-left: 0;
+  color: var(--c-gray);
+}
+
+.tweetSend {
+  justify-self: flex-end;
+  margin-right: 0;
+}
+
+.tweetControls {
+  margin-top: 1rem;
+}
