@@ -12,7 +12,7 @@ const Create: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Event View - YB MEDIA CENTER</title>
+        <title>Event View - YB Smart Content Center</title>
       </Head>
       <PageContent
         Main={({ className = '' }) => <CreateVideo className={className} />}
