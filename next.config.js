@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const withPWA = require('next-pwa');
+
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+  },
   reactStrictMode: true,
   experimental: {
     modern: true,
@@ -13,4 +18,4 @@ module.exports = {
 
     return config;
   },
-}
+});
