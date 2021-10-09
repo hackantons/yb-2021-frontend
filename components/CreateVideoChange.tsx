@@ -47,7 +47,7 @@ const CreateVideo = ({
 
   const form = useForm<InputProps>({
     defaultValues: {
-      comp: 'Main',
+      comp: 'Substitution',
       player1: Object.keys(TEAM_API)[0],
       player2: Object.keys(TEAM_API)[0],
       minute: 20,
@@ -60,6 +60,7 @@ const CreateVideo = ({
   const inputProps = {
     player1: parseInt(formValues.player1),
     player2: parseInt(formValues.player2),
+    minute: formValues.minute,
   };
 
   return (

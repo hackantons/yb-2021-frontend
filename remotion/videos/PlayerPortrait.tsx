@@ -29,7 +29,7 @@ export const PlayerPortrait: React.FC<{
         style={{
           backgroundColor: YELLOW,
           fontSize: 60,
-          padding: '10px 14px',
+          padding: '30px 10px',
           fontFamily: 'YB',
           display: 'inline-block',
           textAlign: 'center',
