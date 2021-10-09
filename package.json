@@ -11,10 +11,13 @@
     "deployvideo": "npx remotion lambda sites create remotion/index.tsx --site-name hackantons"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@ramonak/react-progress-bar": "^3.2.1",
     "@remotion/player": "2.5.0-alpha.b28f7f17",
     "@svgr/webpack": "^5.5.0",
     "@types/react-dom": "^17.0.9",
+    "emotion": "^11.0.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
