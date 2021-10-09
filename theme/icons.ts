@@ -6,6 +6,7 @@ import tiktok from './_icons/tiktok.svg';
 import trayArrowDown from './_icons/tray-arrow-down.svg';
 import tune from './_icons/tune.svg';
 import twitter from './_icons/twitter.svg';
+import url from './_icons/url.svg';
 import videoPlusOutline from './_icons/video-plus-outline.svg';
 
 const icons = {
@@ -18,6 +19,7 @@ const icons = {
   instagram,
   tune,
   tiktok,
+  url,
 };
 
 export type IconType = keyof typeof icons;

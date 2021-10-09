@@ -28,6 +28,11 @@ const LINKS: Record<
     icon: 'tune',
     title: 'Manage',
   },
+  url: {
+    path: '/url',
+    icon: 'url',
+    title: 'URL',
+  },
 };
 
 const Navigation = ({ className = '' }: { className?: string }) => {
