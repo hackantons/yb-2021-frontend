@@ -51,7 +51,6 @@ const CreateVideo = ({
       player1: Object.keys(TEAM_API)[0],
       player2: Object.keys(TEAM_API)[1],
       minute: 70,
-      sponsor: Object.keys(SPONSORS)[0],
     },
   });
 

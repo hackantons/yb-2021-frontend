@@ -86,7 +86,12 @@ const ShareFileModal = ({
           </textarea>
           <ButtonGroup className={styles.tweetControls} align="right">
             {Boolean(tweetUrl) && (
-              <a href={tweetUrl} target="_blank" className={styles.tweetLink}>
+              <a
+                href={tweetUrl}
+                rel="noreferrrer noreferrer"
+                target="_blank"
+                className={styles.tweetLink}
+              >
                 Tweet ansehen
               </a>
             )}
