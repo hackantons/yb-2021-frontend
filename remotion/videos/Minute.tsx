@@ -19,7 +19,7 @@ export const Minute: React.FC<{
   const prog =
     spring({
       fps,
-      frame,
+      frame: frame,
       config: {
         damping: 200,
       },
