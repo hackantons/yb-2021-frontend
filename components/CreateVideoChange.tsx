@@ -11,6 +11,7 @@ import {
 } from '@theme';
 import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
+import { Orientiation } from '@utils/hack';
 import {
   PlayerI,
   TEAM_API,
@@ -23,9 +24,9 @@ import {
 } from '@utils/infos';
 import { Substitution } from '../remotion/videos/Substitution';
 import styles from './CreateVideo.module.css';
+import FormatToggle from './FormatToggle';
 
 interface InputProps {
-  comp: 'Substitution' | 'SubstitutionSquare';
   player1: string;
   player2: string;
   minute: number;
@@ -36,18 +37,19 @@ const CreateVideo = ({
   setVideoFile = (str) => {},
   setActiveType = (str) => {},
   formUpdates = null,
+  orientation,
 }: {
   setTweetMessage?: (str: string) => void;
   setVideoFile?: (str: string) => void;
   setActiveType?: (str: string) => void;
   formUpdates?: Array<[string, string]>;
+  orientation: Orientiation;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
 
   const form = useForm<InputProps>({
     defaultValues: {
-      comp: 'Substitution',
       player1: Object.keys(TEAM_API)[0],
       player2: Object.keys(TEAM_API)[1],
       minute: 70,
@@ -76,12 +78,8 @@ const CreateVideo = ({
             marginBottom: 0,
           }}
           component={Substitution}
-          compositionHeight={
-            formValues.comp === 'Substitution' ? VIDEO_HEIGHT : 1080
-          }
-          compositionWidth={
-            formValues.comp === 'Substitution' ? VIDEO_WIDTH : 1080
-          }
+          compositionHeight={orientation === 'portrait' ? VIDEO_HEIGHT : 1080}
+          compositionWidth={orientation === 'portrait' ? VIDEO_WIDTH : 1080}
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
@@ -93,6 +91,8 @@ const CreateVideo = ({
       </div>
       <div className={styles.form}>
         <h2 className={styles.formTitle}>Video Settings</h2>
+        <FormatToggle orientation={orientation} />
+
         <div className={styles.setActiveType}>
           Template:{' '}
           <button
@@ -114,7 +114,10 @@ const CreateVideo = ({
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: formValues.comp,
+              composition:
+                orientation === 'portrait'
+                  ? 'Substitution'
+                  : 'SubstitutionSquare',
               inputProps,
             };
 
@@ -127,16 +130,6 @@ const CreateVideo = ({
             setVideoInProgress(true);
           })}
         >
-          <FormElement
-            name="comp"
-            label="Format"
-            Input={InputSelect}
-            form={form}
-            options={{
-              Main: 'Portrait',
-              MainSquare: 'Square',
-            }}
-          />
           <FormElement
             name="player1"
             label="Spieler Out"

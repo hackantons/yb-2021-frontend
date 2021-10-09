@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { Player } from '@remotion/player';
 import React, { createRef, useImperativeHandle } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
@@ -10,6 +11,7 @@ import {
 } from '@theme';
 import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
+import { anyRef, Orientiation } from '@utils/hack';
 import {
   PlayerI,
   TEAM_API,
@@ -25,14 +27,9 @@ import { buildMessage } from '@utils/tweets';
 import { Main } from '../remotion/videos/Main';
 import { MainComp } from '../remotion/videos/MainComp';
 import styles from './CreateVideo.module.css';
-
-import FormatToggle from './FormatToggle'
-import styled from "@emotion/styled";
-import { anyRef } from '@utils/hack';
-
+import FormatToggle from './FormatToggle';
 
 interface InputProps {
-  comp: 'Main' | 'MainSquare';
   playerIndex: string;
   minute: number;
   homeScore: number;
@@ -41,18 +38,18 @@ interface InputProps {
   sponsor: string;
 }
 
-
-
 const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
   setActiveType = (str) => {},
   formUpdates = null,
+  orientation,
 }: {
   setTweetMessage?: (str: string) => void;
   setVideoFile?: (str: string) => void;
   setActiveType: (str: string) => void;
   formUpdates?: Array<[string, string]>;
+  orientation: Orientiation;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
@@ -67,7 +64,6 @@ const CreateVideo = ({
 
   const form = useForm<InputProps>({
     defaultValues: {
-      comp: 'Main',
       playerIndex: Object.keys(TEAM_API)[0],
       minute: 20,
       homeScore: 1,
@@ -76,13 +72,6 @@ const CreateVideo = ({
       sponsor: Object.keys(SPONSORS)[0],
     },
   });
-
-  useImperativeHandle(anyRef, () => {
-    return {
-       setValue: form.setValue
-    }
-  })
-
 
   const formValues = useWatch({ control: form.control });
   const selectedPlayer = React.useMemo<PlayerI>(
@@ -103,10 +92,10 @@ const CreateVideo = ({
     playerNumber: selectedPlayer.number,
   };
 
+  console.log({ orientation });
   return (
     <React.Fragment>
-      <div className={styles.format}>
-      </div>
+      <div className={styles.format}></div>
       <div className={styles.preview}>
         <Player
           style={{
@@ -114,13 +103,9 @@ const CreateVideo = ({
             width: 400,
             marginBottom: 0,
           }}
-          component={formValues.comp === 'MainSquare' ? MainComp : Main}
-          compositionHeight={
-            formValues.comp === 'MainSquare' ? 1080 : VIDEO_HEIGHT
-          }
-          compositionWidth={
-            formValues.comp === 'MainSquare' ? 1080 : VIDEO_WIDTH
-          }
+          component={orientation === 'portrait' ? Main : MainComp}
+          compositionHeight={orientation === 'portrait' ? VIDEO_HEIGHT : 1080}
+          compositionWidth={orientation === 'portrait' ? VIDEO_WIDTH : 1080}
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
@@ -132,6 +117,8 @@ const CreateVideo = ({
       </div>
       <div className={styles.form}>
         <h2 className={styles.formTitle}>Video Settings</h2>
+        <FormatToggle orientation={orientation} />
+
         <div className={styles.setActiveType}>
           Template:{' '}
           <button
@@ -153,7 +140,7 @@ const CreateVideo = ({
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: formValues.comp,
+              composition: orientation ? 'Goal' : 'GoalSquare',
               inputProps,
             };
             setTweetMessage(buildMessage(inputProps));
@@ -167,20 +154,6 @@ const CreateVideo = ({
             setVideoInProgress(true);
           })}
         >
-
-          <FormatToggle />
-
-          <FormElement
-
-            name="comp"
-            label="Format"
-            Input={InputSelect}
-            form={form}
-            options={{
-              Main: 'Portrait',
-              MainSquare: 'Square',
-            }}
-          />
           <FormElement
             name="playerIndex"
             label="Spieler"

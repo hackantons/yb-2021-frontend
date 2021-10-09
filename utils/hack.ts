@@ -1,5 +1,7 @@
-import { createRef } from "react";
+import { createRef } from 'react';
 
-export const anyRef =createRef<{
-    setValue: (name: "comp" | "playerIndex" | "minute" | "homeScore" | "awayScore" | "awayTeam" | "sponsor", value: string | number)  => void
-  }>()
+export const anyRef = createRef<{
+  setOrientation: (orientation: Orientiation) => void;
+}>();
+
+export type Orientiation = 'portrait' | 'square';

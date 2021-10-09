@@ -1,8 +1,7 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import React, { useState, useEffect } from 'react';
 import { Icon, IconType } from '@theme';
-import { anyRef } from "@utils/hack";
-import { useState, useEffect } from "react";
-
+import { anyRef, Orientiation } from '@utils/hack';
 
 const ToggleButton = styled.button`
   --toggle-width: 80px;
@@ -33,7 +32,9 @@ const ToggleButton = styled.button`
   },
 `;
 
-const ToggleThumb = styled.span`
+const ToggleThumb = styled.span<{
+  activeTheme: Orientiation;
+}>`
   position: absolute;
   top: var(--toggle-padding);
   left: var(--toggle-padding);
@@ -43,28 +44,29 @@ const ToggleThumb = styled.span`
   background: black;
   transition: transform 0.25s ease-in-out;
   transform: ${(p) =>
-    p.activeTheme === "portrait"
-      ? "translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)"
-      : "none"};
+    p.activeTheme === 'square'
+      ? 'translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)'
+      : 'none'};
 `;
 
-const FormatToggle = () => {
-    const [activeTheme, setActiveTheme] = useState("portrait");
-    const inactiveTheme = activeTheme === "portrait" ? "square" : "portrait";
-
-    useEffect(() => {
-        document.body.dataset.theme = activeTheme;
-        console.log("theme: " + activeTheme)
-        anyRef.current.setValue('comp', activeTheme)
-        // window.localStorage.setItem("theme", activeTheme);
-      }, [activeTheme]);    
+const FormatToggle: React.FC<{
+  orientation: Orientiation;
+}> = ({ orientation }) => {
+  const inactiveTheme: Orientiation =
+    orientation === 'portrait' ? 'square' : 'portrait';
 
   return (
-    <ToggleButton type="button" onClick={() => setActiveTheme(inactiveTheme)}>
-
-    <ToggleThumb activeTheme={activeTheme} />
-      <span><img alt="portrait" src="/portrait.png" /></span>
-      <span><img alt="portrait" src="/square.png" /></span>
+    <ToggleButton
+      type="button"
+      onClick={() => anyRef.current.setOrientation(inactiveTheme)}
+    >
+      <ToggleThumb activeTheme={orientation} />
+      <span>
+        <img alt="portrait" src="/portrait.png" />
+      </span>
+      <span>
+        <img alt="portrait" src="/square.png" />
+      </span>
     </ToggleButton>
   );
 };
