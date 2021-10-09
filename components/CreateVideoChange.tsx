@@ -2,87 +2,62 @@ import { Player } from '@remotion/player';
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import {
+  Button,
   Form,
   FormControls,
   FormElement,
   InputSelect,
   InputText,
 } from '@theme';
+import { ActiveFormType } from '@comps/CreateVideo';
+import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
 import {
   PlayerI,
   TEAM_API,
   TEAMS,
-  SPONSORS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
   FPS,
   GOAL_VIDEO_DURATION,
 } from '@utils/infos';
-import { buildMessage } from '@utils/tweets';
-import { Main } from '../remotion/videos/Main';
-import { MainComp } from '../remotion/videos/MainComp';
+import { Substitution } from '../remotion/videos/Substitution';
 import styles from './CreateVideo.module.css';
 
 interface InputProps {
-  comp: 'Main' | 'MainSquare';
-  playerIndex: string;
+  comp: 'Substitution' | 'SubstitutionSquare';
+  player1: string;
+  player2: string;
   minute: number;
-  homeScore: number;
-  awayScore: number;
-  awayTeam: string;
-  sponsor: string;
 }
 
 const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
-  setFileName = (str) => {},
+  setActiveType = (str) => {},
 }: {
-  setTweetMessage?: (res: string) => void;
-  setVideoFile?: (res: string) => void;
-  setFileName?: (res: string) => void;
+  setTweetMessage?: (str: string) => void;
+  setVideoFile?: (str: string) => void;
+  setActiveType?: (str: ActiveFormType) => void;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
 
-  const filteredTeams: Record<string, string> = Object.entries(TEAMS).reduce(
-    (acc, [index, title]) => ({
-      ...acc,
-      ...(index !== 'yb' ? { [index]: title } : {}),
-    }),
-    {}
-  );
-
   const form = useForm<InputProps>({
     defaultValues: {
-      comp: 'Main',
-      playerIndex: Object.keys(TEAM_API)[0],
-      minute: 20,
-      homeScore: 1,
-      awayScore: 0,
-      awayTeam: Object.keys(filteredTeams)[0],
-      sponsor: Object.keys(SPONSORS)[0],
+      comp: 'Substitution',
+      player1: Object.keys(TEAM_API)[0],
+      player2: Object.keys(TEAM_API)[1],
+      minute: 70,
     },
   });
 
   const formValues = useWatch({ control: form.control });
-  const selectedPlayer = React.useMemo<PlayerI>(
-    () => TEAM_API[parseInt(formValues.playerIndex)],
-    [formValues]
-  );
 
   const inputProps = {
-    firstName: selectedPlayer.firstName,
-    lastName: selectedPlayer.lastName,
-    seasonGoal: selectedPlayer.stat.goals + 1,
+    player1: parseInt(formValues.player1),
+    player2: parseInt(formValues.player2),
     minute: formValues.minute,
-    homeScore: formValues.homeScore <= 1 ? 1 : formValues.homeScore,
-    awayScore: formValues.awayScore,
-    awayTeam: formValues.awayTeam,
-    sponsor: formValues.sponsor,
-    portraitAction: selectedPlayer.assets.action,
-    playerNumber: selectedPlayer.number,
   };
 
   return (
@@ -94,12 +69,12 @@ const CreateVideo = ({
             width: 400,
             marginBottom: 0,
           }}
-          component={formValues.comp === 'MainSquare' ? MainComp : Main}
+          component={Substitution}
           compositionHeight={
-            formValues.comp === 'MainSquare' ? 1080 : VIDEO_HEIGHT
+            formValues.comp === 'Substitution' ? VIDEO_HEIGHT : 1080
           }
           compositionWidth={
-            formValues.comp === 'MainSquare' ? 1080 : VIDEO_WIDTH
+            formValues.comp === 'Substitution' ? VIDEO_WIDTH : 1080
           }
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
@@ -112,16 +87,30 @@ const CreateVideo = ({
       </div>
       <div className={styles.form}>
         <h2 className={styles.formTitle}>Video Settings</h2>
+        <div className={styles.setActiveType}>
+          Template:{' '}
+          <button
+            className={cn(
+              styles.setActiveTypeButton,
+              styles.setActiveTypeButtonActive
+            )}
+            onClick={() => setActiveType('change')}
+          >
+            Auswechslung
+          </button>
+          <button
+            className={cn(styles.setActiveTypeButton)}
+            onClick={() => setActiveType('goal')}
+          >
+            Tor
+          </button>
+        </div>
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: 'Goal',
+              composition: formValues.comp,
               inputProps,
             };
-            setTweetMessage(buildMessage(inputProps));
-            setFileName(
-              `goal-${inputProps.firstName}-${inputProps.lastName}-min${inputProps.minute}`
-            );
 
             fetchVideo(body, setVideoProgress).then((file) => {
               setVideoFile(file);
@@ -143,17 +132,38 @@ const CreateVideo = ({
             }}
           />
           <FormElement
-            name="playerIndex"
-            label="Spieler"
+            name="player1"
+            label="Spieler Out"
             Input={InputSelect}
             form={form}
-            options={Object.entries(TEAM_API).reduce(
-              (acc, [index, p]) => ({
-                ...acc,
-                [index]: `${p.firstName} ${p.lastName}`,
-              }),
-              {}
-            )}
+            options={Object.entries(TEAM_API)
+              .filter(([a, b]) => {
+                return a !== '99' && a !== '98';
+              })
+              .reduce(
+                (acc, [index, p]) => ({
+                  ...acc,
+                  [index]: `${p.firstName} ${p.lastName}`,
+                }),
+                {}
+              )}
+          />
+          <FormElement
+            name="player2"
+            label="Spieler In"
+            Input={InputSelect}
+            form={form}
+            options={Object.entries(TEAM_API)
+              .filter(([a, b]) => {
+                return a !== '99' && a !== '98';
+              })
+              .reduce(
+                (acc, [index, p]) => ({
+                  ...acc,
+                  [index]: `${p.firstName} ${p.lastName}`,
+                }),
+                {}
+              )}
           />
           <FormElement
             name="minute"
@@ -163,34 +173,6 @@ const CreateVideo = ({
             min={1}
             max={90}
             type="number"
-          />
-          <FormElement
-            name="homeScore"
-            label="Score YB"
-            Input={InputText}
-            form={form}
-            type="number"
-          />
-          <FormElement
-            name="awayScore"
-            label="Score Gast"
-            Input={InputText}
-            form={form}
-            type="number"
-          />
-          <FormElement
-            name="awayTeam"
-            label="Gegner"
-            Input={InputSelect}
-            form={form}
-            options={filteredTeams}
-          />
-          <FormElement
-            name="sponsor"
-            label="Sponsor"
-            Input={InputSelect}
-            form={form}
-            options={SPONSORS}
           />
           <FormControls
             align="right"

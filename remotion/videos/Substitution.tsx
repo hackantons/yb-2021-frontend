@@ -10,6 +10,7 @@ import {
 } from 'remotion';
 import { ArrowUp } from './ArrowUp';
 import { Background } from './Background';
+import { MinuteClock } from './MinuteClock';
 import { PlayerPortrait } from './PlayerPortrait';
 import { SubstitutionPanel } from './SubstitutionPanel';
 import { Whirl } from './Whirl';
@@ -17,30 +18,34 @@ import { YELLOW } from './colors';
 
 const transparent = interpolateColors(0, [0, 1], [YELLOW, 'transparent']);
 
+const delay = 30;
+
 export const Substitution: React.FC<{
   player1: number;
   player2: number;
-}> = ({ player1, player2 }) => {
+  minute: number;
+  type: 'square' | 'portrait';
+}> = ({ player1, player2, minute, type }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
 
   const progressIn =
     spring({
       fps,
-      frame: frame,
+      frame: frame - delay,
       config: {
         damping: 200,
-        mass: 2,
+        mass: 1,
       },
     }) * 0.5;
 
   const progressOut =
     spring({
       fps,
-      frame: frame - 80,
+      frame: frame - 80 - delay,
       config: {
         damping: 200,
-        mass: 2,
+        mass: 1,
       },
     }) * 0.5;
 
@@ -48,14 +53,20 @@ export const Substitution: React.FC<{
 
   const proportion = progressIn + progressOut;
 
+  const firstOpacity = interpolate(frame, [50 + delay, 60 + delay], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const secondOpacity = 1 - firstOpacity;
+
   const firstBackgroundColor = interpolateColors(
-    frame,
-    [50, 60],
-    [transparent, 'transparent']
+    firstOpacity,
+    [0, 1],
+    ['transparent', transparent]
   );
   const secondBackgroundColor = interpolateColors(
-    frame,
-    [50, 60],
+    secondOpacity,
+    [0, 1],
     ['transparent', transparent]
   );
 
@@ -75,6 +86,8 @@ export const Substitution: React.FC<{
             height={height * (1 - proportion)}
             type="up"
             playerNumber={player1}
+            opacity={firstOpacity}
+            orientation={type}
           ></SubstitutionPanel>
           <SubstitutionPanel
             slide={0}
@@ -82,8 +95,11 @@ export const Substitution: React.FC<{
             height={height * proportion}
             type="down"
             playerNumber={player2}
+            opacity={secondOpacity}
+            orientation={type}
           ></SubstitutionPanel>
         </AbsoluteFill>
+        <MinuteClock minute={minute}></MinuteClock>
       </Background>
     </AbsoluteFill>
   );
