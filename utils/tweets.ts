@@ -41,7 +41,7 @@ export const buildMessage = (inputProps: Data) => {
   }
   if (inputProps.awayScore === inputProps.homeScore) {
     return replace(
-      equalMessage[randomNumber(0, randomNumber.length - 1)],
+      equalMessage[randomNumber(0, equalMessage.length - 1)],
       inputProps
     );
   }
