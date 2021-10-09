@@ -1,6 +1,7 @@
 import React from 'react';
 import { Img } from 'remotion';
 import { TEAM_API } from '../../utils/infos';
+import { YELLOW } from './colors';
 import { useFont } from './use-font';
 
 export const PlayerPortrait: React.FC<{
@@ -26,7 +27,7 @@ export const PlayerPortrait: React.FC<{
       ></Img>
       <div
         style={{
-          backgroundColor: 'yellow',
+          backgroundColor: YELLOW,
           fontSize: 60,
           padding: '10px 14px',
           fontFamily: 'YB',
@@ -36,6 +37,7 @@ export const PlayerPortrait: React.FC<{
           top: 350,
         }}
       >
+        <span style={{ color: 'white' }}>{playerNumber}</span>{' '}
         {TEAM_API[playerNumber].lastName.toUpperCase()}
       </div>
     </div>

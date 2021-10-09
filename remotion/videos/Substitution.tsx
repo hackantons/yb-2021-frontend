@@ -10,6 +10,7 @@ import {
 } from 'remotion';
 import { ArrowUp } from './ArrowUp';
 import { Background } from './Background';
+import { MinuteClock } from './MinuteClock';
 import { PlayerPortrait } from './PlayerPortrait';
 import { SubstitutionPanel } from './SubstitutionPanel';
 import { Whirl } from './Whirl';
@@ -22,7 +23,8 @@ const delay = 30;
 export const Substitution: React.FC<{
   player1: number;
   player2: number;
-}> = ({ player1, player2 }) => {
+  minute: number;
+}> = ({ player1, player2, minute }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -94,6 +96,7 @@ export const Substitution: React.FC<{
             opacity={secondOpacity}
           ></SubstitutionPanel>
         </AbsoluteFill>
+        <MinuteClock minute={minute}></MinuteClock>
       </Background>
     </AbsoluteFill>
   );
