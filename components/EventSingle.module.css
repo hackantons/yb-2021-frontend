@@ -5,7 +5,13 @@
   outline: none;
   border: none;
   text-align: left;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.rootActive {
   cursor: pointer;
+  opacity: 1;
 }
 
 .type {

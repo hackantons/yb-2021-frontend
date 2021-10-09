@@ -40,7 +40,7 @@ export const Spieler: React.FC<{
           <AbsoluteFill style={{}}>
             {playerNumber === 98 ? (
               <Carola></Carola>
-            ) : playerNumber === 99 ? (
+            ) : playerNumber === 99 || playerNumber === 6 ? (
               <Jana></Jana>
             ) : (
               <DefaultSpieler

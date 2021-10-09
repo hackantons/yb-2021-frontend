@@ -12,9 +12,9 @@ const events: Array<EventI> = [
     text: 'Schick für Mbabu',
     team: 'yb',
     formValues: {
-      minute: 30,
-      player2: 19,
-      player1: 43,
+      //minute: 30,
+      //player2: 19,
+      //player1: 43,
     },
   },
   {
@@ -38,11 +38,11 @@ const events: Array<EventI> = [
     text: 'Sulejmani 2:0',
     team: 'yb',
     formValues: {
-      minute: 42,
-      playerIndex: 7,
-      homeScore: 2,
-      awayScore: 0,
-      awayTeam: 'basel',
+      //minute: 42,
+      //playerIndex: 7,
+      //homeScore: 2,
+      //awayScore: 0,
+      //awayTeam: 'basel',
     },
   },
   {
@@ -52,11 +52,11 @@ const events: Array<EventI> = [
     text: 'Camara (Sulejmani) 3:0',
     team: 'yb',
     formValues: {
-      minute: 52,
-      playerIndex: 4,
-      homeScore: 3,
-      awayScore: 0,
-      awayTeam: 'basel',
+      //minute: 52,
+      //playerIndex: 4,
+      //homeScore: 3,
+      //awayScore: 0,
+      //awayTeam: 'basel',
     },
   },
   {
@@ -66,11 +66,11 @@ const events: Array<EventI> = [
     text: 'Hoarau (Sanogo) 4:0',
     team: 'yb',
     formValues: {
-      minute: 60,
-      playerIndex: 99,
-      homeScore: 4,
-      awayScore: 0,
-      awayTeam: 'basel',
+      //minute: 60,
+      //playerIndex: 99,
+      //homeScore: 4,
+      //awayScore: 0,
+      //awayTeam: 'basel',
     },
   },
   {
@@ -81,7 +81,8 @@ const events: Array<EventI> = [
     team: 'yb',
     formValues: {
       minute: 65,
-      player2: 6,
+      //player2: 6, workaroud weil wir bertone nicht haben
+      player2: 30,
       player1: 16,
     },
   },
@@ -92,9 +93,9 @@ const events: Array<EventI> = [
     text: 'Zuffi für Pululu',
     team: 'basel',
     formValues: {
-      minute: 67,
-      player2: 6,
-      player1: 37,
+      //minute: 67,
+      //player2: 6,
+      //player1: 37,
     },
   },
   {
@@ -118,9 +119,9 @@ const events: Array<EventI> = [
     text: 'Assalé für Sulejmani',
     team: 'yb',
     formValues: {
-      minute: 71,
-      player2: 17,
-      player1: 7,
+      //minute: 71,
+      //player2: 17,
+      //player1: 7,
     },
   },
   {
@@ -128,11 +129,11 @@ const events: Array<EventI> = [
     type: EVENT_TYPES.CHANGE,
     minute: 73,
     text: 'Bua für Okafor',
-    team: 'yb',
+    team: 'basel',
     formValues: {
-      minute: 73,
-      player2: 33,
-      player1: 11,
+      //minute: 73,
+      //player2: 33,
+      //player1: 11,
     },
   },
   {
@@ -142,11 +143,11 @@ const events: Array<EventI> = [
     text: 'Van Wolfswinkel 5:1',
     team: 'basel',
     formValues: {
-      minute: 75,
-      playerIndex: 9,
-      homeScore: 5,
-      awayScore: 1,
-      awayTeam: 'basel',
+      //minute: 75,
+      //playerIndex: 9,
+      //homeScore: 5,
+      //awayScore: 1,
+      //awayTeam: 'basel',
     },
   },
   {
@@ -157,7 +158,8 @@ const events: Array<EventI> = [
     team: 'yb',
     formValues: {
       minute: 80,
-      playerIndex: 9,
+      //playerIndex: 6, workaroud weil wir bertone nicht haben
+      playerIndex: 30,
       homeScore: 6,
       awayScore: 1,
       awayTeam: 'basel',
@@ -170,9 +172,9 @@ const events: Array<EventI> = [
     text: 'Oberlin für Ajeti',
     team: 'basel',
     formValues: {
-      minute: 86,
-      player2: 19,
-      player1: 22,
+      //minute: 86,
+      //player2: 19,
+      //player1: 22,
     },
   },
   {
@@ -182,11 +184,11 @@ const events: Array<EventI> = [
     text: 'Assalé (Moumi Ngamaleu) 7:1',
     team: 'yb',
     formValues: {
-      minute: 89,
-      playerIndex: 17,
-      homeScore: 7,
-      awayScore: 1,
-      awayTeam: 'basel',
+      //minute: 89,
+      //playerIndex: 17,
+      //homeScore: 7,
+      //awayScore: 1,
+      //awayTeam: 'basel',
     },
   },
 ];

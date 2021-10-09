@@ -83,7 +83,7 @@ const CreateVideo = ({
   }, [values]);
 
   const formValues = useWatch({ control: form.control });
-  console.log(formValues);
+
   const selectedPlayer = React.useMemo<PlayerI>(
     () => TEAM_API[parseInt(formValues.playerIndex)],
     [formValues]

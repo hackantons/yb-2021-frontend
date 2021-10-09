@@ -16,13 +16,19 @@ const EventSingle = ({
   setActiveType?: (str: string) => void;
   setDefaultValues?: (str: Object) => void;
 }) => {
+  const active = Object.keys(event.formValues).length !== 0;
+
   return (
     <button
       onClick={() => {
-        setActiveType(event.type);
-        setDefaultValues(event.formValues);
+        if (active) {
+          setActiveType(event.type);
+          setDefaultValues(event.formValues);
+        }
       }}
-      className={cn(className, styles.root)}
+      className={cn(className, styles.root, {
+        [styles.rootActive]: active,
+      })}
     >
       <p className={styles.type}>
         <b>{event.type}</b> <span>Min. {event.minute}</span>

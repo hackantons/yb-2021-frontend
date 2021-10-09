@@ -67,6 +67,22 @@ export const TEAM_API: Record<number, PlayerI> = {
         'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/16_fassnacht_action.png',
     },
   },
+  6: {
+    firstName: 'Leonardo',
+    lastName: 'Bertone',
+    number: 6,
+    position: POSITIONEN.MITTELFELD,
+    stat: {
+      games: 6,
+      goals: 4,
+    },
+    assets: {
+      portrait:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_Lauper.png',
+      action:
+        'https://yb-hackathon-2021-players.s3.eu-central-1.amazonaws.com/30_lauper_action.png',
+    },
+  },
   26: {
     firstName: 'David',
     lastName: 'von Ballmoos',
