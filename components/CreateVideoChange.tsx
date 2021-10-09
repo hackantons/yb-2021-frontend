@@ -26,7 +26,7 @@ import { Substitution } from '../remotion/videos/Substitution';
 import styles from './CreateVideo.module.css';
 
 interface InputProps {
-  comp: 'Main' | 'MainSquare';
+  comp: 'Substitution' | 'SubstitutionSquare';
   player1: string;
   player2: string;
   minute: number;
