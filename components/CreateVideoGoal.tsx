@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Player } from '@remotion/player';
+import { Player, PlayerRef } from '@remotion/player';
 import React, { createRef, useImperativeHandle } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import {
@@ -55,6 +55,7 @@ const CreateVideo = ({
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
+  const playerRef = React.useRef<PlayerRef>(null);
 
   const filteredTeams: Record<string, string> = Object.entries(TEAMS).reduce(
     (acc, [index, title]) => ({
@@ -80,6 +81,9 @@ const CreateVideo = ({
       // @ts-ignore
       form.setValue(key, value)
     );
+    playerRef.current.pause();
+    playerRef.current.seekTo(1);
+    playerRef.current.play();
   }, [values]);
 
   const formValues = useWatch({ control: form.control });
@@ -122,6 +126,7 @@ const CreateVideo = ({
           spaceKeyToPlayOrPause
           autoPlay
           inputProps={inputProps}
+          ref={playerRef}
         />
       </div>
       <div className={styles.form}>
