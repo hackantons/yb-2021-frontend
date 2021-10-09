@@ -9,7 +9,6 @@ import {
   InputSelect,
   InputText,
 } from '@theme';
-import { ActiveFormType } from '@comps/CreateVideo';
 import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
 import {
@@ -21,6 +20,7 @@ import {
   VIDEO_WIDTH,
   FPS,
   GOAL_VIDEO_DURATION,
+  EVENT_TYPES,
 } from '@utils/infos';
 import { Substitution } from '../remotion/videos/Substitution';
 import styles from './CreateVideo.module.css';
@@ -37,10 +37,12 @@ const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
   setActiveType = (str) => {},
+  formUpdates = null,
 }: {
   setTweetMessage?: (str: string) => void;
   setVideoFile?: (str: string) => void;
-  setActiveType?: (str: ActiveFormType) => void;
+  setActiveType?: (str: string) => void;
+  formUpdates?: Array<[string, string]>;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
@@ -49,11 +51,15 @@ const CreateVideo = ({
     defaultValues: {
       comp: 'Main',
       player1: Object.keys(TEAM_API)[0],
-      player2: Object.keys(TEAM_API)[0],
+      player2: Object.keys(TEAM_API)[1],
       minute: 20,
       sponsor: Object.keys(SPONSORS)[0],
     },
   });
+
+  React.useEffect(() => {
+    formUpdates && formUpdates.map((v) => console.log('update', v[0], v[1]));
+  }, [formUpdates]);
 
   const formValues = useWatch({ control: form.control });
 
@@ -92,13 +98,13 @@ const CreateVideo = ({
               styles.setActiveTypeButton,
               styles.setActiveTypeButtonActive
             )}
-            onClick={() => setActiveType('change')}
+            onClick={() => setActiveType(EVENT_TYPES.CHANGE)}
           >
             Auswechslung
           </button>
           <button
             className={cn(styles.setActiveTypeButton)}
-            onClick={() => setActiveType('goal')}
+            onClick={() => setActiveType(EVENT_TYPES.GOAL)}
           >
             Tor
           </button>

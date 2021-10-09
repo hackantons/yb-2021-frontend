@@ -28,7 +28,14 @@
 }
 
 .setActiveTypeButton {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 0.5em;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .setActiveTypeButtonActive {
+  text-decoration: underline;
 }

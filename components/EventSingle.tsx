@@ -6,13 +6,18 @@ import styles from './EventSingle.module.css';
 const EventSingle = ({
   className = '',
   event,
+  setActiveType,
 }: {
   className?: string;
   event: EventI;
+  setActiveType?: (str: string) => void;
 }) => {
   return (
     <button
-      onClick={() => console.log(event)}
+      onClick={() => {
+        setActiveType(event.type);
+        console.log('setFormValues', Object.entries(event.formValues));
+      }}
       className={cn(className, styles.root)}
     >
       <p className={styles.type}>

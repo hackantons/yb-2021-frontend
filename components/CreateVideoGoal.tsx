@@ -8,7 +8,6 @@ import {
   InputSelect,
   InputText,
 } from '@theme';
-import { ActiveFormType } from '@comps/CreateVideo';
 import cn from '@utils/classnames';
 import { fetchVideo } from '@utils/fetchVideo';
 import {
@@ -20,6 +19,7 @@ import {
   VIDEO_WIDTH,
   FPS,
   GOAL_VIDEO_DURATION,
+  EVENT_TYPES,
 } from '@utils/infos';
 import { buildMessage } from '@utils/tweets';
 import { Main } from '../remotion/videos/Main';
@@ -40,10 +40,12 @@ const CreateVideo = ({
   setTweetMessage = (str) => {},
   setVideoFile = (str) => {},
   setActiveType = (str) => {},
+  formUpdates = null,
 }: {
   setTweetMessage?: (str: string) => void;
   setVideoFile?: (str: string) => void;
-  setActiveType: (str: ActiveFormType) => void;
+  setActiveType: (str: string) => void;
+  formUpdates?: Array<[string, string]>;
 }) => {
   const [videoProgress, setVideoProgress] = React.useState<number>(0);
   const [videoInProgress, setVideoInProgress] = React.useState<boolean>(false);
@@ -67,6 +69,11 @@ const CreateVideo = ({
       sponsor: Object.keys(SPONSORS)[0],
     },
   });
+
+  React.useEffect(() => {
+    formUpdates &&
+      formUpdates.map(([key, value]) => console.log('update', key, value));
+  }, [formUpdates]);
 
   const formValues = useWatch({ control: form.control });
   const selectedPlayer = React.useMemo<PlayerI>(
@@ -117,17 +124,17 @@ const CreateVideo = ({
         <div className={styles.setActiveType}>
           Template:{' '}
           <button
-            className={cn(
-              styles.setActiveTypeButton,
-              styles.setActiveTypeButtonActive
-            )}
-            onClick={() => setActiveType('change')}
+            className={cn(styles.setActiveTypeButton)}
+            onClick={() => setActiveType(EVENT_TYPES.CHANGE)}
           >
             Auswechslung
           </button>
           <button
-            className={cn(styles.setActiveTypeButton)}
-            onClick={() => setActiveType('goal')}
+            className={cn(
+              styles.setActiveTypeButton,
+              styles.setActiveTypeButtonActive
+            )}
+            onClick={() => setActiveType(EVENT_TYPES.GOAL)}
           >
             Tor
           </button>

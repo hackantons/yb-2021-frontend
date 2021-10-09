@@ -4,33 +4,6 @@ import cn from '@utils/classnames';
 import { EventI, EVENT_TYPES, TEAMS } from '@utils/infos';
 import styles from './EventList.module.css';
 
-const test = [
-  {
-    timestamp: 1633719378,
-    type: EVENT_TYPES.GOAL,
-    minute: 12,
-    text: 'Tor für BSCYB von Nico Maier',
-    team: TEAMS.yb,
-    payload: {
-      playerIndex: 2,
-      homeScore: 7,
-      awayScore: 2,
-      awayTeam: TEAMS.basel,
-    },
-  },
-  {
-    timestamp: 1633719379,
-    type: EVENT_TYPES.CHANGE,
-    minute: 55,
-    text: 'Christian Fasnacht kommt für Michel Aebischer',
-    team: TEAMS.yb,
-    payload: {
-      playerInIndex: 4,
-      playerOutIndex: 3,
-    },
-  },
-];
-
 const events: Array<EventI> = [
   {
     timestamp: 1633719379,
@@ -38,7 +11,7 @@ const events: Array<EventI> = [
     minute: 30,
     text: 'Schick für Mbabu',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerInIndex: 19,
       playerOutIndex: 43,
     },
@@ -49,7 +22,7 @@ const events: Array<EventI> = [
     minute: 33,
     text: 'Fassnacht (Sulejmani) 1:0',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 16,
       homeScore: 1,
       awayScore: 0,
@@ -62,7 +35,7 @@ const events: Array<EventI> = [
     minute: 42,
     text: 'Sulejmani 2:0',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 7,
       homeScore: 2,
       awayScore: 0,
@@ -75,7 +48,7 @@ const events: Array<EventI> = [
     minute: 52,
     text: 'Camara (Sulejmani) 3:0',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 4,
       homeScore: 3,
       awayScore: 0,
@@ -88,7 +61,7 @@ const events: Array<EventI> = [
     minute: 60,
     text: 'Hoarau (Sanogo) 4:0',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 99,
       homeScore: 4,
       awayScore: 0,
@@ -101,7 +74,7 @@ const events: Array<EventI> = [
     minute: 65,
     text: 'Bertone für Fassnacht',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerInIndex: 6,
       playerOutIndex: 16,
     },
@@ -112,7 +85,7 @@ const events: Array<EventI> = [
     minute: 67,
     text: 'Zuffi für Pululu',
     team: TEAMS.basel,
-    payload: {
+    formValues: {
       playerInIndex: 6,
       playerOutIndex: 37,
     },
@@ -123,7 +96,7 @@ const events: Array<EventI> = [
     minute: 70,
     text: 'Aebischer (Bertone) 5:0',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 20,
       homeScore: 5,
       awayScore: 0,
@@ -136,7 +109,7 @@ const events: Array<EventI> = [
     minute: 71,
     text: 'Assalé für Sulejmani',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerInIndex: 17,
       playerOutIndex: 7,
     },
@@ -147,7 +120,7 @@ const events: Array<EventI> = [
     minute: 73,
     text: 'Bua für Okafor',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerInIndex: 33,
       playerOutIndex: 11,
     },
@@ -158,7 +131,7 @@ const events: Array<EventI> = [
     minute: 75,
     text: 'Van Wolfswinkel 5:1',
     team: TEAMS.basel,
-    payload: {
+    formValues: {
       playerIndex: 9,
       homeScore: 5,
       awayScore: 1,
@@ -171,7 +144,7 @@ const events: Array<EventI> = [
     minute: 80,
     text: 'Bertone (Schick) 6:1',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 9,
       homeScore: 6,
       awayScore: 1,
@@ -184,7 +157,7 @@ const events: Array<EventI> = [
     minute: 73,
     text: 'Oberlin für Ajeti',
     team: TEAMS.basel,
-    payload: {
+    formValues: {
       playerInIndex: 19,
       playerOutIndex: 22,
     },
@@ -195,7 +168,7 @@ const events: Array<EventI> = [
     minute: 80,
     text: 'Assalé (Moumi Ngamaleu) 7:1',
     team: TEAMS.yb,
-    payload: {
+    formValues: {
       playerIndex: 17,
       homeScore: 7,
       awayScore: 1,
@@ -204,7 +177,13 @@ const events: Array<EventI> = [
   },
 ];
 
-const EventList = ({ className = '' }: { className?: string }) => {
+const EventList = ({
+  setActiveType,
+  className = '',
+}: {
+  className?: string;
+  setActiveType?: (str: string) => void;
+}) => {
   return (
     <div className={cn(className, styles.root)}>
       <h3>YB - Basel 23.09.18</h3>
@@ -226,7 +205,12 @@ const EventList = ({ className = '' }: { className?: string }) => {
       </table>
       <div className={cn(styles.list)}>
         {events.map((event, i) => (
-          <EventSingle key={i} event={event} className={styles.entry} />
+          <EventSingle
+            setActiveType={setActiveType}
+            key={i}
+            event={event}
+            className={styles.entry}
+          />
         ))}
       </div>
     </div>

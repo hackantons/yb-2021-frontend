@@ -132,16 +132,16 @@ export const VIDEO_WIDTH = 720;
 export const FPS = 30;
 export const GOAL_VIDEO_DURATION = 265;
 
-export enum EVENT_TYPES {
-  GOAL = 'Tor',
-  CHANGE = 'Wechsel',
-}
+export const EVENT_TYPES = {
+  GOAL: 'GOAL',
+  CHANGE: 'CHANGE',
+};
 
 export interface EventI {
   timestamp: number;
-  type: EVENT_TYPES;
+  type: string;
   team: string;
   minute: number;
   text: string;
-  payload: Object;
+  formValues: Object;
 }
