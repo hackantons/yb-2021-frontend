@@ -15,7 +15,6 @@ import {
   PlayerI,
   TEAM_API,
   TEAMS,
-  SPONSORS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
   FPS,
@@ -26,11 +25,10 @@ import { Substitution } from '../remotion/videos/Substitution';
 import styles from './CreateVideo.module.css';
 
 interface InputProps {
-  comp: 'Main' | 'MainSquare';
+  comp: 'Substitution' | 'SubstitutionSquare';
   player1: string;
   player2: string;
   minute: number;
-  sponsor: string;
 }
 
 const CreateVideo = ({
@@ -49,10 +47,10 @@ const CreateVideo = ({
 
   const form = useForm<InputProps>({
     defaultValues: {
-      comp: 'Main',
+      comp: 'Substitution',
       player1: Object.keys(TEAM_API)[0],
       player2: Object.keys(TEAM_API)[1],
-      minute: 20,
+      minute: 70,
       sponsor: Object.keys(SPONSORS)[0],
     },
   });
@@ -66,6 +64,7 @@ const CreateVideo = ({
   const inputProps = {
     player1: parseInt(formValues.player1),
     player2: parseInt(formValues.player2),
+    minute: formValues.minute,
   };
 
   return (
@@ -78,8 +77,12 @@ const CreateVideo = ({
             marginBottom: 0,
           }}
           component={Substitution}
-          compositionHeight={VIDEO_HEIGHT}
-          compositionWidth={VIDEO_WIDTH}
+          compositionHeight={
+            formValues.comp === 'Substitution' ? VIDEO_HEIGHT : 1080
+          }
+          compositionWidth={
+            formValues.comp === 'Substitution' ? VIDEO_WIDTH : 1080
+          }
           fps={FPS}
           durationInFrames={GOAL_VIDEO_DURATION}
           controls
@@ -112,7 +115,7 @@ const CreateVideo = ({
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: 'Goal',
+              composition: formValues.comp,
               inputProps,
             };
 
@@ -140,26 +143,34 @@ const CreateVideo = ({
             label="Spieler Out"
             Input={InputSelect}
             form={form}
-            options={Object.entries(TEAM_API).reduce(
-              (acc, [index, p]) => ({
-                ...acc,
-                [index]: `${p.firstName} ${p.lastName}`,
-              }),
-              {}
-            )}
+            options={Object.entries(TEAM_API)
+              .filter(([a, b]) => {
+                return a !== '99' && a !== '98';
+              })
+              .reduce(
+                (acc, [index, p]) => ({
+                  ...acc,
+                  [index]: `${p.firstName} ${p.lastName}`,
+                }),
+                {}
+              )}
           />
           <FormElement
             name="player2"
             label="Spieler In"
             Input={InputSelect}
             form={form}
-            options={Object.entries(TEAM_API).reduce(
-              (acc, [index, p]) => ({
-                ...acc,
-                [index]: `${p.firstName} ${p.lastName}`,
-              }),
-              {}
-            )}
+            options={Object.entries(TEAM_API)
+              .filter(([a, b]) => {
+                return a !== '99' && a !== '98';
+              })
+              .reduce(
+                (acc, [index, p]) => ({
+                  ...acc,
+                  [index]: `${p.firstName} ${p.lastName}`,
+                }),
+                {}
+              )}
           />
           <FormElement
             name="minute"
@@ -169,13 +180,6 @@ const CreateVideo = ({
             min={1}
             max={90}
             type="number"
-          />
-          <FormElement
-            name="sponsor"
-            label="Sponsor"
-            Input={InputSelect}
-            form={form}
-            options={SPONSORS}
           />
           <FormControls
             align="right"

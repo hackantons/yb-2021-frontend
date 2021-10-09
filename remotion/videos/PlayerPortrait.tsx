@@ -1,43 +1,60 @@
 import React from 'react';
-import { Img } from 'remotion';
+import { AbsoluteFill, Img } from 'remotion';
 import { TEAM_API } from '../../utils/infos';
+import { YELLOW } from './colors';
 import { useFont } from './use-font';
 
 export const PlayerPortrait: React.FC<{
   style: React.CSSProperties;
   height: number;
   playerNumber: number;
-}> = ({ style, height, playerNumber }) => {
+  orientiation: 'portrait' | 'square';
+}> = ({ style, height, playerNumber, orientiation }) => {
   useFont();
   return (
-    <div
-      style={{
-        ...style,
-        display: 'inline-flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
+    <AbsoluteFill
+      style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}
     >
-      <Img
-        src={TEAM_API[playerNumber].assets.portrait}
-        style={{
-          height,
-        }}
-      ></Img>
       <div
         style={{
-          backgroundColor: 'yellow',
-          fontSize: 60,
-          padding: '10px 14px',
-          fontFamily: 'YB',
-          display: 'inline-block',
-          textAlign: 'center',
-          position: 'absolute',
-          top: 350,
+          ...style,
+          display: 'inline-flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
-        {TEAM_API[playerNumber].lastName.toUpperCase()}
+        <Img
+          src={TEAM_API[playerNumber].assets.portrait}
+          style={{
+            height,
+          }}
+        ></Img>
+        <AbsoluteFill
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: YELLOW,
+              fontSize: orientiation === 'square' ? 80 : 60,
+              lineHeight: 1.1,
+              paddingLeft: 10,
+              paddingRight: 10,
+              fontFamily: 'YB',
+              display: 'block',
+              textAlign: 'center',
+            }}
+          >
+            <span style={{ color: 'white' }}>{playerNumber}</span>{' '}
+            {TEAM_API[playerNumber].lastName.toUpperCase()}
+          </div>
+        </AbsoluteFill>
       </div>
-    </div>
+    </AbsoluteFill>
   );
 };

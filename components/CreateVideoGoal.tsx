@@ -1,5 +1,5 @@
 import { Player } from '@remotion/player';
-import React from 'react';
+import React, { createRef, useImperativeHandle } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import {
   Form,
@@ -26,6 +26,11 @@ import { Main } from '../remotion/videos/Main';
 import { MainComp } from '../remotion/videos/MainComp';
 import styles from './CreateVideo.module.css';
 
+import FormatToggle from './FormatToggle'
+import styled from "@emotion/styled";
+import { anyRef } from '@utils/hack';
+
+
 interface InputProps {
   comp: 'Main' | 'MainSquare';
   playerIndex: string;
@@ -35,6 +40,8 @@ interface InputProps {
   awayTeam: string;
   sponsor: string;
 }
+
+
 
 const CreateVideo = ({
   setTweetMessage = (str) => {},
@@ -70,10 +77,12 @@ const CreateVideo = ({
     },
   });
 
-  React.useEffect(() => {
-    formUpdates &&
-      formUpdates.map(([key, value]) => console.log('update', key, value));
-  }, [formUpdates]);
+  useImperativeHandle(anyRef, () => {
+    return {
+       setValue: form.setValue
+    }
+  })
+
 
   const formValues = useWatch({ control: form.control });
   const selectedPlayer = React.useMemo<PlayerI>(
@@ -96,6 +105,8 @@ const CreateVideo = ({
 
   return (
     <React.Fragment>
+      <div className={styles.format}>
+      </div>
       <div className={styles.preview}>
         <Player
           style={{
@@ -142,7 +153,7 @@ const CreateVideo = ({
         <Form
           onSubmit={form.handleSubmit(async (data) => {
             const body = {
-              composition: 'Goal',
+              composition: formValues.comp,
               inputProps,
             };
             setTweetMessage(buildMessage(inputProps));
@@ -156,7 +167,11 @@ const CreateVideo = ({
             setVideoInProgress(true);
           })}
         >
+
+          <FormatToggle />
+
           <FormElement
+
             name="comp"
             label="Format"
             Input={InputSelect}
