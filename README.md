@@ -2,7 +2,7 @@
 
 This project is the winner of the [YB Hackaton](https://hackathon.bscyb.ch/) 2021 by [Jonny Burger](https://github.com/JonnyBurger), [Simon Messerli](https://github.com/simonmesserli), [Jonas Niestroj](https://github.com/JonasNiestroj) and [Nico Martin](https://github.com/nico-martin/).  
 
-> If you go through the code please keep in mind that we had **only 24 hours** and we did not care too much about an elegant architecture or super clean structure. It works. That's all that counts!
+> If you go through the code please keep in mind that we had **only 24 hours** and we did not care too much about an elegant architecture or a super clean structure. It works. That's all that counts!
 
 ## The challenge
 
@@ -28,4 +28,4 @@ All changes are immediately displayed in a [Remotion Player](https://remotion.de
 
 Afterwards, the remotion videos can be deployed to an AWS Lambda infrastructure, where we can render the videos in a super performant way using a simple API call.
 
-Those videos can then be shared to Twitter, but in the future it would also be possible to add more integrations to social media platforms.
+Those videos can then be shared to Twitter, but it would very well be possible to add more integrations to social media platforms.
