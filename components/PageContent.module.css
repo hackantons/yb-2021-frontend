@@ -31,6 +31,9 @@
   padding: var(--space-gutter) var(--space-section);
   color: #fff;
   text-align: center;
+  a {
+    color: #fff;
+  }
 }
 
 .main {

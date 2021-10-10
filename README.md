@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# YB SMART CONTENT CENTER
 
-## Getting Started
+This project is the winner of the [YB Hackaton](https://hackathon.bscyb.ch/) 2021 by [Jonny Burger](https://github.com/JonnyBurger), [Simon Messerli](https://github.com/simonmesserli), [Jonas Niestroj](https://github.com/JonasNiestroj) and [Nico Martin](https://github.com/nico-martin/).  
 
-First, run the development server:
+> If you go through the code please keep in mind that we had **only 24 hours** and we did not care too much about an elegant architecture or super clean structure. It works. That's all that counts!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## The challenge
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The challenge was set by the Swiss sports club [BSC Young Boys](https://www.bscyb.ch/):
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+> ### YB SMART CONTENT
+> 
+> Develop a smart, dynamic live content format to use on match days, which is exciting for YB fans on the one hand, and can be used by YB as a digital advertising platform for its partners on the other.
+>
+> The format is based on live ticker data from matches which are made available (corners, offside, substitutions, etc.). The aim is to combine this event data in a new presentation, and automatically, as well as dynamically, with attractive advertising spaces and suitable partners in each case.
+> 
+> The integration of further features and non-match-related data (e.g. weather) is possible.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## The problem
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+If you really want to transport emotions via social media there is now way around videos. But It's quite hard to create instant videos for live events. Right now there is no way around expensive software and complex templates.  
+With our solution we wanted to help content managers to create videos as immediate responses to events happening right now in the game.
 
-## Learn More
+## The solution
 
-To learn more about Next.js, take a look at the following resources:
+For the user interface we decided to use [NextJS](https://nextjs.org/) together with [TypeScript](https://www.typescriptlang.org/) and [PostCSS](https://postcss.org/). At the core we integrated [Remotion](https://remotion.dev/) and created two templates that could be customized using a set of parameters displayed as an easy to use form.  
+All changes are immediately displayed in a [Remotion Player](https://remotion.dev/docs/player) right next to the form.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Afterwards, the remotion videos can be deployed to an AWS Lambda infrastructure, where we can render the videos in a super performant way using a simple API call.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Those videos can then be shared to Twitter, but in the future it would also be possible to add more integrations to social media platforms.

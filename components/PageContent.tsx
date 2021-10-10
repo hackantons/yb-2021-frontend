@@ -15,7 +15,15 @@ const PageContent = ({
       <Navigation className={styles.navigation} />
       <div className={styles.content}>
         <Main className={styles.main} />
-        <footer className={styles.footer}>© 2021 hackantons</footer>
+        <footer className={styles.footer}>
+          © 2021 hackantons -{' '}
+          <a
+            href="https://github.com/hackantons/yb-2021-frontend"
+            target="_blank"
+          >
+            Github
+          </a>
+        </footer>
       </div>
     </div>
   );
