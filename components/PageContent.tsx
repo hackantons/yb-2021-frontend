@@ -19,7 +19,7 @@ const PageContent = ({
           © 2021 hackantons -{' '}
           <a
             href="https://github.com/hackantons/yb-2021-frontend"
-            target="_blank" rel="noopener"
+            target="_blank" rel="noopener noreferrer"
           >
             Github
           </a>
