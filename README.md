@@ -23,9 +23,8 @@ With our solution we wanted to help content managers to create videos as immedia
 
 ## The solution
 
-For the user interface we decided to use [NextJS](https://nextjs.org/) together with [TypeScript](https://www.typescriptlang.org/) and [PostCSS](https://postcss.org/). At the core we integrated [Remotion](https://remotion.dev/) and created two templates that could be customized using a set of parameters displayed as an easy to use form.  
-All changes are immediately displayed in a [Remotion Player](https://remotion.dev/docs/player) right next to the form.
+For the user interface we decided to use [NextJS](https://nextjs.org/) together with [TypeScript](https://www.typescriptlang.org/) and [PostCSS](https://postcss.org/). At the core we integrated [Remotion](https://remotion.dev/) and created two templates that could be customized using a set of parameters displayed as an easy to use form. All changes are immediately displayed in a [Remotion Player](https://remotion.dev/docs/player) right next to the form.
 
-Afterwards, the remotion videos can be deployed to an AWS Lambda infrastructure, where we can render the videos in a super performant way using a simple API call.
+Afterwards, the remotion videos can be deployed to an AWS Lambda infrastructure, where we can render the videos in a super performant way using a only simple API call.
 
 Those videos can then be shared to Twitter, but it would very well be possible to add more integrations to social media platforms.
