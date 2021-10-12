@@ -22,12 +22,12 @@ const LINKS: Record<
     path: '/create/event',
     icon: 'calendarRangeOutline',
     title: 'Event',
-  },
+  } /*
   manage: {
     path: '/',
     icon: 'tune',
     title: 'Manage',
-  },
+  },*/,
   url: {
     path: '/url',
     icon: 'url',

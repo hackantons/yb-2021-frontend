@@ -31,8 +31,21 @@
   padding: var(--space-gutter) var(--space-section);
   color: #fff;
   text-align: center;
+
+  p,
   a {
-    color: #fff;
+    color: #8c8c8c;
+    font-weight: 300;
+    font-size: var(--fs-small);
+  }
+
+  a {
+    text-decoration-color: #cdcdcd;
+    transition: all 200ms;
+
+    &:hover {
+      color: #fff;
+    }
   }
 }
 

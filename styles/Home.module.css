@@ -1,4 +1,20 @@
 .container {
   text-align: center;
-  margin-top: 30vh;
+  max-width: 80%;
+  width: 700px;
+  margin: 30vh auto 0 auto;
+  position: relative;
+}
+
+.catchphrase {
+  margin-top: 2rem;
+  font-size: var(--fs-h3);
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  transform: rotate(25deg) translateX(10%) translateY(-130%);
 }
