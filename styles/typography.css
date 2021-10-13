@@ -58,7 +58,7 @@ p {
     text-decoration: underline;
     text-underline-offset: 0.2em;
     text-decoration-color: var(--c-yellow);
-    color: var(--c-p-white);
+    color: var(--c-p);
   }
 }
 

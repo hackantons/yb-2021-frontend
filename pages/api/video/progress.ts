@@ -1,3 +1,4 @@
+import { checkCookieLogin } from '@pwp/utils';
 import { getRenderProgress } from '@remotion/lambda';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -17,6 +18,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  if (!checkCookieLogin(req)) {
+    res.status(401).end();
+  }
   const body = JSON.parse(req.body) as RequestData;
 
   const progress = await getRenderProgress({
@@ -25,10 +29,8 @@ export default async function handler(
     functionName,
     region: 'eu-central-1',
   });
-  res
-    .status(200)
-    .json({
-      overallProgress: progress.overallProgress,
-      outputFile: progress.outputFile,
-    });
+  res.status(200).json({
+    overallProgress: progress.overallProgress,
+    outputFile: progress.outputFile,
+  });
 }

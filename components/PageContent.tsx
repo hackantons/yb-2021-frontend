@@ -1,4 +1,5 @@
 import React from 'react';
+import { PasswordProtectedProvider } from '@comps/../passwordProtected/PasswordProtectedProvider';
 import Navigation from '@comps/Navigation/Navigation';
 import cn from '@utils/classnames';
 import styles from './PageContent.module.css';
@@ -14,7 +15,9 @@ const PageContent = ({
     <div className={cn(className, styles.root)}>
       <Navigation className={styles.navigation} />
       <div className={styles.content}>
-        <Main className={styles.main} />
+        <PasswordProtectedProvider>
+          <Main className={styles.main} />
+        </PasswordProtectedProvider>
         <footer className={styles.footer}>
           <p>
             Written in 24h at{' '}

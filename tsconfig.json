@@ -16,6 +16,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@pwp/*": ["passwordProtected/*"],
       "@comps/*": ["components/*"],
       "@utils/*": ["utils/*"],
       "@theme": ["theme/index.ts"],

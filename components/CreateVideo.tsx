@@ -1,6 +1,7 @@
 import React, { useImperativeHandle, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-import styles from '@comps/CreateVideo.module.css';
+import LoginForm from '@comps/../passwordProtected/LoginForm';
+import { usePasswordProtected } from '@comps/../passwordProtected/PasswordProtectedProvider';
 import CreateVideoChange from '@comps/CreateVideoChange';
 import CreateVideoGoal from '@comps/CreateVideoGoal';
 import EventList from '@comps/EventList';
@@ -8,6 +9,7 @@ import ShareFileModal from '@comps/ShareFileModal';
 import cn from '@utils/classnames';
 import { anyRef, Orientiation } from '@utils/hack';
 import { EVENT_TYPES } from '@utils/infos';
+import styles from './CreateVideo.module.css';
 import FormatToggle from './FormatToggle';
 
 const CreateVideo = ({ className = '' }: { className?: string }) => {
@@ -19,12 +21,38 @@ const CreateVideo = ({ className = '' }: { className?: string }) => {
     Object.values(EVENT_TYPES)[0]
   );
   const [orientation, setOrientation] = useState<Orientiation>('portrait');
+  const { isAuthenticated, init } = usePasswordProtected();
 
   useImperativeHandle(anyRef, () => {
     return {
       setOrientation: setOrientation,
     };
   });
+
+  if (!init) {
+    return null;
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className={styles.loginForm}>
+        <p>
+          Thank you for your interest in our app. Unfortunately, we had to
+          restrict access to the computationally intensive parts. However, you
+          can always watch the{' '}
+          <a
+            href="https://twitter.com/nic_o_martin/status/1447104327789711364"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            screencast
+          </a>{' '}
+          or contact one of us.
+        </p>
+        <LoginForm />
+      </div>
+    );
+  }
 
   return (
     <div className={cn(className, styles.root)}>
