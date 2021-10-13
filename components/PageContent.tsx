@@ -1,6 +1,6 @@
 import React from 'react';
+import { PasswordProtectedProvider } from '@comps/../passwordProtected/PasswordProtectedProvider';
 import Navigation from '@comps/Navigation/Navigation';
-import { PasswordProtectedProvider } from '@comps/passwordProtected/PasswordProtectedProvider';
 import cn from '@utils/classnames';
 import styles from './PageContent.module.css';
 

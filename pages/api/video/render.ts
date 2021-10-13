@@ -1,3 +1,4 @@
+import { checkCookieLogin } from '@pwp/utils';
 import { renderVideoOnLambda } from '@remotion/lambda';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -12,6 +13,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  if (!checkCookieLogin(req)) {
+    res.status(401).end();
+  }
   const body = JSON.parse(req.body);
   const { renderId, bucketName } = await renderVideoOnLambda({
     region: 'eu-central-1',
