@@ -68,7 +68,14 @@ const PageContent = ({
             >
               Github
             </a>
-            .
+            . Powered by {' '}
+            <a
+              href="https://aws.amazon.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AWS
+            </a>
           </p>
         </footer>
       </div>
