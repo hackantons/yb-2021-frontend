@@ -55,6 +55,10 @@
         {
           "name": "ACCESS_TOKEN_SECRET",
           "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-access-token-secret-twitter-vqQidJ"
+        },
+        {
+          "name": "PASSWORD",
+          "valueFrom": "arn:aws:secretsmanager:eu-central-1:829534015160:secret:ybhackathon-2021-frontend-password-0dVs4X"
         }
       ],
       "dockerSecurityOptions": null,
