@@ -29,6 +29,7 @@ const LoginForm = ({ className = '' }: { className?: string }) => {
         label="Password"
         Input={InputText}
         form={form}
+        type="password"
       />
       {error !== '' && <FormError>{error}</FormError>}
       <FormControls align="right" loading={loading} value="Login" />
