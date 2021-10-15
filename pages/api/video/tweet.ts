@@ -61,8 +61,9 @@ export default async function handler(
         }
         res
           .status(200)
-          // @ts-ignore
+
           .json({
+            // @ts-ignore
             url: `https://twitter.com/HackAnton1/status/${data.id_str}`,
           });
       });
