@@ -24,7 +24,7 @@ const ShareFileModal = ({
     setTweetLoading(true);
     const body = {
       videoPath: videoFile,
-      tweetMessage: tweetMessage,
+      tweetMessage: tweetMessageEdited,
     };
 
     const resp = await fetch('/api/video/tweet', {
