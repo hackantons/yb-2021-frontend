@@ -15,6 +15,7 @@ export default async function handler(
 ) {
   if (!checkCookieLogin(req)) {
     res.status(401).end();
+    return;
   }
   const body = JSON.parse(req.body);
   const { renderId, bucketName } = await renderVideoOnLambda({

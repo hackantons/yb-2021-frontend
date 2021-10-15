@@ -45,8 +45,8 @@ export const login = (
       return;
     }
     res.status(500).json({ message: err?.message || 'An error has occured.' });
+    return;
   }
-  res.status(200).json(req.body);
 };
 
 export const check = (
@@ -60,6 +60,7 @@ export const check = (
 
     if (checkCookieLogin(req)) {
       res.status(200).end();
+      return;
     }
     res.status(401).end();
   } catch (err) {
@@ -69,6 +70,6 @@ export const check = (
     }
 
     res.status(500).json({ message: err?.message || 'An error has occured.' });
+    return;
   }
-  res.status(200).end();
 };
